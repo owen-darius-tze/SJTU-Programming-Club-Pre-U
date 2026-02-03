@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students-list</title>
+</head>
+<style>
+    * * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas:
+                "heading logo"
+                "nav nav"
+                "catalog catalog"
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: #333;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+        }
+
+        .heading {
+            border-radius: 10px;
+            background-color: crimson;
+            grid-area: heading;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .heading h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .logo {
+            grid-area: logo;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            max-height: 80px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .top-nav {
+            grid-area: nav;
+            background-color: #FFD700;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 30px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: #333;
+            border-radius: 25px;
+        }
+
+        .top-nav a:hover {
+            background-color: crimson;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .top-nav a.current {
+            background-color: crimson;
+            color: white;
+        }
+
+        .catalog {
+            grid-area: catalog;
+            background-color: #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .photo-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        footer {
+            grid-area: footer;
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+</style>
+    <audio id="uisound" oncanplay="console.log('Audio ready')">
+        <source src="audioforui.mp3" type="audio/mpeg">
+    </audio>
+<script>
+        // Function to play click sound and navigate
+        function playClickSound(event, link) {
+            event.preventDefault();  // Prevent default link behavior
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 1;  // Ensure volume is set
+            clickSound.play();  // Play the sound
+
+            // Delay navigation to the link's destination to allow sound to play
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);  // Delay for 1 second (1000ms)
+        }
+
+        // Attach sound to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to all links in the navigation and book items
+            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);  // Play sound and then navigate
+                });
+            });
+        });
+    </script>
+<body>
+        <div class="heading">
+            <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+        </div>
+        <div class="logo">
+            <a href="index.html" aria-label="Home page">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" 
+                alt="上海交通大学校徽 - SJTU logo" height="80">
+            </a>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+            <a href="about.html">关于理科2</a>|
+            <a href="studentslist.html">学生目录</a>|
+            <a href="documentations.html">摄影/视频</a>|
+            <a href="contactus.html">联系我们</a>|
+        </nav>
+        <div class="photo-text">
+            <h2>照片目录 - Photos List</h2>
+        </div>
+        <div class="catalog">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160719_074.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160800_603.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160806_531.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160814_530.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160834_627.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160841_499.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_2025-10-27_160848_795.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_2025-10-27_160914_314.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027125430_159_69.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027151440_1_737.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027152320_2_737.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027152548_4_737.jpg" height="100px">
+                </div>
+            </div>
+            <div class="row3" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            <div class="row4" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            <div class="row5" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            </div>
+        <div>
+</body>
+</html>

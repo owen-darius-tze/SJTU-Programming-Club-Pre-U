@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students-list</title>
+</head>
+<style>
+    * * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas:
+                "heading logo"
+                "nav nav"
+                "catalog catalog"
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: #333;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+        }
+
+        .heading {
+            border-radius: 10px;
+            background-color: crimson;
+            grid-area: heading;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .heading h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .logo {
+            grid-area: logo;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            max-height: 80px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .top-nav {
+            grid-area: nav;
+            background-color: #FFD700;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 30px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: #333;
+            border-radius: 25px;
+        }
+
+        .top-nav a:hover {
+            background-color: crimson;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .top-nav a.current {
+            background-color: crimson;
+            color: white;
+        }
+
+        .catalog {
+            grid-area: catalog;
+            background-color: #FFD700;
+        }
+
+        #catalogues{
+            gap: 2px;
+            border-radius: 10px;
+            background-color: crimson;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+</style>
+    <audio id="uisound" oncanplay="console.log('Audio ready')">
+        <source src="audioforui.mp3" type="audio/mpeg">
+    </audio>
+<script>
+        // Function to play click sound and navigate
+        function playClickSound(event, link) {
+            event.preventDefault();  // Prevent default link behavior
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 1;  // Ensure volume is set
+            clickSound.play();  // Play the sound
+
+            // Delay navigation to the link's destination to allow sound to play
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);  // Delay for 1 second (1000ms)
+        }
+
+        // Attach sound to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to all links in the navigation and book items
+            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);  // Play sound and then navigate
+                });
+            });
+        });
+    </script>
+<body>
+        <div class="heading">
+            <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+        </div>
+        <div class="logo">
+            <a href="index.html" aria-label="Home page">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" 
+                alt="上海交通大学校徽 - SJTU logo" height="80">
+            </a>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+            <a href="about.html">关于理科2</a>|
+            <a href="studentslist.html">学生目录</a>|
+            <a href="documentations.html">摄影/视频</a>|
+            <a href="contactus.html">联系我们</a>|
+        </nav>
+        <h2>节目目录 - Events List</h2>
+        <div class="catalog">
+            <div class="row1" id="catalogues">
+                <img src="">
+                <a href="spellingbee.html"><h3>Spelling Bee Competition</h3></a>
+            </div>
+            <div class="row2" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row3" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row4" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row5" id="catalogues">
+                <img src="">
+            </div>
+        <div>
+</body>
+</html>
