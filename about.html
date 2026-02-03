@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理科2 - Science Class 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            height: 2000px;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;            grid-template-areas:
+                "heading logo"
+                "top-nav top-nav"
+                "article article"
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .heading {
+            border-radius: 10px;
+            background-color: crimson;
+            grid-area: heading;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            grid-area: logo;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            max-height: 100px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .top-nav {
+            grid-area: top-nav;
+            background-color: #FFD700;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 20px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: #333;
+            border-radius: 25px;
+        }
+
+        .top-nav a:hover {
+            background-color: crimson;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        article {
+            grid-area: article;
+            background-color: crimson;
+            border-radius: 10px;
+            padding: 30px;
+            color: white;
+            line-height: 1.6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        article h2 {
+            margin-bottom: 20px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        article ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        article li {
+            margin-bottom: 10px;
+        }
+
+        .vision-mission-faculty-container {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            border: 2px solid #FFD700;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .vision, .mission, .faculty {
+            margin-bottom: 30px;
+        }
+
+        .vision:last-child, .mission:last-child {
+            margin-bottom: 0;
+        }
+
+        .vision h3, .mission h3, .faculty h3{
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+        <audio id="uisound" oncanplay="console.log('Audio ready')">
+            <source src="audioforui.mp3" type="audio/mpeg">
+        </audio>
+    <script>
+        // Function to play click sound and navigate
+        function playClickSound(event, link) {
+            event.preventDefault();  // Prevent default link behavior
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 1;  // Ensure volume is set
+            clickSound.play();  // Play the sound
+
+            // Delay navigation to the link's destination to allow sound to play
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);  // Delay for 1 second (1000ms)
+        }
+
+        // Attach sound to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to all links in the navigation and book items
+            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);  // Play sound and then navigate
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+        <div class="heading">
+            <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+        </div>
+        <div class="logo">
+            <a href="index.html" aria-label="Home page">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" 
+                alt="上海交通大学校徽 - SJTU logo" height="80">
+            </a>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+            <a href="about.html">关于理科2</a>|
+            <a href="studentslist.html">学生目录</a>|
+            <a href="documentations.html">摄影/视频</a>|
+            <a href="contactus.html">联系我们</a>|
+        </nav>
+
+    <article>
+        <h2>关于理科二</h2>
+        <ul>
+            <li>理科二是2025年9月10日产生的班</li>
+            <li>班主任是林昕老师 (Lin Zhen)</li>
+        </ul>
+            
+        <div class="vision-mission-faculty-container">
+            <section class="vision">
+                <h3>Vision (愿景)</h3>
+                <ul>
+                    <li>创造一段最难忘，最互动，和最美好的理班！</li>
+                    <li>Create the most unforgettable, interactive, and wonderful experience for our class!</li>
+                </ul>
+            </section>
+                
+            <section class="mission">
+                <h3>Mission (使命)</h3>
+                <ul>
+                    <li>通过合作和创作，我希望会创造最有趣的经验，不断向世界表达我们班最好的发展!</li>
+                    <li>Through cooperation and creativity, we hope to create the most engaging experiences and continuously express our class's best developments to the world!</li>
+                </ul>
+            </section>
+            <section class="faculty">
+                <h3>Faculty (教师团队)</h3>
+                <ul>
+                    <li>林昕老师 (Lin Xin) - 班主任 (Class Advisor)</li>
+                    <li>翟老师 (Mrs.Zhai) - 校长 (Principal)</li>
+                    <li>卢老师 (Mrs.Lu) - 高等数学老师 (Advanced Math)</li>
+                    <li>谷老师 (Mr.Robin Gu) - 数学老师 (Math)</li>
+                    <li>周老师 (Mr.Zhou) - 物理老师 (Physics Teacher)</li>
+                </ul>
+            </section>
+        </div>
+    </article>
+
+    <footer>
+        <p>Copyright ©2026 SJTU Pre Uni. All rights reserved.</p>
+    </footer>
+</body>
+</html>

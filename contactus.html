@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理科2 - Contact Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            min-height: 100vh;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas:
+                "heading logo"
+                "top-nav top-nav"
+                "contact-container contact-container"
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .heading {
+            border-radius: 10px;
+            background-color: crimson;
+            grid-area: heading;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo {
+            grid-area: logo;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            max-height: 100px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .top-nav {
+            grid-area: top-nav;
+            background-color: #FFD700;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 20px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: #333;
+            border-radius: 25px;
+        }
+
+        .top-nav a:hover {
+            background-color: crimson;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-container {
+            grid-area: contact-container;
+            background-color: crimson;
+            border-radius: 10px;
+            padding: 30px;
+            color: white;
+            line-height: 1.6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-container h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #FFD700;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .radio-label input {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #FFD700;
+            color: #333;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info Styling */
+        .contact-info {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+        }
+
+        .info-item h3 {
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .info-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info-item li {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <audio id="uisound" oncanplay="console.log('Audio ready')">
+        <source src="audioforui.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        // Function to play click sound and navigate
+        function playClickSound(event, link) {
+            event.preventDefault();  // Prevent default link behavior
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 1;  // Ensure volume is set
+            clickSound.play();  // Play the sound
+
+            // Delay navigation to the link's destination to allow sound to play
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);  // Delay for 1 second (1000ms)
+        }
+
+        // Attach sound to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to all links in the navigation and book items
+            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);  // Play sound and then navigate
+                });
+            });
+        });
+
+        // Form submission handler
+        function generateTextFile(event) {
+            event.preventDefault();
+            alert("Thank you for your submission! We will contact you soon.");
+            // In a real implementation, you would process the form data here
+        }
+    </script>
+</head>
+<body>
+    <div class="heading">
+        <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+    </div>
+    <div class="logo">
+        <a href="index.html" aria-label="Home page">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" 
+            alt="上海交通大学校徽 - SJTU logo" height="80">
+        </a>
+    </div>
+    <nav class="top-nav" aria-label="Main navigation">
+        <a href="about.html">关于理科2</a>|
+        <a href="studentslist.html">学生目录</a>|
+        <a href="documentations.html">摄影/视频</a>|
+        <a href="contactus.html">联系我们</a>|
+    </nav>
+
+    <div class="contact-container">
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="first-name">1. First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">2. Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">3. Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">4. Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone-number">
+                </div>
+                <div class="form-group">
+                    <label>5. Purpose:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="purpose" value="Complain" required> Complain
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="purpose" value="Ask"> Ask
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="purpose" value="Request"> Request
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>6. Program Selected:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="program-selected" value="理科1" required> 理科1
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="program-selected" value="理科2"> 理科2
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="program-selected" value="文科1"> 文科1
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="program-selected" value="文科2"> 文科2
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="program-selected" value="Program C"> Program C
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comments">7. Comments</label>
+                    <textarea id="comments" name="comments" rows="5"></textarea>
+                </div>
+                <button type="submit" onclick="generateTextFile(event)">Submit</button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Additional Information</h2>
+
+            <div class="info-item">
+                <h3>Company Email</h3>
+                <ul>
+                    <li>sjtu.edu@gmail.com</li>
+                </ul>
+            </div>
+            <div class="info-item">
+                <h3>Phone Number</h3>
+                <ul>
+                    <li>+86-13524232817</li>
+                </ul>
+            </div>
+            <div class="info-item">
+                <h3>Social Media Account</h3>
+                <ul>
+                    <li>@sjtupreuni</li>
+                </ul>
+            </div>
+            <div class="info-item">
+                <h3>Our Address</h3>
+                <p>上海市闵行区七莘路2678号1号楼309 - 邮政编码 = 201101</p>
+            </div>
+        </div>
+    </div>    
+    <!-- Footer -->
+    <footer>
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+    </footer>
+</body>
+</html>
