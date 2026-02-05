@@ -6,7 +6,7 @@
     <title>students-list</title>
 </head>
 <style>
-        * {
+    * * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -81,54 +81,38 @@
             transform: translateY(-2px);
         }
 
-        table {
-            grid-area: table;
-            display: flex;
-            
-        }
-
-        .table-container {
-            background-color: crimson;
+        .catalog {
+            grid-area: catalog;
+            background-color: #FFD700;
             border-radius: 10px;
-            padding: 30px;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
-        .table-container h2 {
-            margin-bottom: 25px;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 10px;
-            text-align: center;
-            color: white;
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .photo-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        table {
+        .photo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-item img {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
         }
 
-        thead {
-            background-color: rgba(255, 215, 0, 0.2);
-        }
-
-        th {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 2px solid #FFD700;
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
 
         footer {
             grid-area: footer;
@@ -137,7 +121,6 @@
             text-align: center;
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px;
         }
 </style>
     <audio id="uisound" oncanplay="console.log('Audio ready')">
@@ -172,47 +155,73 @@
 <body>
         <header>
             <h1>理科-2 (Science-2) - 学期2025-2026</h1>
-        </header>
+        <header>
         <div class="logo">
             <a href="index.html" aria-label="Home page">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
             </a>
         </div>
-        <nav class="top-nav">
+        <nav class="top-nav" aria-label="Main navigation">
             <a href="about.html">关于理科2</a>
             <a href="studentslist.html">学生目录</a>
             <a href="documentations.html">摄影/视频</a>
             <a href="contactus.html">联系我们</a>
         </nav>
-        <h2>学生目录 - Students List</h2>
-        <table>
-            <tr>
-                <th>姓名 (Name)</th>
-                <th>由来 (Place of Origin)</th>
-            </tr>
-            <tr>
-                <td>安崎 (AZUKA)</td>
-                <td>Ulaanbaatar, Mongolia</td>
-            </tr>
-            <tr>
-                <td>Fannuel Farrel Lie</td>
-                <td>Jakarta, Indonesia</td>
-            </tr>
-            <tr>
-                <td>杨林伟</td>
-                <td>Mandalay, Myanmar</td>
-            </tr>
-            <tr>
-                <td>谢和汶 (Darius Owen)</td>
-                <td>Sweden</td>
-            </tr>
-            <tr>
-                <td>Kevin Saidbun</td>
-                <td>Japan</td>
-            </tr>
-        </table>
-        <footer>
-            Copyright ©2026 SJTU Pre Uni. All rights reserved.
-        </footer>
+        <div class="photo-text">
+            <h2>照片目录 - Photos List</h2>
+        </div>
+        <div class="catalog">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160719_074.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160800_603.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160806_531.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160814_530.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160834_627.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="E:\SJTU SCHOOL FILES\english spelling bee\2025 Spelling Bee 照片\2025 Spelling Bee 照片\微信图片_2025-10-27_160841_499.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_2025-10-27_160848_795.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_2025-10-27_160914_314.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027125430_159_69.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027151440_1_737.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027152320_2_737.jpg" height="100px">
+                </div>
+                <div class="photo-item">
+                    <img src="微信图片_20251027152548_4_737.jpg" height="100px">
+                </div>
+            </div>
+            <div class="row3" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            <div class="row4" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            <div class="row5" id="catalogues">
+                <img src="" height="100px">
+            </div>
+            </div>
+        <div>
+    <footer>
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+    </footer>
 </body>
 </html>

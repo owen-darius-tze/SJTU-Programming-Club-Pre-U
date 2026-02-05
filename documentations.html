@@ -81,53 +81,15 @@
             transform: translateY(-2px);
         }
 
-        table {
-            grid-area: table;
-            display: flex;
-            
+        .catalog {
+            grid-area: catalog;
+            background-color: #FFD700;
         }
 
-        .table-container {
-            background-color: crimson;
+        #catalogues{
+            gap: 2px;
             border-radius: 10px;
-            padding: 30px;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .table-container h2 {
-            margin-bottom: 25px;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 10px;
-            text-align: center;
-            color: white;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        thead {
-            background-color: rgba(255, 215, 0, 0.2);
-        }
-
-        th {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 2px solid #FFD700;
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: crimson;
         }
 
         footer {
@@ -137,7 +99,6 @@
             text-align: center;
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px;
         }
 </style>
     <audio id="uisound" oncanplay="console.log('Audio ready')">
@@ -178,41 +139,33 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
             </a>
         </div>
-        <nav class="top-nav">
+        <nav class="top-nav" aria-label="Main navigation">
             <a href="about.html">关于理科2</a>
             <a href="studentslist.html">学生目录</a>
             <a href="documentations.html">摄影/视频</a>
             <a href="contactus.html">联系我们</a>
         </nav>
-        <h2>学生目录 - Students List</h2>
-        <table>
-            <tr>
-                <th>姓名 (Name)</th>
-                <th>由来 (Place of Origin)</th>
-            </tr>
-            <tr>
-                <td>安崎 (AZUKA)</td>
-                <td>Ulaanbaatar, Mongolia</td>
-            </tr>
-            <tr>
-                <td>Fannuel Farrel Lie</td>
-                <td>Jakarta, Indonesia</td>
-            </tr>
-            <tr>
-                <td>杨林伟</td>
-                <td>Mandalay, Myanmar</td>
-            </tr>
-            <tr>
-                <td>谢和汶 (Darius Owen)</td>
-                <td>Sweden</td>
-            </tr>
-            <tr>
-                <td>Kevin Saidbun</td>
-                <td>Japan</td>
-            </tr>
-        </table>
-        <footer>
-            Copyright ©2026 SJTU Pre Uni. All rights reserved.
-        </footer>
+        <h2>节目目录 - Events List</h2>
+        <div class="catalog">
+            <div class="row1" id="catalogues">
+                <img src="">
+                <a href="spellingbee.html"><h3>Spelling Bee Competition</h3></a>
+            </div>
+            <div class="row2" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row3" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row4" id="catalogues">
+                <img src="">
+            </div>
+            <div class="row5" id="catalogues">
+                <img src="">
+            </div>
+        <div>
+    <footer>
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+    </footer>
 </body>
 </html>

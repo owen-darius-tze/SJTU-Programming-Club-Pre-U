@@ -15,9 +15,10 @@
             display: grid;
             margin: auto;
             max-width: 1200px;
-            height: 2000px;
+            min-height: 100vh;
             grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto;            grid-template-areas:
+            grid-template-rows: auto auto 1fr auto;            
+            grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
                 "article article"
@@ -25,10 +26,11 @@
             gap: 20px;
             padding: 20px;
             color: white;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
         }
 
-        .heading {
+        header {
             border-radius: 10px;
             background-color: crimson;
             grid-area: heading;
@@ -39,6 +41,7 @@
             align-items: center;
             justify-content: center;
         }
+        
         .logo {
             grid-area: logo;
             display: flex;
@@ -169,20 +172,19 @@
     </script>
 </head>
 <body>
-        <div class="heading">
+        <header>
             <h1>理科-2 (Science-2) - 学期2025-2026</h1>
-        </div>
-        <div class="logo">
-            <a href="index.html" aria-label="Home page">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" 
-                alt="上海交通大学校徽 - SJTU logo" height="80">
-            </a>
-        </div>
+        </header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
+        </a>
+    </div>
         <nav class="top-nav" aria-label="Main navigation">
-            <a href="about.html">关于理科2</a>|
-            <a href="studentslist.html">学生目录</a>|
-            <a href="documentations.html">摄影/视频</a>|
-            <a href="contactus.html">联系我们</a>|
+            <a href="about.html">关于理科2</a>
+            <a href="studentslist.html">学生目录</a>
+            <a href="documentations.html">摄影/视频</a>
+            <a href="contactus.html">联系我们</a>
         </nav>
 
     <article>
@@ -222,7 +224,7 @@
     </article>
 
     <footer>
-        <p>Copyright ©2026 SJTU Pre Uni. All rights reserved.</p>
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
     </footer>
 </body>
 </html>
