@@ -14,14 +14,14 @@
         body {
             display: grid;
             margin: auto;
-            max-width: 1200px;
+            max-width: 1400px;
             min-height: 100vh;
             grid-template-columns: 1fr auto;
             grid-template-rows: auto auto 1fr auto;            
             grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
-                "article article"
+                "contact-container contact-container"
                 "footer footer";
             gap: 20px;
             padding: 20px;
@@ -32,7 +32,7 @@
 
         header {
             border-radius: 10px;
-            background-color: crimson;
+            background-color: #AD1730;
             grid-area: heading;
             text-align: center;
             padding: 15px;
@@ -51,12 +51,12 @@
         .logo img {
             max-height: 100px;
             width: auto;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         .top-nav {
             grid-area: top-nav;
-            background-color: #FFD700;
+            background-color: #AD1730;
             height: 50px;
             display: flex;
             align-items: center;
@@ -70,19 +70,19 @@
             font-weight: bold;
             padding: 10px 20px;
             transition: all 0.3s ease;
-            color: #333;
+            color: white;
             border-radius: 25px;
         }
 
         .top-nav a:hover {
-            background-color: crimson;
+            background-color: #002B60;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
         }
 
         .contact-container {
             grid-area: contact-container;
-            background-color: crimson;
+            background-color: #002B60;
             border-radius: 10px;
             padding: 30px;
             color: white;
@@ -95,7 +95,7 @@
 
         .contact-container h2 {
             margin-bottom: 20px;
-            border-bottom: 2px solid #FFD700;
+            border-bottom: 2px solid #AD1730;
             padding-bottom: 10px;
         }
 
@@ -122,10 +122,27 @@
         .form-group textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #FFD700;
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
+        }
+        .info-item a {
+            display: inline-block;
+            width: 100%;
+            padding: 2px 10;
+            text-decoration-color: rgba(255, 255, 255, 0.9);
+            text-decoration: underline;
+            border-radius: 4px;
+            color: #FFD700;
+            font-weight: bold;
+            word-break: break-all;
+            transition: all 0.3s ease;
+        }
+
+        .info-item a:hover {
+            background-color: #AD1730;
+            color: white;
+            transform: translateY(-3px);
         }
 
         .radio-group {
@@ -147,8 +164,8 @@
         }
 
         button[type="submit"] {
-            background-color: #FFD700;
-            color: #333;
+            background-color: #AD1730;
+            color: white;
             border: none;
             padding: 12px 25px;
             border-radius: 25px;
@@ -160,8 +177,8 @@
         }
 
         button[type="submit"]:hover {
-            background-color: white;
-            transform: translateY(-2px);
+            background-color: #002B60;
+            transform: translateY(-3px);
         }
 
         /* Contact Info Styling */
@@ -177,7 +194,7 @@
 
         .info-item h3 {
             margin-bottom: 10px;
-            color: #FFD700;
+            color: white;
         }
 
         .info-item ul {
@@ -191,7 +208,7 @@
 
         footer {
             grid-area: footer;
-            background-color: crimson;
+            background-color: #AD1730;
             color: white;
             text-align: center;
             padding: 20px;
@@ -201,39 +218,6 @@
     <audio id="uisound" oncanplay="console.log('Audio ready')">
         <source src="audioforui.mp3" type="audio/mpeg">
     </audio>
-    <script>
-        // Function to play click sound and navigate
-        function playClickSound(event, link) {
-            event.preventDefault();  // Prevent default link behavior
-            const clickSound = document.getElementById('uisound');
-            clickSound.volume = 1;  // Ensure volume is set
-            clickSound.play();  // Play the sound
-
-            // Delay navigation to the link's destination to allow sound to play
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 500);  // Delay for 1 second (1000ms)
-        }
-
-        // Attach sound to all clickable elements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to all links in the navigation and book items
-            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
-
-            clickableElements.forEach(element => {
-                element.addEventListener('click', function(event) {
-                    playClickSound(event, this);  // Play sound and then navigate
-                });
-            });
-        });
-
-        // Form submission handler
-        function generateTextFile(event) {
-            event.preventDefault();
-            alert("Thank you for your submission! We will contact you soon.");
-            // In a real implementation, you would process the form data here
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -308,7 +292,7 @@
                 </div>
                 <div class="form-group">
                     <label for="comments">7. Comments</label>
-                    <textarea id="comments" name="comments" rows="5"></textarea>
+                    <textarea id="comments" name="comments" rows="5" cols="40"></textarea>
                 </div>
                 <button type="submit" onclick="generateTextFile(event)">Submit</button>
             </form>
@@ -321,30 +305,69 @@
             <div class="info-item">
                 <h3>Company Email</h3>
                 <ul>
-                    <li>sjtu.edu@gmail.com</li>
+                    <li><a href="mailto:pre-university@sjtu.edu.cn">pre-university@sjtu.edu.cn</a></li>
                 </ul>
             </div>
             <div class="info-item">
                 <h3>Phone Number</h3>
                 <ul>
-                    <li>+86-13524232817</li>
+                    <li>+86-21-61735374</li>
+                    <li>+86-21-64789487</li>
                 </ul>
             </div>
             <div class="info-item">
-                <h3>Social Media Account</h3>
+                <h3>Website</h3>
                 <ul>
-                    <li>@sjtupreuni</li>
+                    <li><a href="https://liuxue.sjtu.edu.cn/pre-university/" target="_blank">https://liuxue.sjtu.edu.cn/pre-university/</a>
+                    </li>
                 </ul>
             </div>
             <div class="info-item">
                 <h3>Our Address</h3>
-                <p>上海市闵行区七莘路2678号1号楼309 - 邮政编码 = 201101</p>
+                <p>上海市闵行区七莘路2678号<br>1号楼 309室<br>邮政编码: 201101</p>
+                <p style="margin-top:12px; background: white; border: 2px solid #AD1730; color: #002B60; padding: 10px; border-radius: 5px; display: inline-block;">
+                    <strong>Note:</strong> Please do not send any physical mail to this address without prior contact.
+                </p>
             </div>
         </div>
     </div>    
-    <!-- Footer -->
+
     <footer>
-        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+        Copyright © 2026 SJTU Pre Uni · 理科2 · all rights reserved
     </footer>
+
+    <script>
+        // Function to play click sound and navigate
+        function playClickSound(event, link) {
+            event.preventDefault();  // Prevent default link behavior
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 0.4;  // Ensure volume is set
+            clickSound.play();  // Play the sound
+
+            // Delay navigation to the link's destination to allow sound to play
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);  // Delay for 1 second (1000ms)
+        }
+
+        // Attach sound to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to all links in the navigation and book items
+            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);  // Play sound and then navigate
+                });
+            });
+        });
+
+        // Form submission handler
+        function generateTextFile(event) {
+            event.preventDefault();
+            window.alert("Thank you for your submission! We will contact you in 1-2 business days.");
+            // In a real implementation, you would process the form data here
+        }
+    </script>
 </body>
 </html>
