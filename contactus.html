@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>理科2 - Contact Us</title>
     <style>
+        /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* ===== GRID LAYOUT ===== */
         body {
             display: grid;
             margin: auto;
@@ -30,6 +32,7 @@
             background-color: #f5f5f5;
         }
 
+        /* ===== HEADER & LOGO ===== */
         header {
             border-radius: 10px;
             background-color: #AD1730;
@@ -54,6 +57,7 @@
             border-radius: 10px;
         }
 
+        /* ===== NAVIGATION ===== */
         .top-nav {
             grid-area: top-nav;
             background-color: #AD1730;
@@ -80,6 +84,7 @@
             transform: translateY(-5px);
         }
 
+        /* ===== MAIN CONTACT CONTAINER ===== */
         .contact-container {
             grid-area: contact-container;
             background-color: #002B60;
@@ -99,7 +104,7 @@
             padding-bottom: 10px;
         }
 
-        /* Form Styling */
+        /* ===== FORM STYLES ===== */
         .contact-form {
             background-color: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -125,26 +130,10 @@
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
-        }
-        .info-item a {
-            display: inline-block;
-            width: 100%;
-            padding: 2px 10;
-            text-decoration-color: rgba(255, 255, 255, 0.9);
-            text-decoration: underline;
-            border-radius: 4px;
-            color: #FFD700;
-            font-weight: bold;
-            word-break: break-all;
-            transition: all 0.3s ease;
+            border: 1px solid #ccc;
         }
 
-        .info-item a:hover {
-            background-color: #AD1730;
-            color: white;
-            transform: translateY(-3px);
-        }
-
+        /* ===== RADIO BUTTONS ===== */
         .radio-group {
             display: flex;
             flex-wrap: wrap;
@@ -163,6 +152,7 @@
             margin-right: 5px;
         }
 
+        /* ===== SUBMIT BUTTON ===== */
         button[type="submit"] {
             background-color: #AD1730;
             color: white;
@@ -181,7 +171,7 @@
             transform: translateY(-3px);
         }
 
-        /* Contact Info Styling */
+        /* ===== CONTACT INFO STYLES ===== */
         .contact-info {
             background-color: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -206,6 +196,99 @@
             margin-bottom: 5px;
         }
 
+        .info-item a {
+            display: inline-block;
+            width: 100%;
+            padding: 2px 10px;
+            text-decoration-color: rgba(255, 255, 255, 0.9);
+            text-decoration: underline;
+            border-radius: 4px;
+            color: #FFD700;
+            font-weight: bold;
+            word-break: break-all;
+            transition: all 0.3s ease;
+        }
+
+        .info-item a:hover {
+            background-color: #AD1730;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== MAP STYLES ===== */
+        .map-container {
+            margin: 15px 0;
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border: 2px solid #AD1730;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .map-overlay::after {
+            content: "🗺️ Click to activate map";
+            background-color: #AD1730;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .map-overlay:hover::after {
+            background-color: #002B60;
+            transform: scale(1.05);
+        }
+
+        .map-container.active .map-overlay {
+            display: none;
+        }
+
+        .map-button {
+            background-color: #AD1730;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .map-button:hover {
+            background-color: #002B60;
+            transform: translateY(-4px);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             grid-area: footer;
             background-color: #AD1730;
@@ -215,19 +298,24 @@
             border-radius: 10px;
         }
     </style>
-    <audio id="uisound" oncanplay="console.log('Audio ready')">
+    <audio id="uisound" preload="auto">
         <source src="audioforui.mp3" type="audio/mpeg">
     </audio>
 </head>
 <body>
+    <!-- ===== HEADER SECTION ===== -->
     <header>
         <h1>理科-2 (Science-2) - 学期2025-2026</h1>
     </header>
+
+    <!-- ===== LOGO SECTION ===== -->
     <div class="logo">
         <a href="index.html">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
         </a>
     </div>
+
+    <!-- ===== NAVIGATION ===== -->
     <nav class="top-nav">
         <a href="about.html">关于理科2</a>
         <a href="studentslist.html">学生目录</a>
@@ -235,27 +323,34 @@
         <a href="contactus.html">联系我们</a>
     </nav>
 
+    <!-- ===== MAIN CONTACT SECTION ===== -->
     <div class="contact-container">
-        <!-- Contact Form -->
+        <!-- LEFT COLUMN: CONTACT FORM -->
         <div class="contact-form">
             <h2>Contact Us</h2>
             <form id="contactForm">
+                <!-- Personal Information -->
                 <div class="form-group">
                     <label for="first-name">1. First Name</label>
                     <input type="text" id="first-name" name="first-name" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="last-name">2. Last Name</label>
                     <input type="text" id="last-name" name="last-name" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">3. Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="phone-number">4. Phone Number</label>
                     <input type="tel" id="phone-number" name="phone-number">
                 </div>
+
+                <!-- Purpose Selection -->
                 <div class="form-group">
                     <label>5. Purpose:</label>
                     <div class="radio-group">
@@ -270,6 +365,8 @@
                         </label>
                     </div>
                 </div>
+
+                <!-- Program Selection -->
                 <div class="form-group">
                     <label>6. Program Selected:</label>
                     <div class="radio-group">
@@ -290,24 +387,31 @@
                         </label>
                     </div>
                 </div>
+
+                <!-- Comments -->
                 <div class="form-group">
                     <label for="comments">7. Comments</label>
                     <textarea id="comments" name="comments" rows="5" cols="40"></textarea>
                 </div>
+
+                <!-- Submit Button -->
                 <button type="submit" onclick="generateTextFile(event)">Submit</button>
             </form>
         </div>
 
-        <!-- Contact Info -->
+        <!-- RIGHT COLUMN: CONTACT INFORMATION -->
         <div class="contact-info">
             <h2>Additional Information</h2>
 
+            <!-- Email Section -->
             <div class="info-item">
                 <h3>Company Email</h3>
                 <ul>
                     <li><a href="mailto:pre-university@sjtu.edu.cn">pre-university@sjtu.edu.cn</a></li>
                 </ul>
             </div>
+
+            <!-- Phone Section -->
             <div class="info-item">
                 <h3>Phone Number</h3>
                 <ul>
@@ -315,6 +419,8 @@
                     <li>+86-21-64789487</li>
                 </ul>
             </div>
+
+            <!-- Website Section -->
             <div class="info-item">
                 <h3>Website</h3>
                 <ul>
@@ -322,9 +428,36 @@
                     </li>
                 </ul>
             </div>
+
+            <!-- Address & Map Section -->
             <div class="info-item">
                 <h3>Our Address</h3>
                 <p>上海市闵行区七莘路2678号<br>1号楼 309室<br>邮政编码: 201101</p>
+                
+                <!-- Google Maps Embed -->
+                <div class="map-container" id="mapContainer">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.456789!2d121.3615!3d31.1357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b270f1b3f9c3b7%3A0x9e8b3b8f3c8f3b8!2sQixin%20Rd%2C%20Minhang%20District%2C%20Shanghai!5e0!3m2!1sen!2scn!4v1234567890" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="SJTU Pre-University Location Map">
+                    </iframe>
+                    <!-- Map Overlay for Activation -->
+                    <div class="map-overlay" onclick="activateMap(event)"></div>
+                </div>
+                
+                <!-- Map Controls -->
+                <div style="display: flex; gap: 10px; margin: 10px 0;">
+                    <button class="map-button" onclick="activateMap()">
+                        Activate Map
+                    </button>
+                    <a href="https://maps.google.com/?q=上海市闵行区七莘路2678号" target="_blank" class="map-button">
+                        Open in Google Maps
+                    </a>
+                </div>
+
+                <!-- Important Note -->
                 <p style="margin-top:12px; background: white; border: 2px solid #AD1730; color: #002B60; padding: 10px; border-radius: 5px; display: inline-block;">
                     <strong>Note:</strong> Please do not send any physical mail to this address without prior contact.
                 </p>
@@ -332,42 +465,79 @@
         </div>
     </div>    
 
+    <!-- ===== FOOTER ===== -->
     <footer>
         Copyright © 2026 SJTU Pre Uni · 理科2 · all rights reserved
     </footer>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // Function to play click sound and navigate
+        // ===== AUDIO CLICK HANDLER =====
         function playClickSound(event, link) {
-            event.preventDefault();  // Prevent default link behavior
+            event.preventDefault();
             const clickSound = document.getElementById('uisound');
-            clickSound.volume = 0.4;  // Ensure volume is set
-            clickSound.play();  // Play the sound
+            clickSound.volume = 0.4;
+            clickSound.play();
 
-            // Delay navigation to the link's destination to allow sound to play
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 500);  // Delay for 1 second (1000ms)
+            }, 500);
         }
 
-        // Attach sound to all clickable elements
+        // Attach sound to non-map links
         document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to all links in the navigation and book items
-            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
-
+            const clickableElements = document.querySelectorAll('a:not(.map-button)');
+            
             clickableElements.forEach(element => {
                 element.addEventListener('click', function(event) {
-                    playClickSound(event, this);  // Play sound and then navigate
+                    if (this.classList.contains('map-button')) {
+                        return;
+                    }
+                    playClickSound(event, this);
                 });
             });
         });
 
-        // Form submission handler
+        // ===== FORM SUBMISSION HANDLER =====
         function generateTextFile(event) {
             event.preventDefault();
             window.alert("Thank you for your submission! We will contact you in 1-2 business days.");
-            // In a real implementation, you would process the form data here
         }
+
+        // ===== MAP INTERACTION HANDLERS =====
+        // Activate map function
+        function activateMap(event) {
+            const mapContainer = document.getElementById('mapContainer');
+            const mapOverlay = mapContainer.querySelector('.map-overlay');
+            
+            if (mapOverlay) {
+                mapOverlay.style.display = 'none';
+                mapContainer.classList.add('active');
+                console.log('Map activated');
+            }
+        }
+
+        // Handle clicking outside to deactivate
+        document.addEventListener('click', function(event) {
+            const mapContainer = document.getElementById('mapContainer');
+            const mapOverlay = mapContainer.querySelector('.map-overlay');
+            const isMapButton = event.target.classList.contains('map-button');
+            
+            if (!mapContainer.contains(event.target) && !isMapButton) {
+                if (mapOverlay) {
+                    mapOverlay.style.display = 'flex';
+                    mapContainer.classList.remove('active');
+                    console.log('Map deactivated');
+                }
+            }
+        });
+
+        // Prevent map controls from triggering audio
+        document.querySelectorAll('.map-button, .map-overlay').forEach(element => {
+            element.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        });
     </script>
 </body>
 </html>
