@@ -22,7 +22,7 @@
             grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
-                "article article"
+                "table table"
                 "footer footer";
             gap: 20px;
             padding: 20px;
@@ -31,9 +31,10 @@
             background-color: #f5f5f5;
         }
 
+        /* ===== HEADER & LOGO ===== */
         header {
             border-radius: 10px;
-            background-color: crimson;
+            background-color: #AD1730;
             grid-area: heading;
             text-align: center;
             padding: 15px;
@@ -52,12 +53,13 @@
         .logo img {
             max-height: 100px;
             width: auto;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
+        /* ===== NAVIGATION ===== */
         .top-nav {
             grid-area: top-nav;
-            background-color: #FFD700;
+            background-color: #AD1730;
             height: 50px;
             display: flex;
             align-items: center;
@@ -71,14 +73,14 @@
             font-weight: bold;
             padding: 10px 20px;
             transition: all 0.3s ease;
-            color: #333;
+            color: white;
             border-radius: 25px;
         }
 
         .top-nav a:hover {
-            background-color: crimson;
+            background-color: #002B60;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
         }
 
         table {
@@ -88,7 +90,6 @@
         }
 
         .table-container {
-            background-color: crimson;
             border-radius: 10px;
             padding: 30px;
             color: white;
@@ -107,6 +108,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            background-color: #AD1730;
         }
 
         thead {
