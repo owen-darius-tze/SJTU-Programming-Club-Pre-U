@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,6 @@
             background-color: #f5f5f5;
         }
 
-        /* ===== HEADER & LOGO ===== */
         header {
             border-radius: 10px;
             background-color: #AD1730;
@@ -55,7 +54,6 @@
             border-radius: 10px;
         }
 
-        /* ===== NAVIGATION ===== */
         .top-nav {
             grid-area: top-nav;
             background-color: #AD1730;
@@ -84,18 +82,17 @@
 
         article {
             grid-area: article;
-            background-color: crimson;
+            background-color: #002B60;
             border-radius: 10px;
             padding: 30px;
             color: white;
             line-height: 1.6;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         article h2 {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #FFD700;
-            border-bottom: 2px solid #FFD700;
             padding-bottom: 10px;
         }
 
@@ -106,6 +103,25 @@
 
         article li {
             margin-bottom: 10px;
+        }
+
+        .about-sjtu {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            border: 2px solid #FFD700;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .about-sjtu:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: #AD1730;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
         }
 
         .vision-mission-faculty-container {
@@ -120,7 +136,14 @@
             gap: 20px;
         }
 
-        .vision, .mission, .faculty {
+        .vision-mission-faculty-container:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: #AD1730;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .vision, .mission {
             margin-bottom: 30px;
         }
 
@@ -128,105 +151,122 @@
             margin-bottom: 0;
         }
 
-        .vision h3, .mission h3, .faculty h3{
+        .vision h3, .mission h3 {
             color: #FFD700;
             margin-bottom: 15px;
             font-size: 1.3rem;
         }
 
+        .why-sjtu h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .why-sjtu {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            border: 2px solid #FFD700;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .why-sjtu:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: #AD1730;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
         footer {
             grid-area: footer;
-            background-color: crimson;
+            background-color: #AD1730;
             color: white;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
         }
     </style>
-        <audio id="uisound" oncanplay="console.log('Audio ready')">
-            <source src="audioforui.mp3" type="audio/mpeg">
-        </audio>
-    <script>
-        // Function to play click sound and navigate
-        function playClickSound(event, link) {
-            event.preventDefault();  // Prevent default link behavior
-            const clickSound = document.getElementById('uisound');
-            clickSound.volume = 1;  // Ensure volume is set
-            clickSound.play();  // Play the sound
-
-            // Delay navigation to the link's destination to allow sound to play
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 500);  // Delay for 1 second (1000ms)
-        }
-
-        // Attach sound to all clickable elements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to all links in the navigation and book items
-            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
-
-            clickableElements.forEach(element => {
-                element.addEventListener('click', function(event) {
-                    playClickSound(event, this);  // Play sound and then navigate
-                });
-            });
-        });
-    </script>
+    <audio id="uisound">
+        <source src="audioforui.mp3" type="audio/mpeg">
+    </audio>
 </head>
 <body>
-        <header>
-            <h1>理科-2 (Science-2) - 学期2025-2026</h1>
-        </header>
+    <header>
+        <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+    </header>
     <div class="logo">
         <a href="index.html">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
         </a>
     </div>
-        <nav class="top-nav" aria-label="Main navigation">
-            <a href="about.html">关于理科2</a>
-            <a href="studentslist.html">学生目录</a>
-            <a href="documentations.html">摄影/视频</a>
-            <a href="contactus.html">联系我们</a>
-        </nav>
+    <nav class="top-nav" aria-label="Main navigation">
+        <a href="about.html">关于理科2</a>
+        <a href="studentslist.html">学生目录</a>
+        <a href="documentations.html">摄影/视频</a>
+        <a href="contactus.html">联系我们</a>
+    </nav>
 
     <article>
-        <h2>关于理科二</h2>
-        <ul>
-            <li>理科二是2025年9月10日产生的班</li>
-            <li>班主任是林昕老师 (Lin Zhen)</li>
-        </ul>
+        <div class="about-sjtu">
+            <h2>关于理科二</h2>
+            <ul>
+                <li>理科2 is a Pre-University class focused on engaging and memorable education.</li>
+                <li>Homeroom teachers: 林昕老师，霍老师</li>
+            </ul>
+        </div>
             
         <div class="vision-mission-faculty-container">
             <section class="vision">
-                <h3>Vision (愿景)</h3>
+                <h3>Vision</h3>
                 <ul>
-                    <li>创造一段最难忘，最互动，和最美好的理班！</li>
-                    <li>Create the most unforgettable, interactive, and wonderful experience for our class!</li>
+                    <li>Create the most unforgettable, interactive, and wonderful class experience!</li>
                 </ul>
             </section>
                 
             <section class="mission">
-                <h3>Mission (使命)</h3>
+                <h3>Mission</h3>
                 <ul>
-                    <li>通过合作和创作，我希望会创造最有趣的经验，不断向世界表达我们班最好的发展!</li>
-                    <li>Through cooperation and creativity, we hope to create the most engaging experiences and continuously express our class's best developments to the world!</li>
-                </ul>
-            </section>
-            <section class="faculty">
-                <h3>Faculty (教师团队)</h3>
-                <ul>
-                    <li>林昕老师 (Lin Xin) - 班主任 (Class Advisor)</li>
-                    <li>翟老师 (Mrs.Zhai) - 校长 (Principal)</li>
-                    <li>卢老师 (Mrs.Lu) - 高等数学老师 (Advanced Math)</li>
-                    <li>谷老师 (Mr.Robin Gu) - 数学老师 (Math)</li>
-                    <li>周老师 (Mr.Zhou) - 物理老师 (Physics Teacher)</li>
+                    <li>Through cooperation and creativity, build engaging experiences and share our class with the world!</li>
                 </ul>
             </section>
         </div>
+        
+        <section class="why-sjtu">
+            <h3>Why SJTU Pre-Uni?</h3>
+            <ul>
+                <li>SJTU Pre-Uni combines academic excellence with activities for student growth.</li>
+            </ul>
+        </section>
     </article>
 
     <footer>
         Copyright ©2026 SJTU Pre Uni. All rights reserved.
     </footer>
+
+    <script>
+        function playClickSound(event, link) {
+            event.preventDefault();
+            const clickSound = document.getElementById('uisound');
+            clickSound.volume = 1;
+            clickSound.play();
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableElements = document.querySelectorAll('a');
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    playClickSound(event, this);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
