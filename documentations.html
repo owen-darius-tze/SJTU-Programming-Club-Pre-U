@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="documentations.css">
     <title>students-list</title>
 </head>
 <style>
@@ -82,26 +83,6 @@
             color: white;
             transform: translateY(-5px);
         }
-
-        .catalog {
-            grid-area: catalog;
-            background-color: #FFD700;
-        }
-
-        #catalogues{
-            gap: 2px;
-            border-radius: 10px;
-            background-color: crimson;
-        }
-
-        footer {
-            grid-area: footer;
-            background-color: crimson;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-        }
 </style>
     <audio id="uisound" oncanplay="console.log('Audio ready')">
         <source src="audioforui.mp3" type="audio/mpeg">
@@ -133,41 +114,90 @@
         });
     </script>
 <body>
-        <header>
+            <header>
             <h1>理科-2 (Science-2) - 学期2025-2026</h1>
-        </header>
-        <div class="logo">
-            <a href="index.html" aria-label="Home page">
+            </header>
+            <div class="logo">
+                <a href="index.html" aria-label="Home page">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
-            </a>
-        </div>
+                </a>
+            </div>
         <nav class="top-nav" aria-label="Main navigation">
             <a href="about.html">关于理科2</a>
             <a href="studentslist.html">学生目录</a>
             <a href="documentations.html">摄影/视频</a>
             <a href="contactus.html">联系我们</a>
         </nav>
-        <h2>节目目录 - Events List</h2>
-        <div class="catalog">
-            <div class="row1" id="catalogues">
-                <img src="">
-                <a href="spellingbee.html"><h3>Spelling Bee Competition</h3></a>
+        <div class="event_big_box">
+            <div class="row1">
+                <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKCariaW12NJGhxV69zx45NjCkpVerdlJetoGicTO4rUKnGkWXZ3LrKLQGQF9nJD75hTp759FOLxJ15w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=5" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2025-09-10</div>
+                        <div class="text2">2025级国际预科新生喜迎开学</div>
+                    </div>
+                </div>
+               <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_png/OLj53QnpSKDQZV65QWz4iaF1hVB0NicPOSUE45icyDJ5zMUScTT65OVicvicqZp0h3ib5SGfgvpfFGM0AX8UVib9VMlzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=11" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2025-09-23</div>
+                        <div class="text2">第五届“储才杯”国际学生数学竞赛</div>
+                    </div>
+                </div>
+                <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDr5AowrCW2FunubsFLheUX4MhmpgblicOeNAic8JCA0vsGcdAKkHAx1iblFM6iarQk6evJyO4JOB9nZA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=4" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">锦绣风华 相遇交大——第6届SJTU LEC国际文化节</div>
+                    </div>
+                </div>
             </div>
-            <div class="row2" id="catalogues">
-                <img src="">
+            <div class="row1">
+                <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDibJrHqP9Aeo0f6feOzX27sljR3ib5jFMXxpSC3SCx0puAdKG0bU9hAlSbwa3eIcxmUDJOicdjQdE2Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=7" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">言筑桥梁，词竞锋芒： Spelling Bee大赛展现预科生风采</div>
+                    </div>
+                </div>
+               <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDQZV65QWz4iaF1hVB0NicPOSubLw6g1vzMCsdqysXqIKichhXBWPsIFNjJ1ybsJo8l6s4tpkPuYcxOw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=17" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">预科人文行：广富林深秋  一堂行走的文化课</div>
+                    </div>
+                </div>
+                <div class="small_column">
+                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKBccLiaEFq5bcic2jyVos4NnEI5wT0wobzuP82OazOs9oUWOPTpKxkUicVpbhJSWIaXtWL9p3gdJ1Mew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">国际预科生的医学初体验：上海交大医学院开放日</div>
+                    </div>
+                </div>
             </div>
-            <div class="row3" id="catalogues">
-                <img src="">
+            <div class="row1">
+                <div class="small_column">
+                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
+                    </div>
+                </div>
+               <div class="small_column">
+                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
+                    </div>
+                </div>
+                <div class="small_column">
+                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
+                    <div class="caption">
+                        <div class="text1">2026-04-01</div>
+                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
+                    </div>
+                </div>
             </div>
-            <div class="row4" id="catalogues">
-                <img src="">
-            </div>
-            <div class="row5" id="catalogues">
-                <img src="">
-            </div>
-        <div>
-    <footer>
-        Copyright ©2026 SJTU Pre Uni. All rights reserved.
-    </footer>
+        </div>
 </body>
 </html>
