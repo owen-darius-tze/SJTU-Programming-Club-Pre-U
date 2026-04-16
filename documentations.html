@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>students-list</title>
-</head>
-<style>
+    <title>影像 - SJTU Programming Club</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             display: grid;
             margin: auto;
             max-width: 1200px;
             min-height: 100vh;
             grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto;            
+            grid-template-rows: auto auto 1fr auto;
             grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
@@ -43,7 +42,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .logo {
             grid-area: logo;
             display: flex;
@@ -83,91 +82,104 @@
             transform: translateY(-5px);
         }
 
+        /* ===== CATALOG ===== */
         .catalog {
             grid-area: catalog;
-            background-color: #FFD700;
+            background-color: #002B60;
+            border-radius: 10px;
+            padding: 30px;
         }
 
-        #catalogues{
+        .catalog h2 {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .catalog-item {
             gap: 2px;
             border-radius: 10px;
-            background-color: crimson;
+            background-color: #AD1730;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-item:hover {
+            background-color: #002B60;
+            transform: translateY(-2px);
+        }
+
+        .catalog-item a {
+            text-decoration: none;
+            color: #FFD700;
+        }
+
+        .catalog-item a:hover {
+            text-decoration: underline;
+        }
+
+        .catalog-item img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .catalog-item h3 {
+            text-align: center;
+            color: white;
         }
 
         footer {
             grid-area: footer;
-            background-color: crimson;
+            background-color: #AD1730;
             color: white;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
+            margin-top: 20px;
         }
-</style>
-    <audio id="uisound" oncanplay="console.log('Audio ready')">
-        <source src="audioforui.mp3" type="audio/mpeg">
-    </audio>
-<script>
-        // Function to play click sound and navigate
-        function playClickSound(event, link) {
-            event.preventDefault();  // Prevent default link behavior
-            const clickSound = document.getElementById('uisound');
-            clickSound.volume = 1;  // Ensure volume is set
-            clickSound.play();  // Play the sound
-
-            // Delay navigation to the link's destination to allow sound to play
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 500);  // Delay for 1 second (1000ms)
-        }
-
-        // Attach sound to all clickable elements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to all links in the navigation and book items
-            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
-
-            clickableElements.forEach(element => {
-                element.addEventListener('click', function(event) {
-                    playClickSound(event, this);  // Play sound and then navigate
-                });
-            });
-        });
-    </script>
+    </style>
+</head>
 <body>
         <header>
-            <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+            <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
         </header>
+
         <div class="logo">
             <a href="index.html" aria-label="Home page">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
+                <img src="images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100">
             </a>
         </div>
+
         <nav class="top-nav" aria-label="Main navigation">
-            <a href="about.html">关于理科2</a>
-            <a href="studentslist.html">学生目录</a>
+            
+            
             <a href="documentations.html">摄影/视频</a>
-            <a href="contactus.html">联系我们</a>
+            
         </nav>
-        <h2>节目目录 - Events List</h2>
+
         <div class="catalog">
-            <div class="row1" id="catalogues">
-                <img src="">
-                <a href="spellingbee.html"><h3>Spelling Bee Competition</h3></a>
+            <h2>节目目录 - Events List</h2>
+            <div class="catalog-item">
+                <a href="events/spellingbee.html">
+                    <h3>Spelling Bee Competition</h3>
+                </a>
             </div>
-            <div class="row2" id="catalogues">
-                <img src="">
+            <div class="catalog-item">
+                <h3>Coming soon...</h3>
             </div>
-            <div class="row3" id="catalogues">
-                <img src="">
+            <div class="catalog-item">
+                <h3>Coming soon...</h3>
             </div>
-            <div class="row4" id="catalogues">
-                <img src="">
-            </div>
-            <div class="row5" id="catalogues">
-                <img src="">
-            </div>
-        <div>
-    <footer>
-        Copyright ©2026 SJTU Pre Uni. All rights reserved.
-    </footer>
+        </div>
+
+        <footer>
+            Copyright ©2026 SJTU Pre Uni. All rights reserved.
+        </footer>
 </body>
 </html>

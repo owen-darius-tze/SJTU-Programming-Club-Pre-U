@@ -3,44 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What we learned in coding club</title>
+    <title>编程社团活动 - SJTU Programming Club</title>
     <style>
-        body{
-            background-color: dodgerblue;
-            display: inline;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1{
-            color: blue;
-        }
-        h2{
-            border: 2px solid;
-        }
-        .practice1{
-            background-color: tomato;
-            flex-direction: row-reverse;
-        }
-        .article{
-            display: block;
-            border: 2px solid;
-            border-color: tomato;
-            background-color: lightblue;
-            text-transform: uppercase;
-            text-align: center;
+
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            min-height: 100vh;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas:
+                "heading logo"
+                "top-nav top-nav"
+                "article article"
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: white;
             font-family: Arial, Helvetica, sans-serif;
-            padding: 12px;
+            background-color: #f5f5f5;
+        }
+
+        /* ===== HEADER & LOGO ===== */
+        header {
+            border-radius: 10px;
+            background-color: #AD1730;
+            grid-area: heading;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            grid-area: logo;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            max-height: 100px;
+            width: auto;
+            border-radius: 10px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .top-nav {
+            grid-area: top-nav;
+            background-color: #AD1730;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 20px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .top-nav a:hover {
+            background-color: #002B60;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* ===== ARTICLE ===== */
+        article {
+            grid-area: article;
+            background-color: #002B60;
+            border-radius: 10px;
+            padding: 30px;
+            color: white;
+            line-height: 1.6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        article h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        article h2 {
+            color: #FFD700;
+            margin: 20px 0 15px;
+            padding: 10px;
+            border-left: 4px solid #AD1730;
+        }
+
+        article p {
+            margin-bottom: 15px;
+        }
+
+        .practice-section {
+            background-color: #AD1730;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .news-card {
+            display: block;
+            border: 2px solid #FFD700;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .news-card h2 {
+            border: none;
+            border-left: none;
+            padding: 0;
+        }
+
+        .news-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #AD1730;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <marquee><h1>Hello World</h1></marquee>
-        <h2 style="border: 2px solid tomato;">Hello World</h2>
-    <div class="practice1">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est eos, quasi voluptatem corporis nisi, provident recusandae dolor architecto ea cupiditate quos commodi laborum amet sunt magni quo dignissimos nulla exercitationem?</p>
-    </div>
-    <div class="article">
-        <h2>Jaws Celebrates 50th Anniversary</h2>
-        <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/193/2025/08/12162437/07c34cbd-15e7-407b-b351-d73efdd7c563.jpg" height="200px">
-        <p>In 2025 this year, we are celebrating the 50th anniversary of Steven Spielberg's Jaws, released originally in 1975.</p>
-    </div>
+        <header>
+            <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
+        </header>
+
+        <div class="logo">
+            <a href="index.html" aria-label="Home page">
+                <img src="images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100">
+            </a>
+        </div>
+
+        <nav class="top-nav">
+            
+            
+            <a href="documentations.html">摄影/视频</a>
+            
+        </nav>
+
+        <article>
+            <h1>Coding Club - First Day</h1>
+
+            <h2>Hello World</h2>
+            <p>Welcome to the first session of our coding club! Today we learned about basic HTML structure and how to create our first web page.</p>
+
+            <div class="practice-section">
+                <h2>Practice Exercise</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est eos, quasi voluptatem corporis nisi, provident recusandae dolor architecto ea cupiditate quos commodi laborum amet sunt magni quo dignissimos nulla exercitationem?</p>
+            </div>
+
+            <div class="news-card">
+                <h2>Jaws Celebrates 50th Anniversary</h2>
+                <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/193/2025/08/12162437/07c34cbd-15e7-407b-b351-d73efdd7c563.jpg" alt="Jaws movie poster" height="200">
+                <p>In 2025 this year, we are celebrating the 50th anniversary of Steven Spielberg's Jaws, released originally in 1975.</p>
+            </div>
+        </article>
+
+        <footer>
+            Copyright ©2026 SJTU Pre Uni. All rights reserved.
+        </footer>
 </body>
 </html>
