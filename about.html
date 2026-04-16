@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>理科2 - Science Class 2</title>
+    <title>SJTU-Programming-About</title>
     <style>
         * {
             margin: 0;
@@ -34,7 +34,7 @@
             border-radius: 10px;
             background-color: #AD1730;
             grid-area: heading;
-            text-align: center;
+            text-align: left;
             padding: 15px;
             font-weight: bold;
             display: flex;
@@ -54,6 +54,11 @@
             border-radius: 10px;
         }
 
+        .logo :hover{
+            transform: translateY(-5px);
+            transition: 0.3s all ease;
+        }
+
         .top-nav {
             grid-area: top-nav;
             background-color: #AD1730;
@@ -65,19 +70,29 @@
             gap: 20px;
         }
 
-        .top-nav a {
+        .top-nav a{
+            color: #f5f5f5;
+            text-decoration: none;
+        }
+
+        .top-nav a:hover{
+            background-color: rgba(173, 23, 48, 0.9);
+            border-radius: 25px;
+            color: white;
+            transform: translateY(-5px);
+            transition: 0.3s all ease;
+            background-color: #002B60;
+            border: 2px solid #FFD700;
+            padding: 20px 30px;
+        }
+
+        article a{
             text-decoration: none;
             font-weight: bold;
             padding: 10px 20px;
             transition: all 0.3s ease;
             color: white;
             border-radius: 25px;
-        }
-
-        .top-nav a:hover {
-            background-color: #002B60;
-            color: white;
-            transform: translateY(-5px);
         }
 
         article {
@@ -105,7 +120,7 @@
             margin-bottom: 10px;
         }
 
-        .about-sjtu {
+        .history-sjtu {
             margin-top: 30px;
             padding: 25px;
             background-color: rgba(255, 255, 255, 0.15);
@@ -117,7 +132,7 @@
             gap: 20px;
         }
 
-        .about-sjtu:hover {
+        .why-sjtu:hover, .member-pic:hover, .vision-mission-faculty-container:hover, .history-sjtu:hover, .about-sjtu:hover {
             background-color: rgba(255, 255, 255, 0.25);
             border-color: #AD1730;
             transform: translateY(-5px);
@@ -134,13 +149,6 @@
             flex-direction: row;
             justify-content: space-around;
             gap: 20px;
-        }
-
-        .vision-mission-faculty-container:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            border-color: #AD1730;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
         }
 
         .vision, .mission {
@@ -175,12 +183,62 @@
             gap: 20px;
         }
 
-        .why-sjtu:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            border-color: #AD1730;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+        .meet-leaders {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            border: 2px solid #FFD700;
+            display: block;
         }
+
+        /* FIXED: Clean and tidy members section - keeping original structure */
+        .meet-leaders > ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+
+        .member-pic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            background-color: #AD1730;
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 2px solid #FFD700;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .member-pic img {
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            background-color: #fff;
+        }
+
+        .member-pic p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .member-pic strong {
+            color: #FFD700;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
 
         footer {
             grid-area: footer;
@@ -197,7 +255,7 @@
 </head>
 <body>
     <header>
-        <h1>理科-2 (Science-2) - 学期2025-2026</h1>
+        <h1>SJTU Programming Club 2025-2026</h1>
     </header>
     <div class="logo">
         <a href="index.html">
@@ -205,18 +263,21 @@
         </a>
     </div>
     <nav class="top-nav" aria-label="Main navigation">
-        <a href="about.html">关于理科2</a>
-        <a href="studentslist.html">学生目录</a>
-        <a href="documentations.html">摄影/视频</a>
-        <a href="contactus.html">联系我们</a>
+        <a href="about.html">About Us</a>
+        <a href="studentslist.html">Students</a>
+        <a href="documentations.html">Documentation</a>
+        <a href="contactus.html">Contact Us</a>
     </nav>
 
     <article>
-        <div class="about-sjtu">
-            <h2>关于理科二</h2>
+        <div class="history-sjtu">
+            <h2>History</h2>
             <ul>
-                <li>理科2 is a Pre-University class focused on engaging and memorable education.</li>
-                <li>Homeroom teachers: 林昕老师，霍老师</li>
+                <li>It all started in September 2025. 
+                    On SJTU's cosmopolitan Qibao campus, three passionate students from different countries—Owen, Anqi, and Elson—envisioned more than just a club. 
+                    They dreamed of a dynamic space where every coding enthusiast, from curious beginners to aspiring developers, could connect, collaborate, and grow together. 
+                    This vision sparked the founding of the SJTU Pre-U Programming Club, transforming a simple idea into a thriving community that celebrates shared knowledge and creativity.
+                </li>
             </ul>
         </div>
             
@@ -224,22 +285,56 @@
             <section class="vision">
                 <h3>Vision</h3>
                 <ul>
-                    <li>Create the most unforgettable, interactive, and wonderful class experience!</li>
+                    <li>Create the most unforgettable, interactive, and wonderful collaborative experience! 
+                        We aim to be the heart of tech innovation on the Qibao campus, a community that leaves a lasting mark on every member's Pre-U journey. 
+                        Our vision is to build a legacy of projects, friendships, and skills that extend far beyond the classroom.
+                    </li>
                 </ul>
             </section>
                 
             <section class="mission">
                 <h3>Mission</h3>
                 <ul>
-                    <li>Through cooperation and creativity, build engaging experiences and share our class with the world!</li>
+                    <li>Through cooperation, creativity, and hands-on building, we craft engaging projects, tackle real-world problems, and share our passion for technology with the world. 
+                        We empower every member to contribute, learn, and lead, fostering an inclusive environment where great ideas are born and brought to life.
+                    </li>
                 </ul>
             </section>
         </div>
         
         <section class="why-sjtu">
-            <h3>Why SJTU Pre-Uni?</h3>
+            <h3>Why Join the SJTU Pre-U Programming Club?</h3>
             <ul>
-                <li>SJTU Pre-Uni combines academic excellence with activities for student growth.</li>
+                <li>More Than Code:​ We combine academic excellence with practical application, creating a launchpad for personal and professional growth.
+                </li>
+                <li>Inclusive Community:​ All skill levels are welcome! Our core belief is that everyone has something to teach and something to learn.
+                </li>
+                <li>Project-Driven Learning:​ Move beyond theory. We build web projects that matter, developing portfolios and teamwork skills.
+                </li>
+                <li>Qibao Campus Spirit:​ We are an integral part of the SJTU Pre-U Qibao community, designed to enhance your campus life with meaningful connections and exciting challenges.
+                </li>
+            </ul>
+        </section>
+
+        <section class="meet-leaders">
+            <h3>Meet the Leaders!</h3>
+            <ul>
+                <div class="member-pic">
+                    <img src="profilepic/1.jpg" alt="anqi" height="200">
+                    <p><strong>Anqi (President)</strong>The visionary behind our club, Anqi is a coding enthusiast with a knack for leadership and a passion for fostering community. With her strategic mindset and dedication, she ensures that our club thrives and continues to innovate.</p>
+                </div>
+                <div class="member-pic">
+                    <img src="profilepic/2.jpg" alt="owen" height="200">
+                    <p><strong>Owen (Vice President)</strong>Owen is the creative force of our club. His innovative ideas and collaborative spirit drive our projects forward, making him an essential part of our leadership team.</p>
+                </div>
+                <div class="member-pic">
+                    <img src="profilepic/3.jpg" alt="elson" height="200">
+                    <p><strong>Elson (Secretary)</strong>Elson is the organizational backbone of our club. His attention to detail and commitment to communication ensure that our operations run smoothly and that every member stays informed and engaged.</p>
+                </div>
+                <div class="member-pic">
+                    <img src="profilepic/4.jpg" alt="kenji" height="200">
+                    <p><strong>Kenji (Treasurer)</strong>Kenji is the financial mind behind our club. His meticulous approach to budgeting and his dedication to transparency ensure that our club operates efficiently and sustainably.</p>
+                </div>
             </ul>
         </section>
     </article>
