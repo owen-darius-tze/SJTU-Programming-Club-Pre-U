@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="documentations.css">
-    <title>students-list</title>
-</head>
-<style>
+    <title>影像 - SJTU Programming Club</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             display: grid;
             margin: auto;
             max-width: 1200px;
             min-height: 100vh;
             grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto;            
+            grid-template-rows: auto auto 1fr auto;
             grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
@@ -44,7 +42,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .logo {
             grid-area: logo;
             display: flex;
@@ -83,121 +81,105 @@
             color: white;
             transform: translateY(-5px);
         }
-</style>
-    <audio id="uisound" oncanplay="console.log('Audio ready')">
-        <source src="audioforui.mp3" type="audio/mpeg">
-    </audio>
-<script>
-        // Function to play click sound and navigate
-        function playClickSound(event, link) {
-            event.preventDefault();  // Prevent default link behavior
-            const clickSound = document.getElementById('uisound');
-            clickSound.volume = 1;  // Ensure volume is set
-            clickSound.play();  // Play the sound
 
-            // Delay navigation to the link's destination to allow sound to play
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 500);  // Delay for 1 second (1000ms)
+        /* ===== CATALOG ===== */
+        .catalog {
+            grid-area: catalog;
+            background-color: #002B60;
+            border-radius: 10px;
+            padding: 30px;
         }
 
-        // Attach sound to all clickable elements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to all links in the navigation and book items
-            const clickableElements = document.querySelectorAll('a'); // Select all anchor tags
+        .catalog h2 {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+            text-align: center;
+            color: white;
+        }
 
-            clickableElements.forEach(element => {
-                element.addEventListener('click', function(event) {
-                    playClickSound(event, this);  // Play sound and then navigate
-                });
-            });
-        });
-    </script>
+        .catalog-item {
+            gap: 2px;
+            border-radius: 10px;
+            background-color: #AD1730;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-item:hover {
+            background-color: #002B60;
+            transform: translateY(-2px);
+        }
+
+        .catalog-item a {
+            text-decoration: none;
+            color: #FFD700;
+        }
+
+        .catalog-item a:hover {
+            text-decoration: underline;
+        }
+
+        .catalog-item img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .catalog-item h3 {
+            text-align: center;
+            color: white;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #AD1730;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
-            <header>
-            <h1>SJTU Programming Club 2025-2026</h1>
-            </header>
-            <div class="logo">
-                <a href="index.html" aria-label="Home page">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8nrAqow6ipOX78s4lHK1vtqBYmmNXdkCrA&s" alt="SJTU logo" height="100">
+        <header>
+            <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
+        </header>
+
+        <div class="logo">
+            <a href="index.html" aria-label="Home page">
+                <img src="images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100">
+            </a>
+        </div>
+
+        <nav class="top-nav" aria-label="Main navigation">
+            
+            
+            <a href="documentations.html">摄影/视频</a>
+            
+        </nav>
+
+        <div class="catalog">
+            <h2>节目目录 - Events List</h2>
+            <div class="catalog-item">
+                <a href="events/spellingbee.html">
+                    <h3>Spelling Bee Competition</h3>
                 </a>
             </div>
-        <nav class="top-nav" aria-label="Main navigation">
-            <a href="about.html">About Us</a>
-            <a href="studentslist.html">Students</a>
-            <a href="documentations.html">Documentation</a>
-            <a href="contactus.html">Contact Us</a>
-        </nav>
-        <div class="event_big_box">
-            <div class="row1">
-                <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKCariaW12NJGhxV69zx45NjCkpVerdlJetoGicTO4rUKnGkWXZ3LrKLQGQF9nJD75hTp759FOLxJ15w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=5" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2025-09-10</div>
-                        <div class="text2">2025级国际预科新生喜迎开学</div>
-                    </div>
-                </div>
-            <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_png/OLj53QnpSKDQZV65QWz4iaF1hVB0NicPOSUE45icyDJ5zMUScTT65OVicvicqZp0h3ib5SGfgvpfFGM0AX8UVib9VMlzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=11" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2025-09-23</div>
-                        <div class="text2">第五届“储才杯”国际学生数学竞赛</div>
-                    </div>
-                </div>
-                <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDr5AowrCW2FunubsFLheUX4MhmpgblicOeNAic8JCA0vsGcdAKkHAx1iblFM6iarQk6evJyO4JOB9nZA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=4" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">锦绣风华 相遇交大——第6届SJTU LEC国际文化节</div>
-                    </div>
-                </div>
+            <div class="catalog-item">
+                <h3>Coming soon...</h3>
             </div>
-            <div class="row1">
-                <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDibJrHqP9Aeo0f6feOzX27sljR3ib5jFMXxpSC3SCx0puAdKG0bU9hAlSbwa3eIcxmUDJOicdjQdE2Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=7" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">言筑桥梁，词竞锋芒： Spelling Bee大赛展现预科生风采</div>
-                    </div>
-                </div>
-               <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKDQZV65QWz4iaF1hVB0NicPOSubLw6g1vzMCsdqysXqIKichhXBWPsIFNjJ1ybsJo8l6s4tpkPuYcxOw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=17" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">预科人文行：广富林深秋  一堂行走的文化课</div>
-                    </div>
-                </div>
-                <div class="small_column">
-                    <img src="https://mmbiz.qpic.cn/mmbiz_jpg/OLj53QnpSKBccLiaEFq5bcic2jyVos4NnEI5wT0wobzuP82OazOs9oUWOPTpKxkUicVpbhJSWIaXtWL9p3gdJ1Mew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">国际预科生的医学初体验：上海交大医学院开放日</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row1">
-                <div class="small_column">
-                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
-                    </div>
-                </div>
-               <div class="small_column">
-                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
-                    </div>
-                </div>
-                <div class="small_column">
-                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" class="event_img" alt="">
-                    <div class="caption">
-                        <div class="text1">2026-04-01</div>
-                        <div class="text2">SJTU Launches "AI-Enabled Low-Carbon Transformation" Micro-Degree Program</div>
-                    </div>
-                </div>
+            <div class="catalog-item">
+                <h3>Coming soon...</h3>
             </div>
         </div>
+
+        <footer>
+            Copyright ©2026 SJTU Pre Uni. All rights reserved.
+        </footer>
 </body>
 </html>
