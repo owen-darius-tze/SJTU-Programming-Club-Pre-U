@@ -48,7 +48,7 @@
         }
 
         /* Global */
-        * {
+        img, video, iframe {
             max-width: 100%;
         }
 
@@ -1066,6 +1066,15 @@
                 opacity: 1;
                 transform: none;
                 animation: none;
+            }
+            .hero-section * {
+                transform: none !important;
+            }
+            .hero-background,
+            .hero-overlay,
+            .hero-content {
+                transform: none !important;
+                transition: none !important;
             }
         }
 
