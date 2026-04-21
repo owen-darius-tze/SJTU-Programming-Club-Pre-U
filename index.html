@@ -47,12 +47,10 @@
             scroll-behavior: smooth;
         }
 
-        /* Global */
         img, video, iframe {
             max-width: 100%;
         }
 
-        /* Cursor pointer for all clickable elements */
         a, button, .nav-link, .event-card, .committee-card, .news-item {
             cursor: pointer;
         }
@@ -67,7 +65,6 @@
             min-height: 100vh;
         }
 
-        /* ===== GRAIN TEXTURE OVERLAY ===== */
         body::before {
             content: '';
             position: fixed;
@@ -160,237 +157,6 @@
             color: var(--red);
         }
 
-        
-
-        /* ===== HEADER (unused, kept for other pages) ===== */
-        .header {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 32px;
-            padding: 32px 0;
-            border-bottom: 1px solid var(--cream-dark);
-        }
-
-        .header-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .header-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -0.03em;
-            line-height: 1;
-        }
-
-        .header-title span {
-            color: var(--red);
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .header-subtitle {
-            font-size: 0.95rem;
-            color: var(--ink-faint);
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .header-logo img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .nav-primary {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(253, 248, 240, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 16px 0;
-            border-bottom: 1px solid var(--cream-dark);
-            margin: 0 -24px;
-            padding-left: 24px;
-            padding-right: 24px;
-        }
-
-        .nav-list {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--ink);
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.01em;
-            border-radius: 100px;
-            border: 2px solid transparent;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: var(--navy);
-            opacity: 0;
-            transform: scale(0.95);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .nav-link:hover::before {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .nav-link span {
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover span {
-            color: var(--white);
-        }
-
-        .nav-link.active {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        /* ===== MAIN CONTENT GRID ===== */
-        .content-grid {
-            display: block;
-            padding: 0;
-        }
-
-        .main-sections {
-            max-width: 1340px;
-            margin: 0 auto;
-            padding: 60px 24px 80px;
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 28px;
-        }
-
-        /* ===== NEWS PANEL (SIDEBAR) ===== */
-        .news-panel {
-            grid-column: 1;
-            grid-row: 1 / span 3;
-            background: var(--navy);
-            border-radius: var(--radius-lg);
-            padding: 32px 28px;
-            color: var(--white);
-            box-shadow: var(--shadow-xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .news-panel::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .news-panel::after {
-            content: '最新消息';
-            position: absolute;
-            bottom: -20px;
-            right: -10px;
-            font-family: 'Fraunces', serif;
-            font-size: 8rem;
-            font-weight: 900;
-            color: rgba(255,255,255,0.03);
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .panel-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--red);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .panel-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .news-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .news-item {
-            padding: 16px;
-            background: rgba(255,255,255,0.06);
-            border-radius: var(--radius-md);
-            border-left: 3px solid var(--gold);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .news-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateX(4px);
-        }
-
-        .news-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--gold);
-            margin-bottom: 6px;
-            letter-spacing: 0.05em;
-        }
-
-        .news-text {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: rgba(255,255,255,0.85);
-        }
-
         /* ===== HERO SECTION ===== */
         .hero-section {
             position: relative;
@@ -461,27 +227,6 @@
             text-transform: uppercase;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 32px;
-            padding: 16px 36px;
-            background: var(--white);
-            color: var(--navy);
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Hero scroll indicator */
         .hero-scroll {
             position: absolute;
             bottom: 40px;
@@ -504,7 +249,7 @@
             background: linear-gradient(to bottom, var(--gold), transparent);
         }
 
-        /* === SIMPLE ABOUT SECTION === */
+        /* ===== ABOUT SECTION ===== */
         .about-section {
             padding: 60px 24px;
             max-width: 800px;
@@ -531,7 +276,7 @@
             font-family: 'Fraunces', serif;
             font-size: 1.5rem;
             color: var(--navy);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         
         .about-text p {
@@ -541,40 +286,82 @@
             color: var(--ink-light);
         }
 
-        .about-content {
-            position: relative;
-            z-index: 3;
-            max-width: 700px;
-            text-align: center;
-            color: var(--white);
-            padding: 40px;
-            margin-top: 200px;
+        /* ===== VISION SECTION ===== */
+        .vision-section {
+            padding: 40px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--cream);
         }
 
-        .about-content h2 {
+        .vision-section .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .vision-section .section-title {
             font-family: 'Fraunces', serif;
             font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--gold);
+            color: var(--navy);
         }
 
-        .about-content .lead {
-            font-size: 1.25rem;
-            margin-bottom: 24px;
-            opacity: 0.95;
+        .vision-text {
+            color: var(--ink);
         }
 
-        .about-content p {
+        .vision-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .vision-text p {
             font-size: 1rem;
             line-height: 1.8;
             margin-bottom: 16px;
-            opacity: 0.85;
+            color: var(--ink-light);
         }
 
-        
+        /* ===== MISSION SECTION ===== */
+        .mission-section {
+            padding: 40px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--cream);
+        }
 
-.section-header {
+        .mission-section .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .mission-section .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+        }
+
+        .mission-text {
+            color: var(--ink);
+        }
+
+        .mission-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .mission-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: var(--ink-light);
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -598,70 +385,6 @@
             color: var(--ink-faint);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .event-card {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--cream-dark);
-        }
-
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--red), var(--gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .event-card:hover::before {
-            opacity: 1;
-        }
-
-        .event-placeholder {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-            border-radius: 50%;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            border: 2px solid var(--cream-dark);
-        }
-
-        .event-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 6px;
-        }
-
-        .event-card p {
-            font-size: 0.85rem;
-            color: var(--ink-faint);
-            line-height: 1.5;
         }
 
         /* ===== COMMITTEE SECTION ===== */
@@ -690,7 +413,7 @@
             z-index: 1;
         }
 
-        .placeholder-img-rect, .committee-card .placeholder-img {
+        .placeholder-img, .committee-card .placeholder-img {
             width: 100%;
             height: 100%;
             display: flex;
@@ -742,345 +465,8 @@
             transform: translateY(0);
         }
 
-        /* ===== RANKINGS TEASER ===== */
-        .rankings-teaser {
-            grid-column: 2;
-            background: var(--cream-dark);
-            border-radius: var(--radius-md);
-            padding: 28px 32px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: 28px;
-            border: 2px dashed var(--ink-faint);
-        }
-
-        .rankings-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .rankings-content h4 {
-            font-size: 1.15rem;
-            color: var(--navy);
-            margin-bottom: 4px;
-        }
-
-        .rankings-content p {
-            font-size: 0.9rem;
-            color: var(--ink-faint);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--navy);
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-            padding: 40px 48px;
-            color: var(--white);
-            margin: 0 -24px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--gold);
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-links h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
-            color: rgba(255,255,255,0.5);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .footer-bottom .mono {
-            color: var(--gold);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 968px) {
-            .news-panel {
-                grid-column: 1;
-                grid-row: auto;
-            }
-
-            .hero-section,
-            .events-section,
-            .committee-section,
-            .students-section {
-                grid-column: 1;
-            }
-
-            .hero-section {
-                min-height: auto;
-                padding: 36px 32px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .header {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .header-logo {
-                margin: 0 auto;
-            }
-
-            .nav-list {
-                gap: 6px;
-            }
-
-            .nav-link {
-                padding: 8px 14px;
-                font-size: 0.85rem;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .committee-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer {
-                padding: 32px 24px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
-        }
-
-        /* ===== FLUID ANIMATIONS ===== */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.06; }
-            50% { opacity: 0.12; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes slide-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .news-panel {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
-        }
-
-        .hero-section {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
-        }
-
-        .events-section {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
-        }
-
-        .committee-section {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
-        }
-
-        /* Scroll-triggered animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Stagger children */
-        .stagger-children > * {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-        }
-
-        .stagger-children.visible > *:nth-child(1) { transition-delay: 0s; }
-        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; }
-        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.2s; }
-        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.3s; }
-        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.4s; }
-
-        .stagger-children.visible > * {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Floating elements */
-        .float-element {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .float-element-delayed {
-            animation: float 5s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        /* Hover lift effect */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Pulse glow */
-        .pulse-glow {
-            animation: pulse-soft 3s ease-in-out infinite;
-        }
-
-        /* Shimmer overlay */
-        .shimmer {
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-            background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
-        }
-
-        /* Magnetic hover for buttons */
-        .magnetic-hover {
-            transition: transform 0.2s ease;
-        }
-
-        .magnetic-hover:hover {
-            transform: scale(1.02);
-        }
-
-        /* News item stagger */
-        .news-list .news-item {
-            opacity: 0;
-            animation: slide-in-left 0.5s ease forwards;
-        }
-
-        .news-list .news-item:nth-child(1) { animation-delay: 0.1s; }
-        .news-list .news-item:nth-child(2) { animation-delay: 0.2s; }
-        .news-list .news-item:nth-child(3) { animation-delay: 0.3s; }
-        .news-list .news-item:nth-child(4) { animation-delay: 0.4s; }
-        .news-list .news-item:nth-child(5) { animation-delay: 0.5s; }
-
-        /* Respect reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .animate-on-scroll,
-            .stagger-children > *,
-            .news-list .news-item,
-            .float-element,
-            .float-element-delayed,
-            .pulse-glow,
-            .shimmer {
-                opacity: 1;
-                transform: none;
-                animation: none;
-            }
-            .hero-section * {
-                transform: none !important;
-            }
-            .hero-background,
-            .hero-overlay,
-            .hero-content {
-                transform: none !important;
-                transition: none !important;
-            }
-        }
-
         /* ===== STUDENTS SECTION ===== */
         .students-section {
-            grid-column: 1 / -1;
             padding: 40px 0;
         }
 
@@ -1100,15 +486,6 @@
             font-weight: 700;
             color: var(--navy);
             letter-spacing: -0.02em;
-        }
-
-        .student-count {
-            background: var(--navy);
-            color: var(--white);
-            padding: 6px 14px;
-            border-radius: var(--radius-lg);
-            font-size: 14px;
-            font-weight: 500;
         }
 
         .students-grid {
@@ -1204,33 +581,113 @@
             transform: translateY(0);
         }
 
-        .class-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--gold);
-            color: var(--ink);
-            font-size: 9px;
-            font-weight: 600;
-            padding: 3px 6px;
-            border-radius: var(--radius-sm);
-            z-index: 2;
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 40px 48px;
+            color: var(--white);
+            margin: 0 -24px;
         }
 
-        .placeholder-img {
-            width: 100%;
-            height: 100%;
-            min-height: 140px;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.5);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: 'Fraunces', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--white);
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-bottom .mono {
+            color: var(--gold);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hero-section {
+                min-height: auto;
+                padding: 36px 32px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
         }
 
         @media (max-width: 640px) {
+            .nav-list {
+                gap: 6px;
+            }
+
+            .nav-link {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+
+            .committee-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer {
+                padding: 32px 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
             .students-grid {
                 gap: 8px;
             }
@@ -1251,9 +708,82 @@
                 font-size: 24px;
             }
         }
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.06; }
+            50% { opacity: 0.12; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-section {
+            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+        }
+
+        .committee-section {
+            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-on-scroll,
+            .hero-section {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
     </style>
     <script>
-        // Scroll-triggered animations with parallax
         function initScrollAnimations() {
             const observerOptions = {
                 root: null,
@@ -1270,14 +800,12 @@
                 });
             }, observerOptions);
 
-            // Observe all sections
-            document.querySelectorAll('.events-section, .committee-section').forEach(el => {
+            document.querySelectorAll('.committee-section').forEach(el => {
                 el.classList.add('animate-on-scroll');
                 observer.observe(el);
             });
         }
 
-        // Full parallax system
         function initParallax() {
             const hero = document.querySelector('.hero-section');
             if (!hero) return;
@@ -1288,7 +816,6 @@
                 const scrolled = window.pageYOffset;
                 const heroHeight = window.innerHeight;
 
-                // Hero parallax layers (different speeds = parallax effect)
                 if (scrolled < heroHeight * 2) {
                     const bg = hero.querySelector('.hero-background');
                     const overlay = hero.querySelector('.hero-overlay');
@@ -1302,7 +829,6 @@
                     if (scrollIndicator) scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / (heroHeight * 0.5));
                 }
 
-                // Committee section parallax
                 if (committeeSection) {
                     const committeeRect = committeeSection.getBoundingClientRect();
                     const committeeOffset = committeeRect.top;
@@ -1314,122 +840,6 @@
             }, { passive: true });
         }
 
-        // Momentum scroll - accelerates based on scroll intensity
-        function initMomentumScroll() {
-            let lastScrollY = window.scrollY;
-            let lastTime = performance.now();
-            let velocity = 0;
-            const decay = 0.95;
-            const strength = 0.5;
-
-            function update() {
-                const now = performance.now();
-                const deltaTime = now - lastTime;
-                const deltaY = window.scrollY - lastScrollY;
-                
-                // Calculate velocity
-                velocity = (deltaY / deltaTime) * strength;
-                
-                // Apply momentum when scroll stops
-                if (Math.abs(velocity) > 0.1) {
-                    const direction = velocity > 0 ? 1 : -1;
-                    const intensity = Math.abs(velocity) * 15;
-                    window.scrollBy(0, direction * intensity);
-                }
-                
-                lastScrollY = window.scrollY;
-                lastTime = now;
-                velocity *= decay;
-                
-                requestAnimationFrame(update);
-            }
-
-            // Start momentum tracking on scroll
-            let scrollTimeout;
-            window.addEventListener('scroll', () => {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    velocity = 0;
-                }, 150);
-            }, { passive: true });
-        }
-
-        // Scroll velocity indicator - elements react to scroll speed
-        function initVelocityEffects() {
-            const sections = document.querySelectorAll('.events-section, .committee-section');
-            
-            let lastScrollY = 0;
-            let lastTime = performance.now();
-
-            window.addEventListener('scroll', () => {
-                const now = performance.now();
-                const deltaTime = now - lastTime;
-                const deltaY = window.scrollY - lastScrollY;
-                const velocity = Math.abs(deltaY / Math.max(deltaTime, 1));
-                
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    const inView = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (inView) {
-                        const intensity = Math.min(velocity / 10, 1);
-                        const direction = deltaY > 0 ? 1 : -1;
-                        const offset = direction * intensity * 30;
-                        section.style.transform = `translateY(${offset}px)`;
-                        section.style.transition = 'transform 0.1s ease-out';
-                    }
-                });
-                
-                lastScrollY = window.scrollY;
-                lastTime = now;
-            }, { passive: true });
-
-            // Reset transforms when scroll stops
-            let resetTimeout;
-            window.addEventListener('scroll', () => {
-                clearTimeout(resetTimeout);
-                resetTimeout = setTimeout(() => {
-                    sections.forEach(section => {
-                        section.style.transform = 'translateY(0)';
-                    });
-                }, 100);
-            }, { passive: true });
-        }
-
-        // Smooth counter for stats (if needed)
-        function animateValue(element, start, end, duration) {
-            const startTimestamp = performance.now();
-            const step = (timestamp) => {
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                element.textContent = value;
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                }
-            };
-            requestAnimationFrame(step);
-        }
-
-        // Magnetic cursor effect for buttons
-        function initMagneticEffect() {
-            const magnets = document.querySelectorAll('.magnetic-hover');
-            
-            magnets.forEach(magnet => {
-                magnet.addEventListener('mousemove', (e) => {
-                    const rect = magnet.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    
-                    magnet.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                });
-
-                magnet.addEventListener('mouseleave', () => {
-                    magnet.style.transform = 'translate(0, 0)';
-                });
-            });
-        }
-
-        // Floating header scroll effect (placeholder - kept for consistency)
         function initFloatingHeader() {
             const header = document.querySelector('.header-floating');
             const hero = document.querySelector('.hero-section');
@@ -1445,15 +855,12 @@
             }, { passive: true });
         }
 
-        // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize animations
             initScrollAnimations();
             initParallax();
             initFloatingHeader();
 
-            // Add hover-lift class to interactive cards
-            document.querySelectorAll('.event-card, .committee-card').forEach(card => {
+            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
                 card.classList.add('hover-lift');
             });
         });
@@ -1469,7 +876,7 @@
         </div>
         <nav class="nav-floating">
             <ul class="nav-list">
-                <li><a href="documentations.html" class="nav-link"><span>关于预科</span></a></li>
+                <li><a href="documentations.html" class="nav-link"><span>Explore Us / 探索预科</span></a></li>
             </ul>
         </nav>
     </header>
@@ -1483,7 +890,7 @@
             <h2 class="hero-title">Welcome to<br>编程社团</h2>
             <p class="hero-description">
                 Programming Club. 
-                Cultivating excellence in coding, creativity, and collaboration for the 2025–2026 academic year.
+                Cultivating excellence in coding, creativity, and collaboration for the 2025 - 2026 academic year.
             </p>
             
         </div>
@@ -1502,11 +909,30 @@
                 </div>
                 <div class="about-text">
                     <h3>Who We Are</h3>
-                    <p>We are a vibrant community of students passionate about programming and technology.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>We, three passionate students from three different countries — Owen, Anqi, and Elson — envisioned more than just a club.</p>
+                    <p>We dreamed of a dynamic space where every coding enthusiast, from curious beginners to aspiring developers, could connect, collaborate, and grow together. </p>
+                    <p>This vision sparked the founding of the SJTU Pre-U Programming Club, transforming a simple idea into a thriving community that celebrates shared knowledge and creativity.</p>
                 </div>
             </section>
+            <section class="vision-section">
+                <div class="section-header">
+                    <h2 class="section-title">我们的愿景</h2>
+                </div>
+                <div class="vision-text">
+                    <h3>Our Vision</h3>
+                    <p>To create the most unforgettable, interactive, and wonderful collaborative experience! We aim to be the heart of tech innovation on the Qibao campus, a community that leaves a lasting mark on every member's Pre-U journey. 
+                        Our vision is to build a legacy of projects, friendships, and skills that extend far beyond the classroom.</p>
+                </div>
+            </section>
+            <section class="mission-section">
+                <div class="section-header">
+                    <h2 class="section-title">我们的使命</h2>
+                </div>
+                <div class="mission-text">
+                    <h3>Our Mission</h3>
+                    <p>Through cooperation, creativity, and hands-on building, we craft engaging projects, tackle real-world problems, and share our passion for technology with the world. 
+                    We empower every member to contribute, learn, and lead, fostering an inclusive environment where great ideas are born and brought to life.</p>
+                </div>
 
             <!-- COMMITTEE -->
             <section class="committee-section">
@@ -1516,31 +942,31 @@
                 </div>
                 <div class="committee-grid">
                     <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">1</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><img src="profilepic/1.jpg"></div>
                         <div class="committee-overlay">
-                            <p class="committee-name">name_1</p>
-                            <p class="committee-role">Committee</p>
+                            <p class="committee-name">AnQI</p>
+                            <p class="committee-role">President</p>
                         </div>
                     </article>
                     <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">2</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><img src="profilepic/2.jpg"></div>
                         <div class="committee-overlay">
-                            <p class="committee-name">name_2</p>
-                            <p class="committee-role">Committee</p>
+                            <p class="committee-name">Owen</p>
+                            <p class="committee-role">Vice President</p>
                         </div>
                     </article>
                     <article class="committee-card">
                         <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">3</div>
                         <div class="committee-overlay">
-                            <p class="committee-name">name_3</p>
-                            <p class="committee-role">Committee</p>
+                            <p class="committee-name">Kenji</p>
+                            <p class="committee-role">Vice President</p>
                         </div>
                     </article>
                     <article class="committee-card">
                         <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">4</div>
                         <div class="committee-overlay">
-                            <p class="committee-name">name_4</p>
-                            <p class="committee-role">Committee</p>
+                            <p class="committee-name">Elson</p>
+                            <p class="committee-role">Vice President</p>
                         </div>
                     </article>
                 </div>
@@ -1692,7 +1118,8 @@
                 <h4>Navigation</h4>
                 <ul>
                     
-                    
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
                     <li><a href="documentations.html">Gallery</a></li>
                     
                 </ul>
