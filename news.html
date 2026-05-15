@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技信息 - SJTU Programming Club</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            display: grid;
+            margin: auto;
+            max-width: 1200px;
+            min-height: 100vh;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas: 
+                "heading logo" 
+                "top-nav top-nav" 
+                "article article" 
+                "footer footer";
+            gap: 20px;
+            padding: 20px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.4);
+            padding: 5px;
+            border-radius: 30px;
+            display: flex;
+            gap: 4px;
+            z-index: 200;
+        }
+
+        .lang-btn {
+            padding: 8px 18px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #FFD700;
+            color: #002B60;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Header & Logo */
+        header { 
+            background-color: #AD1730; 
+            grid-area: heading; 
+            text-align: center; 
+            padding: 15px; 
+            border-radius: 10px; 
+        }
+
+        .logo img { 
+            max-height: 100px; 
+            border-radius: 10px; 
+        }
+
+        /* Navigation */
+        .top-nav { 
+            background-color: #AD1730; 
+            height: 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 5px; 
+            gap: 20px; 
+        }
+        .top-nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 20px; 
+            border-radius: 25px; 
+            transition: all 0.3s; 
+        }
+        .top-nav a:hover { 
+            background-color: #002B60; 
+            transform: translateY(-5px); 
+        }
+
+        /* Article */
+        article { 
+            grid-area: article; 
+            background-color: #002B60; 
+            border-radius: 10px; 
+            padding: 30px; 
+        }
+        article h1 { 
+            color: #FFD700; 
+            border-bottom: 2px solid #FFD700; 
+            padding-bottom: 10px; 
+        }
+        article h2 { 
+            color: #FFD700; 
+            margin: 25px 0 15px; 
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .news-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .news-item:hover { 
+            transform: translateY(-8px); 
+        }
+        .news-item img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+        }
+        .caption { 
+            padding: 12px; 
+            text-align: center; 
+            color: #FFD700; 
+            font-size: 0.9rem; 
+        }
+
+        footer { 
+            grid-area: footer; 
+            background-color: #AD1730; 
+            padding: 20px; 
+            text-align: center; 
+            border-radius: 10px; 
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none; align-items: center;
+            justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.4s;
+        }
+        .popup-content {
+            background: #002B60; width: 90%; max-width: 900px; max-height: 92vh;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .popup-content.open { transform: scale(1); }
+
+        .popup-header {
+            background: #AD1730; padding: 20px 25px; display: flex;
+            justify-content: space-between; align-items: center; position: relative;
+        }
+        .popup-header h2 { color: #FFD700; margin: 0; font-size: 1.4rem; }
+        
+        .close-btn {
+            background: none; border: none; color: white; font-size: 28px;
+            cursor: pointer; width: 40px; height: 40px; border-radius: 50%;
+        }
+        .close-btn:hover { 
+            background: rgba(255,255,255,0.2); 
+            transform: rotate(90deg); 
+        }
+
+        .progress-bar {
+            position: absolute; bottom: 0; left: 0; height: 4px;
+            background: #FFD700; width: 0%; transition: width 0.1s;
+        }
+
+        .popup-body {
+            padding: 30px; overflow-y: auto; flex: 1; line-height: 1.8;
+        }
+        .popup-body img { 
+            max-width: 100%; 
+            border-radius: 8px; 
+            margin: 15px 0; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 data-en="SJTU Programming Club - 2025-2026" 
+            data-zh="SJTU 编程社团 - 2025-2026 学期">
+            SJTU Programming Club - 2025-2026
+        </h1>
+    </header>
+
+    <div class="logo">
+        <a href="../index.html"><img src="../images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100"></a>
+    </div>
+
+    <nav class="top-nav">
+        <a href="../documentations.html" data-en="Photography / Video" data-zh="摄影/视频">
+            摄影/视频
+        </a>
+    </nav>
+
+    <div class="language-switcher">
+        <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn active">EN</button>
+        <button onclick="switchLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
+    </div>
+
+    <article>
+        <h1 data-en="News Articles" data-zh="科技信息">News Articles</h1>
+        <p data-en="News articles related to technological advancements in China, updated every Sunday." 
+        data-zh="关于中国科技发展的新闻，不管全国还是上海交通特定，每周日更新。">
+        News articles related to technological advancements in China, whether it's nationwide and SJTU-specific.
+        </p>
+
+        <h2 data-en="News Section" data-zh="信息目录">News Section</h2>
+
+        <div class="news-grid">
+            <div class="news-item" 
+                data-title-en="Donald Trump and Xi Jinping Meeting" 
+                data-title-zh="特朗普与习近平会晤"
+                data-url="https://www.abc.net.au/news/2026-05-14/donald-trump-xi-jinping-meeting-key-takeaways/106676202">
+                <div class="news-placeholder">
+                    <img src="https://live-production.wcms.abc-cdn.net.au/32967d29b9c8c2f4ab258bc32f180115?impolicy=wcms_crop_resize&cropH=3149&cropW=4724&xPos=138&yPos=0&width=862&height=575" alt="">
+                </div>
+                <div class="caption" 
+                    data-en="Donald Trump and Xi Jinping's meeting in China featured tech titans, Taiwan and flattery" 
+                    data-zh="特朗普与习近平在中国的会晤展示了科技巨头、台湾和奉承">
+                </div>
+            </div>
+
+            <div class="news-item" 
+                data-title-en="SJTU AI-enabled low carbon program" 
+                data-title-zh="上交大AI驱动的低碳项目"
+                data-url="https://en.sjtu.edu.cn/news-events/news/2509.html">
+                <div class="news-placeholder">
+                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" alt="">
+                </div>
+                <div class="caption" 
+                    data-en="SJTU Launches 'AI-Enabled Low-Carbon Transformation' Micro-Degree Program" 
+                    data-zh="上交大的AI驱动低碳项目旨在通过智能技术减少排放,推动可持续发展">
+                </div>
+            </div>
+
+            <div class="news-item" 
+                data-title-en="xi telling musk and other CEOs" 
+                data-title-zh="习近平对马斯克和其他CEO的讲话"
+                data-url="https://www.cnbc.com/2026/05/14/nvidias-jensen-huang-on-china-trip-trump.html">
+                <div class="news-placeholder">
+                    <img src="https://image.cnbcfm.com/api/v1/image/108306865-1778762888280-108306865-1778757372066-gettyimages-2275592313-AFP_B2U978M.jpg?v=1778795370&w=1260&h=709&ffmt=webp&vtcrop=y" alt="">
+                </div>
+                <div class="caption" 
+                    data-en="Xi tells Musk, Tim Cook and other CEOs on Trump's trip: China will 'open wider'" 
+                    data-zh="习近平对特朗普访华的马斯克、蒂姆·库克等CEO表示:中国将“进一步开放”">
+                </div>
+            </div>
+
+            <!-- Add more news items here following the same pattern -->
+        </div>
+    </article>
+
+    <footer data-en="Copyright ©2026 SJTU Pre Uni. All rights reserved." 
+            data-zh="Copyright ©2026 SJTU Pre Uni. 版权所有。">
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="articlePopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="popupTitle"></h2>
+                <button class="close-btn" id="closePopup">×</button>
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="popup-body" id="popupBody">
+                <p>Loading article...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== LANGUAGE SYSTEM ====================
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update active button
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+
+            // Translate all elements with data-en / data-zh
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.textContent = text;
+            });
+
+            // Save preference
+            localStorage.setItem('language', lang);
+        }
+
+        // ==================== POPUP SYSTEM ====================
+        function initPopAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.news-grid').forEach(el => {
+                el.classList.add('animate-on-pop');
+                observer.observe(el);
+            });
+        }
+
+        async function openArticle(title, url) {
+            const popup = document.getElementById('articlePopup');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupBody = document.getElementById('popupBody');
+            const progressBar = document.getElementById('progressBar');
+
+            popupTitle.textContent = title;
+            popupBody.innerHTML = `<p><strong>Loading content...</strong></p>`;
+            popup.style.display = 'flex';
+
+            setTimeout(() => {
+                popup.style.opacity = '1';
+                popup.querySelector('.popup-content').classList.add('open');
+            }, 10);
+
+            // Progress bar
+            popupBody.onscroll = () => {
+                const scrollTop = popupBody.scrollTop;
+                const scrollHeight = popupBody.scrollHeight - popupBody.clientHeight;
+                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 100;
+                progressBar.style.width = `${progress}%`;
+            };
+        }
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved language
+            const savedLang = localStorage.getItem('language') || 'en';
+            switchLanguage(savedLang);
+
+            // Popup click handlers
+            const popup = document.getElementById('articlePopup');
+            const closeBtn = document.getElementById('closePopup');
+
+            document.querySelectorAll('.news-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const title = currentLang === 'en' 
+                        ? item.dataset.titleEn 
+                        : item.dataset.titleZh;
+                    const url = item.dataset.url || "";
+                    openArticle(title, url);
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                popup.style.opacity = '0';
+                popup.querySelector('.popup-content').classList.remove('open');
+                setTimeout(() => popup.style.display = 'none', 400);
+            });
+
+            popup.addEventListener('click', e => {
+                if (e.target === popup) closeBtn.click();
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === "Escape" && popup.style.display === 'flex') {
+                    closeBtn.click();
+                }
+            });
+
+            initPopAnimations();
+        });
+    </script>
+</body>
+</html>
