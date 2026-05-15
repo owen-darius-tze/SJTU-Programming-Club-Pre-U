@@ -17,11 +17,12 @@
             max-width: 1200px;
             min-height: 100vh;
             grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto;
+            grid-template-rows: auto auto 1fr auto auto;
             grid-template-areas:
                 "heading logo"
                 "top-nav top-nav"
                 "catalog catalog"
+                "bottom-nav bottom-nav"
                 "footer footer";
             gap: 20px;
             padding: 20px;
@@ -82,6 +83,39 @@
             transform: translateY(-5px);
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.4);
+            padding: 5px;
+            border-radius: 30px;
+            display: flex;
+            gap: 4px;
+            z-index: 200;
+        }
+
+        .lang-btn {
+            padding: 8px 18px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #FFD700;
+            color: #002B60;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.15);
+        }
+
         /* ===== CATALOG ===== */
         .catalog {
             grid-area: catalog;
@@ -134,6 +168,33 @@
             color: white;
         }
 
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav {
+            grid-area: bottom-nav;
+            background-color: #AD1730;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            gap: 20px;
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .bottom-nav a:hover {
+            background-color: #002B60;
+            color: white;
+            transform: translateY(-5px);
+        }
+
         footer {
             grid-area: footer;
             background-color: #AD1730;
@@ -157,65 +218,103 @@
         </div>
 
         <nav class="top-nav" aria-label="Main navigation">
-            
-            
-            <a href="documentations.html">Photography/Video</a>
-            
+            <a href="documentations.html" data-en="Photography/Video" data-zh="摄影/视频">Photography/Video</a>
         </nav>
 
+        <div class="language-switcher">
+            <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn active">EN</button>
+            <button onclick="switchLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
+        </div>
+
         <div class="catalog">
-            <h2>节目目录 - Events List</h2>
+            <h2 data-en="Events List" data-zh="节目目录">Events List</h2>
             <div class="catalog-item">
                 <a href="events/recitezhongwen.html">
-                    <h3>Chinese Recitation</h3>
+                    <h3 data-en="Chinese Recitation", data-zh="中文朗诵比赛">Chinese Recitation</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/culturefest.html">
-                    <h3>Culture Festival</h3>
+                    <h3 data-en="Culture Festival", data-zh="国际文化节">Culture Festival</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/firstdayofcoding.html">
-                    <h3>First Day of Coding</h3>
+                    <h3 data-en="First Day of Coding", data-zh="编程第一天">First Day of Coding</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/graduation-pics.html">
-                    <h3>Graduation 2026</h3>
+                    <h3 data-en="Graduation 2026", data-zh="2026届结业典礼">
+                        Graduation 2026
+                    </h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/guangfulin.html">
-                    <h3>Visit to Guangfulin</h3>
+                    <h3 data-en="Visit to Guangfulin", data-zh="广富林考察">Visit to Guangfulin</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/publicspeak.html">
-                    <h3>Public Speaking</h3>
+                    <h3 data-en="Public Speaking", data-zh="公开演讲">Public Speaking</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/spellingbee.html">
-                    <h3>Spelling Bee Competition</h3>
+                    <h3 data-en="Spelling Bee Competition", data-zh="拼写比赛">Spelling Bee Competition</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/visitsjtu.html">
-                    <h3>Visit to SJTU Minhang</h3>
+                    <h3 data-en="Visit to SJTU Minhang", data-zh="参观上海交通大学闵行校区">Visit to SJTU Minhang</h3>
                 </a>
             </div>
             <div class="catalog-item">
                 <a href="events/yearend.html">
-                    <h3>Year-End Celebration</h3>
+                    <h3 data-en="Year-End Celebration", data-zh="年终庆典">Year-End Celebration</h3>
                 </a>
             </div>
             <div class="catalog-item">
-                <h3>Coming soon...</h3>
+                <h3 data-zh="敬请期待",data-en="Coming soon...">Coming soon...</h3>
             </div>
         </div>
-        <footer>
+
+        <nav class="bottom-nav" aria-label="Secondary navigation">
+            <a href="news.html" data-en="News Articles" data-zh="新闻报告">News Articles</a>
+        </nav>
+
+        <footer data-en="Copyright ©2026 SJTU Pre Uni. All rights reserved." 
+            data-zh="Copyright ©2026 SJTU Pre Uni. 版权所有。">
             Copyright ©2026 SJTU Pre Uni. All rights reserved.
         </footer>
+
+        <script>
+            // ==================== LANGUAGE SYSTEM ====================
+            let currentLang = 'en';
+
+            function switchLanguage(lang) {
+                currentLang = lang;
+
+                // Update active button
+                document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+                document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+
+                // Translate all elements with data-en / data-zh
+                document.querySelectorAll('[data-en]').forEach(el => {
+                    const text = el.getAttribute(`data-${lang}`);
+                    if (text) el.textContent = text;
+                });
+
+                // Save preference
+                localStorage.setItem('language', lang);
+            }
+            // ==================== INITIALIZATION ====================
+            document.addEventListener('DOMContentLoaded', () => {
+                // Load saved language
+                const savedLang = localStorage.getItem('language') || 'en';
+                switchLanguage(savedLang);
+            });
+        </script>
 </body>
 </html>
