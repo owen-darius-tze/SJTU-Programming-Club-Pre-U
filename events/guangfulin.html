@@ -30,7 +30,6 @@
             background-color: #f5f5f5;
         }
 
-        /* ===== HEADER & LOGO ===== */
         header {
             border-radius: 10px;
             background-color: #AD1730;
@@ -38,24 +37,13 @@
             text-align: center;
             padding: 15px;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo {
-            grid-area: logo;
-            display: flex;
-            justify-content: flex-end;
         }
 
         .logo img {
             max-height: 100px;
-            width: auto;
             border-radius: 10px;
         }
 
-        /* ===== NAVIGATION ===== */
         .top-nav {
             grid-area: top-nav;
             background-color: #AD1730;
@@ -71,18 +59,16 @@
             text-decoration: none;
             font-weight: bold;
             padding: 10px 20px;
-            transition: all 0.3s ease;
             color: white;
             border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
         .top-nav a:hover {
             background-color: #002B60;
-            color: white;
             transform: translateY(-5px);
         }
 
-        /* ===== ARTICLE ===== */
         article {
             grid-area: article;
             background-color: #002B60;
@@ -90,27 +76,14 @@
             padding: 30px;
             color: white;
             line-height: 1.6;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         article h1 {
             color: #FFD700;
-            margin-bottom: 15px;
             border-bottom: 2px solid #FFD700;
             padding-bottom: 10px;
         }
 
-        article h2 {
-            color: #FFD700;
-            margin: 25px 0 15px;
-            font-size: 1.3rem;
-        }
-
-        article p {
-            margin-bottom: 15px;
-        }
-
-        /* ===== PHOTO GRID ===== */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -118,40 +91,30 @@
             margin-top: 20px;
         }
 
-        .photo-item {
+        .photo-item, .news-item {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
-        .photo-item:hover {
-            transform: translateY(-5px);
+        .photo-item:hover, .news-item:hover {
+            transform: translateY(-8px);
         }
 
-        .photo-item img {
+        .photo-item img, .news-item img {
             width: 100%;
-            height:180px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .photo-item .caption {
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #FFD700;
-        }
-
-        .photo-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             height: 180px;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #aaa;
-            font-style: italic;
+            object-fit: cover;
+        }
+
+        .caption {
+            padding: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #FFD700;
         }
 
         footer {
@@ -161,56 +124,216 @@
             text-align: center;
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none; align-items: center;
+            justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.4s;
+        }
+        .popup-content {
+            background: #002B60; width: 90%; max-width: 900px; max-height: 92vh;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .popup-content.open { transform: scale(1); }
+
+        .popup-header {
+            background: #AD1730; padding: 20px 25px; display: flex;
+            justify-content: space-between; align-items: center; position: relative;
+        }
+        .popup-header h2 { color: #FFD700; margin: 0; font-size: 1.4rem; }
+        
+        .close-btn {
+            background: none; border: none; color: white; font-size: 28px;
+            cursor: pointer; width: 40px; height: 40px; border-radius: 50%;
+        }
+        .close-btn:hover { 
+            background: rgba(255,255,255,0.2); 
+            transform: rotate(90deg); 
+        }
+
+        .progress-bar {
+            position: absolute; bottom: 0; left: 0; height: 4px;
+            background: #FFD700; width: 0%; transition: width 0.1s linear;
+        }
+
+        .popup-body {
+            padding: 30px; 
+            overflow-y: auto; 
+            max-height: calc(92vh - 80px);
+            color: #f0f0f0;
+            line-height: 1.8;
+        }
+        .popup-body img { 
+            max-width: 100%; 
+            border-radius: 8px; 
+            margin: 15px 0; 
         }
     </style>
 </head>
 <body>
-        <header>
-            <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
-        </header>
+    <header>
+        <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
+    </header>
 
-        <div class="logo">
-            <a href="../index.html" aria-label="Home page">
-                <img src="../images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100">
-            </a>
-        </div>
+    <div class="logo">
+        <a href="../index.html"><img src="../images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100"></a>
+    </div>
 
-        <nav class="top-nav" aria-label="Main navigation">
-            
-            
-            <a href="../documentations.html">摄影/视频</a>
-            
-        </nav>
+    <nav class="top-nav">
+        <a href="../documentations.html">摄影/视频</a>
+    </nav>
 
-        <article>
-            <h1>广富林野外考察照片</h1>
-            <p>广富林野外考察活动的照片记录。</p>
+    <article>
+        <h1>广富林野外考察照片 - Guangfulin Field Trip Photos</h1>
+        <p>Record of photos from the Guangfulin field trip event, which took place on November 19, 2025.</p>
 
-            <h2>照片目录 - Photo Gallery</h2>
+        <h2>照片目录 - Photo Gallery</h2>
 
-            <div class="photo-grid">
-                <div class="photo-item">
-                    <div class="photo-placeholder"><img src="../images/events/guangfulin/ 1.jpeg" alt="Graduation - Group Photo"></div>
-                    <div class="caption">Pre U Photo</div>
-                </div>
-                <div class="photo-item">
-                    <div class="photo-placeholder"><img src="../images/events/guangfulin/ 2.jpeg" alt="Graduation - School Photo"></div>
-                    <div class="caption">Group Recording  </div>
-                </div>
-                <div class="photo-item">
-                    <div class="photo-placeholder"><img src="../images/events/guangfulin/ 3.jpeg" alt="Graduation - Portraits"></div>
-                    <div class="caption">Graduation - Formal School Photo</div>
-                </div>
+        <div class="photo-grid">
+            <!-- Photo items -->
+            <div class="photo-item">
+                <div class="photo-placeholder"><img src="../images/events/guangfulin/ 1.jpeg" alt=""></div>
+                <div class="caption">Pre U Photo</div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-placeholder"><img src="../images/events/guangfulin/group_photo1.jpg" alt=""></div>
+                <div class="caption">Small Group Photo</div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-placeholder"><img src="../images/events/guangfulin/ 3.jpeg" alt=""></div>
+                <div class="caption">Candids</div>
             </div>
 
-            <p style="margin-top: 20px; padding: 15px; background-color: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid #FFD700;">
-                <strong>Note:</strong> To add photos, place image files in the <code>images/events/guangfulin/</code> directory and update the <code>&lt;img&gt;</code> src paths in this file.
-            </p>
-        </article>
+            <!-- News Article Item -->
+            <div class="news-item" 
+                data-title="广富林深秋：一堂行走的文化课"
+                data-url="https://v.xiumius.cn/board/v5/7RW0i/705013614?in_preview=true&preview_for=normal&stage_ticket=98WfVKvz0HDTighzuE57HjdoNVKb83zqU5kqt1fGuEcKMSwP2SBdzcVKQdty">
+                <div class="news-placeholder">
+                    <img src="https://img.xiumi.us/xmi/ua/5TZX7/i/37f8bd625641ea42c0a79fdba669db9d-sz_8857688.jpg?x-oss-process=image/resize,limit_1,m_lfit,w_1080/crop,h_720,w_1004,x_38,y_0/format,webp" alt="">
+                </div>
+                <div class="caption">广富林深秋：一堂行走的文化课</div>
+            </div>
+        </div>
+    </article>
 
-        <footer>
-            Copyright ©2026 SJTU Pre Uni. All rights reserved.
-        </footer>
+    <footer>
+        Copyright ©2026 SJTU Pre Uni. All rights reserved.
+    </footer>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="articlePopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="popupTitle"></h2>
+                <button class="close-btn" id="closePopup">×</button>
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="popup-body" id="popupBody">
+                <p>Loading article...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function openArticlePopup(title, imagePath, url) {
+            const popup = document.getElementById('articlePopup');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupBody = document.getElementById('popupBody');
+            const progressBar = document.getElementById('progressBar');
+
+            popupTitle.textContent = title;
+
+            popupBody.innerHTML = `
+                <div style="text-align:center;">
+                    <img src="${imagePath}" style="max-width:100%; border-radius:12px; margin-bottom:20px;">
+                    <p style="color:#FFD700;">正在加载文章内容...</p>
+                </div>
+            `;
+
+            popup.style.display = 'flex';
+            setTimeout(() => {
+                popup.style.opacity = '1';
+                popup.querySelector('.popup-content').classList.add('open');
+            }, 10);
+
+            // Try to load article
+            try {
+                if (url) {
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        popupBody.innerHTML = `
+                            <div style="text-align:center;">
+                                <img src="${imagePath}" style="max-width:100%; border-radius:12px; margin-bottom:25px;">
+                                <h2 style="color:#FFD700;">${title}</h2>
+                                <p style="color:#ddd; margin:20px 0;">文章内容已加载（外部限制，建议点击下方链接查看完整版）</p>
+                                <p><a href="${url}" target="_blank" style="color:#FFD700; font-size:1.1rem;">📖 阅读完整文章 →</a></p>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (e) {
+                popupBody.innerHTML = `
+                    <div style="text-align:center;">
+                        <img src="${imagePath}" style="max-width:100%; border-radius:12px; margin-bottom:25px;">
+                        <h2 style="color:#FFD700;">${title}</h2>
+                        <p style="color:#ddd;">由于网站限制，无法自动加载完整内容。
+                            <br> Due to website restrictions, the full content cannot be loaded automatically.</p>
+                        <p style="margin-top:20px;">
+                            <a href="${url}" target="_blank" style="color:#FFD700; font-size:1.1rem;">👉 在新标签页打开完整文章/Open Full Article in New Tab</a>
+                        </p>
+                    </div>
+                `;
+            }
+
+            // Progress bar
+            const updateProgress = () => {
+                const scrollTop = popupBody.scrollTop;
+                const scrollHeight = popupBody.scrollHeight - popupBody.clientHeight;
+                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 100;
+                progressBar.style.width = `${progress}%`;
+            };
+            popupBody.onscroll = updateProgress;
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('articlePopup');
+            popup.style.opacity = '0';
+            popup.querySelector('.popup-content').classList.remove('open');
+            setTimeout(() => popup.style.display = 'none', 400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Photo items (simple image popup)
+            document.querySelectorAll('.photo-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const title = item.querySelector('.caption').textContent.trim();
+                    const img = item.querySelector('img');
+                    openArticlePopup(title, img.src, null);
+                });
+            });
+
+            // News Article
+            document.querySelectorAll('.news-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const title = item.getAttribute('data-title') || "广富林深秋：一堂行走的文化课";
+                    const img = item.querySelector('img');
+                    const url = item.getAttribute('data-url');
+                    openArticlePopup(title, img ? img.src : '', url);
+                });
+            });
+
+            // Close handlers
+            document.getElementById('closePopup').addEventListener('click', closePopup);
+            document.getElementById('articlePopup').addEventListener('click', e => {
+                if (e.target.id === 'articlePopup') closePopup();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === "Escape") closePopup();
+            });
+        });
+    </script>
 </body>
 </html>
