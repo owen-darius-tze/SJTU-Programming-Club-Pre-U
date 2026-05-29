@@ -558,7 +558,7 @@
             transition: transform 0.3s ease 0.05s;
         }
 
-        .student-origin {
+        .student-origin, .committee-origin {
             display: flex;
             align-items: center;
             gap: 4px;
@@ -568,7 +568,7 @@
             transition: transform 0.3s ease 0.1s;
         }
 
-        .student-origin svg {
+        .student-origin, .committee-origin svg {
             width: 12px;
             height: 12px;
             color: var(--gold);
@@ -577,7 +577,7 @@
 
         .student-card:hover .student-name,
         .student-card:hover .student-name-en,
-        .student-card:hover .student-origin {
+        .student-card:hover .student-origin .committee-origin{
             transform: translateY(0);
         }
 
@@ -701,7 +701,7 @@
             .student-name-en {
                 font-size: 10px;
             }
-            .student-origin {
+            .student-origin,.committee-origin {
                 display: none;
             }
             .placeholder-img {
@@ -782,89 +782,129 @@
                 animation: none;
             }
         }
+
+        /* ===== POPUP - Improved Text Display ===== */
+        .popup-overlay {
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.88); 
+            display: none; 
+            align-items: center;
+            justify-content: center; 
+            z-index: 1000; 
+            opacity: 0; 
+            transition: opacity 0.4s ease;
+        }
+
+        .popup-content {
+            background: #002B60; 
+            width: 92%; 
+            max-width: 860px; 
+            max-height: 100vh;
+            border-radius: 16px; 
+            overflow: hidden; 
+            box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+            transform: scale(0.94); 
+            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .popup-content.open { 
+            transform: scale(1); 
+        }
+
+        .popup-header {
+            background: #AD1730; 
+            padding: 24px 30px; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative;
+        }
+
+        .popup-header h2 { 
+            color: #FFD700; 
+            margin: 0; 
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none; 
+            border: none; 
+            color: white; 
+            font-size: 34px;
+            width: 48px; 
+            height: 48px; 
+            cursor: pointer;
+            border-radius: 50%;
+            line-height: 1;
+        }
+
+        .close-btn:hover { 
+            background: rgba(255,255,255,0.25); 
+            transform: rotate(90deg); 
+        }
+
+        .progress-bar {
+            position: absolute; 
+            bottom: 0; left: 0; 
+            height: 5px;
+            background: linear-gradient(to right, #FFD700, #ffeb3b);
+            width: 0%; 
+            transition: width 0.1s linear;
+        }
+
+        /* =============== MAIN POPUP BODY - TEXT FIX =============== */
+        .popup-body {
+            padding: 35px 40px;
+            overflow-y: auto;
+            max-height: calc(92vh - 85px);
+            color: #f0f0f0;
+            line-height: 1.85;
+            font-size: 1.05rem;
+        }
+
+        .popup-body img {
+            max-width: 100%;
+            border-radius: 14px;
+            margin: 10px 0 32px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            display: block;
+        }
+
+        .popup-body p {
+            margin-bottom: 18px;
+        }
+
+        .popup-body a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .popup-body a:hover {
+            text-decoration: underline;
+            color: #ffeb3b;
+        }
+
+        /* Make quotes look nice */
+        .popup-body p[style*="italic"],
+        .popup-body p[style*="font-style:italic"] {
+            font-size: 1.08rem;
+            color: #e0e0e0;
+            border-left: 5px solid #FFD700;
+            padding-left: 20px;
+            margin: 28px 0;
+            font-style: italic;
+        }
+
+        /* Origin and Instagram lines */
+        .popup-body p[style*="color:#FFD700"] {
+            font-weight: 500;
+            margin: 10px 0;
+        }
     </style>
-    <script>
-        function initScrollAnimations() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.committee-section').forEach(el => {
-                el.classList.add('animate-on-scroll');
-                observer.observe(el);
-            });
-        }
-
-        function initParallax() {
-            const hero = document.querySelector('.hero-section');
-            if (!hero) return;
-
-            const committeeSection = document.querySelector('.committee-section');
-
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const heroHeight = window.innerHeight;
-
-                if (scrolled < heroHeight * 2) {
-                    const bg = hero.querySelector('.hero-background');
-                    const overlay = hero.querySelector('.hero-overlay');
-                    const content = hero.querySelector('.hero-content');
-                    const scrollIndicator = hero.querySelector('.hero-scroll');
-
-                    if (bg) bg.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 + scrolled * 0.0003})`;
-                    if (overlay) overlay.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    if (content) content.style.transform = `translateY(${scrolled * 0.15}px)`;
-                    if (content) content.style.opacity = Math.max(0, 1 - scrolled / heroHeight);
-                    if (scrollIndicator) scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / (heroHeight * 0.5));
-                }
-
-                if (committeeSection) {
-                    const committeeRect = committeeSection.getBoundingClientRect();
-                    const committeeOffset = committeeRect.top;
-                    if (committeeOffset < window.innerHeight) {
-                        const parallaxAmount = committeeOffset * 0.15;
-                        committeeSection.style.transform = `translateY(${parallaxAmount}px)`;
-                    }
-                }
-            }, { passive: true });
-        }
-
-        function initFloatingHeader() {
-            const header = document.querySelector('.header-floating');
-            const hero = document.querySelector('.hero-section');
-            if (!header || !hero) return;
-
-            window.addEventListener('scroll', () => {
-                const heroHeight = hero.offsetHeight;
-                if (window.scrollY > heroHeight * 0.8) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }, { passive: true });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            initScrollAnimations();
-            initParallax();
-            initFloatingHeader();
-
-            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
-                card.classList.add('hover-lift');
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- FLOATING HEADER -->
@@ -941,32 +981,48 @@
                     <span class="section-label">Committee</span>
                 </div>
                 <div class="committee-grid">
-                    <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><img src="../images/students/committeeprofilepic/2.jpg"></div>
+
+                    <article class="committee-card" data-title="AnQI">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="../images/students/committeeprofilepic/2.jpg" alt="AnQI">
+                        </div>
                         <div class="committee-overlay">
-                            <p class="committee-name">AnQI</p>
+                            <p class="committee-name">AnQI / 安崎</p>
                             <p class="committee-role">President</p>
+                            <div class="committee-origin">Mongolia</div>
                         </div>
                     </article>
-                    <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><img src="../images/students/committeeprofilepic/1.jpg"></div>
+
+                    <article class="committee-card" data-title="Owen">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <img src="../images/students/committeeprofilepic/1.jpg" alt="Owen">
+                        </div>
                         <div class="committee-overlay">
-                            <p class="committee-name">Owen</p>
+                            <p class="committee-name">Owen / 谢和汶</p>
                             <p class="committee-role">Vice President</p>
+                            <div class="committee-origin">Indonesia</div>
                         </div>
                     </article>
-                    <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">3</div>
+
+                    <article class="committee-card" data-title="Kenji">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <img src="../images/students/memberprofilepic/kenji.jpg" alt="Kenji">
+                        </div>
                         <div class="committee-overlay">
-                            <p class="committee-name">Kenji</p>
+                            <p class="committee-name">Kenji / 叶建志</p>
                             <p class="committee-role">Vice President</p>
+                            <div class="committee-origin">Indonesia</div>
                         </div>
                     </article>
-                    <article class="committee-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">4</div>
+
+                    <article class="committee-card" data-title="Elson">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <img src="../images/students/committeeprofilepic/Elson_profile.png" alt="Elson">
+                        </div>
                         <div class="committee-overlay">
-                            <p class="committee-name">Elson</p>
+                            <p class="committee-name">Elson / 罗裕弘</p>
                             <p class="committee-role">Vice President</p>
+                            <div class="committee-origin">Malaysia</div>
                         </div>
                     </article>
                 </div>
@@ -978,125 +1034,155 @@
                     <h3 class="section-title">班级成员</h3>
                     
                 </div>
-<div class="students-grid">
+                <div class="students-grid">
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">5</div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">name_5</h4>
-                            <p class="student-name-en">name_5</p>
-                            <div class="student-origin">Country</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <img src="../images/students/memberprofilepic/beah.jpg" alt="Beah">
                         </div>
-                    </article>
-<article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">6</div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_6</h4>
-                            <p class="student-name-en">name_6</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">马震宇</h4>
+                            <p class="student-name-en">Beah</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">7</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <img src="../images/students/memberprofilepic/chereen.jpg" alt="Chereen">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_7</h4>
-                            <p class="student-name-en">name_7</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">郑馨薇</h4>
+                            <p class="student-name-en">Chereen</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">8</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <img src="../images/students/memberprofilepic/delfina.jpg" alt="Delfina">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_8</h4>
-                            <p class="student-name-en">name_8</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">肖欣怡</h4>
+                            <p class="student-name-en">Delfina</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">9</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+                            <img src="../images/students/memberprofilepic/justin.jpg" alt="Justin">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_9</h4>
-                            <p class="student-name-en">name_9</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">高玮瑄</h4>
+                            <p class="student-name-en">Justin</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">10</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <img src="../images/students/memberprofilepic/jae lynn.jpg" alt="Jae Lyn">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_10</h4>
-                            <p class="student-name-en">name_10</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">婕凌</h4>
+                            <p class="student-name-en">Jae Lyn</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">11</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="../images/students/memberprofilepic/lindsey.jpg" alt="Lindsey">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_11</h4>
-                            <p class="student-name-en">name_11</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">黄淑莉</h4>
+                            <p class="student-name-en">Lindsey</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">12</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <img src="../images/students/memberprofilepic/matthew.jpg" alt="Matthew">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_12</h4>
-                            <p class="student-name-en">name_12</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">郭乐信</h4>
+                            <p class="student-name-en">Matthew</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">13</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <img src="../images/students/memberprofilepic/maygan.jpg" alt="Maygan">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_13</h4>
-                            <p class="student-name-en">name_13</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">吴美彦</h4>
+                            <p class="student-name-en">Maygan</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">14</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <img src="../images/students/memberprofilepic/wu ziqi.jpg" alt="Ze Qi">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_14</h4>
-                            <p class="student-name-en">name_14</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">吴子齐</h4>
+                            <p class="student-name-en">Ng Ze Qi</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">15</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <img src="../images/students/memberprofilepic/pingpong.jpg" alt="Ping Pong">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_15</h4>
-                            <p class="student-name-en">name_15</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">梁琼宇</h4>
+                            <p class="student-name-en">Ping Pong</p>
+                            <div class="student-origin">Thailand</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">16</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <img src="../images/students/memberprofilepic/sekhao.jpg" alt="Sek Hao">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_16</h4>
-                            <p class="student-name-en">name_16</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">石嘉豪</h4>
+                            <p class="student-name-en">Sek Kar Hao</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">17</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <img src="../images/students/memberprofilepic/suyu.jpg" alt="SUYU">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_17</h4>
-                            <p class="student-name-en">name_17</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">苏素谊</h4>
+                            <p class="student-name-en">Tze Su Yu</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">18</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+                            <img src="../images/students/memberprofilepic/vincent.jpg" alt="Vincent">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_18</h4>
-                            <p class="student-name-en">name_18</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">刘文锋</h4>
+                            <p class="student-name-en">Vincent</p>
+                            <div class="student-origin">Indonesia</div>
                         </div>
                     </article>
                     <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">19</div>
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="../images/students/memberprofilepic/wanYee.jpg" alt="Wan Yee">
+                        </div>
                         <div class="student-overlay">
-                            <h4 class="student-name">name_19</h4>
-                            <p class="student-name-en">name_19</p>
-                            <div class="student-origin">Country</div>
+                            <h4 class="student-name">邓琬怡</h4>
+                            <p class="student-name-en">Wan Yee</p>
+                            <div class="student-origin">Malaysia</div>
+                        </div>
+                    </article>
+                    <article class="student-card">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="../images/students/memberprofilepic/student18.jpg" alt="Wei Xuan">
+                        </div>
+                        <div class="student-overlay">
+                            <h4 class="student-name">陈伟轩</h4>
+                            <p class="student-name-en">Wei Xuan</p>
+                            <div class="student-origin">Malaysia</div>
                         </div>
                     </article>
                 </div>
@@ -1137,5 +1223,384 @@
             <span class="mono">编程社团</span>
         </div>
     </footer>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="articlePopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="popupTitle"></h2>
+                <button class="close-btn" id="closePopup">×</button>
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="popup-body" id="popupBody">
+                <p>Loading article...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ====================== ANIMATION FUNCTIONS ======================
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.committee-section, .students-section').forEach(el => {
+                el.classList.add('animate-on-scroll');
+                observer.observe(el);
+            });
+        }
+
+        function initParallax() {
+            const hero = document.querySelector('.hero-section');
+            if (!hero) return;
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroHeight = window.innerHeight;
+
+                if (scrolled < heroHeight * 2) {
+                    const bg = hero.querySelector('.hero-background');
+                    const overlay = hero.querySelector('.hero-overlay');
+                    const content = hero.querySelector('.hero-content');
+                    const scrollIndicator = hero.querySelector('.hero-scroll');
+
+                    if (bg) bg.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 + scrolled * 0.0003})`;
+                    if (overlay) overlay.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    if (content) content.style.transform = `translateY(${scrolled * 0.15}px)`;
+                    if (content) content.style.opacity = Math.max(0, 1 - scrolled / heroHeight);
+                    if (scrollIndicator) scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / (heroHeight * 0.5));
+                }
+            }, { passive: true });
+        }
+
+        function initFloatingHeader() {
+            const header = document.querySelector('.header-floating');
+            const hero = document.querySelector('.hero-section');
+            if (!header || !hero) return;
+
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight * 0.6);
+            }, { passive: true });
+        }
+        
+        // ====================== POPUP SYSTEM ======================
+        function openPhotoPopup(title, imagePath) {
+            const popup = document.getElementById('articlePopup');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupBody = document.getElementById('popupBody');
+            const progressBar = document.getElementById('progressBar');
+
+            if (!popup || !popupBody) return;
+                progressBar.style.width = '0%';
+                popupTitle.textContent = title || 'Member Profile';
+                popupBody.innerHTML = `<p>Loading profile...</p>`;
+                let memberInfo = '';
+
+            const upperTitle = title.toUpperCase().trim();
+
+            switch(upperTitle) {
+                case 'ANQI':
+                case 'AN QI':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Ulaanbaatar, Mongolia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Software Engineering, SJTU</p>
+                        <p><a href="https://www.instagram.com/azykka" target="_blank" style="color:#FFD700;">Instagram: @azykka</a></p>
+
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Coding is not just a skill, it’s a superpower that allows us to create, innovate, and shape the future.”
+                        </p>
+                    `;
+                    break;
+
+                case 'OWEN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
+                        <p><a href="https://www.instagram.com/official_owen3ddev" target="_blank" style="color:#FFD700;">Instagram: @official_owen3ddev</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Don't let other's opinions hold you back from reaching out something extraordinary.”
+                        </p>
+                    `;
+                    break;
+
+                case 'KENJI':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Medan, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
+                        <p><a href="https://www.instagram.com/kenzfaustino" target="_blank" style="color:#FFD700;">Instagram: @kenzfaustino</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Programming is the art of turning ideas into reality through logic and creativity.”
+                        </p>
+                    `;
+                    break;
+
+                case 'ELSON':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Johor Bahru, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Mechanical Engineering, SJTU</p>
+                        <p><a href="https://www.instagram.com/elsonyh07" target="_blank" style="color:#FFD700;">Instagram: @elson_loh</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Walk the talk.”
+                        </p>
+                    `;
+                    break;
+                
+                case 'BEAH':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Penang, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Information Engineering, SJTU</p>
+                        <p><a href="https://www.instagram.com/zy_beah" target="_blank" style="color:#FFD700;">Instagram: @zy_beah</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “一直努力学习不如放松和跟朋友相处。”
+                        </p>
+                    `;
+                    break;
+                
+                case 'CHEREEN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/chereen._" target="_blank" style="color:#FFD700;">Instagram: @chereen._</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+
+                case 'DELFINA':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Surabaya, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/delfinamannuela" target="_blank" style="color:#FFD700;">Instagram: @delfinamannuela</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+
+                case 'JUSTIN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Medan, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Antai Economics and Management College, SJTU</p>
+                        <p><a href="https://www.instagram.com/justinconnr13" target="_blank" style="color:#FFD700;">Instagram: @justinconnr13</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “你做的事情只是你想要做，不是别人期望的.”
+                        </p>
+                    `;
+                    break;
+
+                case 'JAE LYN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Selangor, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Biotechnology, SJTU</p>
+                        <p><a href="https://www.instagram.com/jlynn18507" target="_blank" style="color:#FFD700;">Instagram: @jlynn18507</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Just give it a chance and let the fear you have fall away”
+                        </p>
+                    `;
+                    break;
+
+                case 'LINDSEY':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Palembang, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Wuhan University</p>
+                        <p><a href="https://www.instagram.com/llindseywong" target="_blank" style="color:#FFD700;">Instagram: @llindseywong</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Don't be afraid to show your true colors, your true colors are beautiful. ~ Cyndi Lauper”
+                        </p>
+                    `;
+                    break;
+
+                case 'MATTHEW':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Automation, SJTU</p>
+                        <p><a href="https://www.instagram.com/matthew_kawira_ril" target="_blank" style="color:#FFD700;">Instagram: @matthew_kawira_ril</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “失败并非终点，而是通往成功的关键，经验更是无价之宝。”
+                        </p>
+                    `;
+                    break;
+                case 'MAYGAN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Surabaya, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
+                        <p><a href="https://www.instagram.com/maygan_go" target="_blank" style="color:#FFD700;">Instagram: @maygan_go</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “Dreams work when you do.”
+                        </p>
+                    `;
+                    break;
+                case 'NG ZE QI':
+                case 'NGZEQI':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Ipoh, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/zeqi_eva" target="_blank" style="color:#FFD700;">Instagram: @zeqi_eva</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+                case 'PING PONG':
+                case 'PINGPONG':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Bangkok, Thailand</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
+                        <p><a href="https://www.instagram.com/piing._pong" target="_blank" style="color:#FFD700;">Instagram: @piing._pong</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+                case 'SEK KAR HAO':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Kuala Lumpur, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Automation, SJTU</p>
+                        <p><a href="https://www.instagram.com/hao._.735" target="_blank" style="color:#FFD700;">Instagram: @hao._.735</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “People say nothing is impossible , but I do nothing everyday.”
+                        </p>
+                    `;
+                    break;
+
+                case 'TZE SU YU':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Kuching, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Biomedical Engineering, SJTU</p>
+                        <p><a href="https://www.instagram.com/itzz__sharon" target="_blank" style="color:#FFD700;">Instagram: @itzz__sharon</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+
+                case 'VINCENT':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/liuvincentcolin" target="_blank" style="color:#FFD700;">Instagram: @liuvincentcolin</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “数学家玩的是一个他自己发明规则的游戏，而物理学家玩的是规则由自然提供的游戏。但是随着时间的推移，变得越来越明显的是，数学家觉得有趣的规则与自然所选择的规则是相同的。~ 保罗·狄拉克”
+                        </p>
+                    `;
+                    break;
+                case 'WAN YEE':
+                case 'WANYEE':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/t.wanyee" target="_blank" style="color:#FFD700;">Instagram: @t.wanyee</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+                case 'WEI XUAN':
+                case 'WEIXUAN':
+                    memberInfo = `
+                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Kuala Lumpur, Malaysia</p>
+                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
+                        <p><a href="https://www.instagram.com/w0801x" target="_blank" style="color:#FFD700;">Instagram: @w0801x</a></p>
+                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
+                            “The beauty of coding lies in its ability to empower us to solve problems and create new possibilities.”
+                        </p>
+                    `;
+                    break;
+
+                default:
+                    memberInfo = `<p style="color:#ccc;">${title} — Student Member</p>`;
+            }
+
+            popupBody.innerHTML = `
+                <div style="text-align: center;">
+                    <img src="${imagePath}" alt="${title}" 
+                        style="max-width: 100%; max-height: 72vh; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                    ${memberInfo}
+                </div>
+            `;
+
+            popup.style.display = 'flex';
+            setTimeout(() => {
+                popup.style.opacity = '1';
+                popup.querySelector('.popup-content').classList.add('open');
+            }, 10);
+
+            const updateProgress = () => {
+                const scrollTop = popupBody.scrollTop;
+                const scrollHeight = popupBody.scrollHeight - popupBody.clientHeight;
+                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 100;
+                progressBar.style.width = `${progress}%`;
+            };
+
+            popupBody.onscroll = updateProgress;
+            updateProgress();
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('articlePopup');
+            if (!popup) return;
+
+            popup.style.opacity = '0';
+            const content = popup.querySelector('.popup-content');
+            if (content) content.classList.remove('open');
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+                const body = document.getElementById('popupBody');
+                if (body) body.onscroll = null;
+            }, 400);
+        }
+
+        // ====================== INITIALIZATION ======================
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+            initParallax();
+            initFloatingHeader();
+
+            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
+                card.classList.add('hover-lift');
+            });
+
+            // Click handler for committee & student cards
+            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    let title = this.getAttribute('data-title');
+                    
+                    if (!title) {
+                        const nameEl = this.querySelector('.committee-name, .student-name-en');
+                        title = nameEl ? nameEl.textContent.trim() : 'Member';
+                    }
+
+                    const img = this.querySelector('img');
+                    const imagePath = img ? img.src : '';
+
+                    if (imagePath) {
+                        openPhotoPopup(title, imagePath);
+                    }
+                });
+            });
+
+            // Close popup handlers
+            const closeBtn = document.getElementById('closePopup');
+            const popupOverlay = document.getElementById('articlePopup');
+
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+            if (popupOverlay) {
+                popupOverlay.addEventListener('click', (e) => {
+                    if (e.target === popupOverlay) closePopup();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape") closePopup();
+            });
+        });
+    </script>
 </body>
 </html>
