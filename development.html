@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <meta content="Actual output changes and honest version retrospective." name="description" />
+        <meta content="#10245f" name="theme-color" />
+        <title>Development Log | Pre-U Code Collective</title>
+        <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link href="assets/css/styles.css" rel="stylesheet" />
+        <script defer="" src="assets/js/site.js"></script>
+    </head>
+    <body>
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+        <header class="site-header" data-site-header="">
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img alt="" height="44" src="assets/img/logo.svg" width="44" />
+                    <span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        ></span
+                    >
+                </a>
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span><span></span><span></span><span></span>
+                </button>
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a class="" data-en="Home" data-zh="首页" href="index.html">Home</a
+                    ><a class="" data-en="About" data-zh="关于" href="about.html">About</a
+                    ><a class="" data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a class="" data-en="Classes" data-zh="课程" href="classes.html">Classes</a
+                    ><a class="" data-en="Projects" data-zh="项目" href="projects.html">Projects</a
+                    ><a class="" data-en="Pre-U Life" data-zh="预科生活" href="preu-life.html">Pre-U Life</a
+                    ><a class="" data-en="Events" data-zh="活动" href="events.html">Events</a
+                    ><a class="" data-en="AI News" data-zh="AI 新闻" href="news.html">AI News</a
+                    ><a class="" data-en="Prepare" data-zh="准备指南" href="prepare.html">Prepare</a
+                    ><a class="nav-cta" data-en="Contribute" data-zh="参与" href="contact.html">Contribute</a>
+                </nav>
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle="" type="button">
+                        中
+                    </button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle=""
+                        type="button"
+                    >
+                        ♪
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main id="main">
+            <section class="page-hero">
+                <div class="container page-hero-grid">
+                    <div>
+                        <p class="eyebrow" data-en="DEVELOPMENT LOG · V1–V5" data-zh="开发记录 · 第一至第五版">
+                            DEVELOPMENT LOG · V1–V5
+                        </p>
+                        <h1
+                            data-en="Five versions did not improve in a straight line."
+                            data-zh="五个版本并不是一路顺利改进。"
+                        >
+                            Five versions did not improve in a straight line.
+                        </h1>
+                        <p
+                            data-en="Version 1 is assessed from the actual source files. Version 2 was mainly an audience and content strategy. Versions 3–5 produced new prototypes. This page records what each stage changed in the output, what survived, and what had to be reversed."
+                            data-zh="第一版依据真实源文件分析；第二版主要是受众与内容策略；第三至第五版产生了新原型。本页记录各阶段对实际输出的影响、保留内容以及必须撤回的改动。"
+                        >
+                            Version 1 is assessed from the actual source files. Version 2 was mainly an audience and
+                            content strategy. Versions 3–5 produced new prototypes. This page records what each stage
+                            changed in the output, what survived, and what had to be reversed.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="section white">
+                <div class="container">
+                    <div class="section-heading">
+                        <div>
+                            <p class="section-label" data-en="VERSION-BY-VERSION" data-zh="逐版分析">
+                                VERSION-BY-VERSION
+                            </p>
+                            <h2 data-en="What each version actually contributed." data-zh="每个版本真正带来了什么。">
+                                What each version actually contributed.
+                            </h2>
+                        </div>
+                        <p
+                            data-en="A fuller plain-text analysis is included as DEVELOPMENT_ANALYSIS_V1-V5.txt."
+                            data-zh="更完整的纯文本分析收录在 DEVELOPMENT_ANALYSIS_V1-V5.txt。"
+                        >
+                            A fuller plain-text analysis is included as DEVELOPMENT_ANALYSIS_V1-V5.txt.
+                        </p>
+                    </div>
+                    <div class="audit-list">
+                        <article class="audit-item good">
+                            <h3 data-en="Version 1 — real code and real evidence" data-zh="第一版——真实代码与真实资料">
+                                Version 1 — real code and real evidence
+                            </h3>
+                            <p
+                                data-en="The original source created a working bilingual static site with a photographic hero, members, popups, events, news and a 404 page. Its greatest value was not visual polish but the real people, event files and media that later versions could preserve."
+                                data-zh="原始源代码建立了可运行的双语静态网站，包含照片主页、成员、弹窗、活动、新闻与 404 页面。它最大的价值不是视觉精致，而是后续版本可以保留的真实人物、活动文件与媒体。"
+                            >
+                                The original source created a working bilingual static site with a photographic hero,
+                                members, popups, events, news and a 404 page. Its greatest value was not visual polish
+                                but the real people, event files and media that later versions could preserve.
+                            </p>
+                        </article>
+                        <article class="audit-item bad">
+                            <h3
+                                data-en="THIS MADE IT WORSE — Version 1’s popup complexity"
+                                data-zh="这反而更糟——第一版弹窗复杂度"
+                            >
+                                THIS MADE IT WORSE — Version 1’s popup complexity
+                            </h3>
+                            <p
+                                data-en="The elaborate member popup system exposed public social handles and added a large amount of inline code while doing little to help visitors understand classes or projects. The final people page is simpler, removes social handles and adds a consent requirement."
+                                data-zh="复杂的成员弹窗公开社交账号，并增加大量内联代码，却没有帮助访客理解课程与项目。最终成员页更简洁，删除社交账号并加入同意要求。"
+                            >
+                                The elaborate member popup system exposed public social handles and added a large amount
+                                of inline code while doing little to help visitors understand classes or projects. The
+                                final people page is simpler, removes social handles and adds a consent requirement.
+                            </p>
+                        </article>
+                        <article class="audit-item neutral">
+                            <h3 data-en="Version 2 — the right audience question" data-zh="第二版——正确的受众问题">
+                                Version 2 — the right audience question
+                            </h3>
+                            <p
+                                data-en="Version 2 reframed the site for prospective Pre-University students and proposed clearer CTAs, navigation and content hierarchy. Those ideas eventually became the applicant homepage, Pre-U Life page and Preparation Guide."
+                                data-zh="第二版将网站重新定位为面向预科申请者，并提出更清晰的行动按钮、导航与内容层级。这些想法后来成为申请者主页、预科生活页与准备指南。"
+                            >
+                                Version 2 reframed the site for prospective Pre-University students and proposed clearer
+                                CTAs, navigation and content hierarchy. Those ideas eventually became the applicant
+                                homepage, Pre-U Life page and Preparation Guide.
+                            </p>
+                        </article>
+                        <article class="audit-item bad">
+                            <h3
+                                data-en="THIS DIDN’T HELP THE OUTPUT YET — Version 2 stopped at strategy"
+                                data-zh="这当时没有改善输出——第二版停留在策略"
+                            >
+                                THIS DIDN’T HELP THE OUTPUT YET — Version 2 stopped at strategy
+                            </h3>
+                            <p
+                                data-en="The audience notes were useful, but the actual files, one-page limitations, branding risk and broken news popup remained unchanged. A better prompt did not automatically create a better website."
+                                data-zh="受众说明有价值，但真实文件、单页限制、品牌风险与失效新闻弹窗都没有改变。更好的提示词并不会自动产生更好的网站。"
+                            >
+                                The audience notes were useful, but the actual files, one-page limitations, branding
+                                risk and broken news popup remained unchanged. A better prompt did not automatically
+                                create a better website.
+                            </p>
+                        </article>
+                        <article class="audit-item bad">
+                            <h3 data-en="THIS MADE IT WORSE — Version 3 branding" data-zh="这反而更糟——第三版品牌">
+                                THIS MADE IT WORSE — Version 3 branding
+                            </h3>
+                            <p
+                                data-en="Version 3’s modern SJTU-red visual system and “交” mark looked polished but increased the risk of appearing officially affiliated. The final output removes the mark, official logo files and official-style copyright language."
+                                data-zh="第三版的现代交大红视觉与“交”字标志虽然精致，却增加了被误认为官方项目的风险。最终输出删除该标志、官方校徽文件和官方式版权措辞。"
+                            >
+                                Version 3’s modern SJTU-red visual system and “交” mark looked polished but increased
+                                the risk of appearing officially affiliated. The final output removes the mark, official
+                                logo files and official-style copyright language.
+                            </p>
+                        </article>
+                        <article class="audit-item good">
+                            <h3 data-en="Version 4 — the identity correction" data-zh="第四版——身份纠正">
+                                Version 4 — the identity correction
+                            </h3>
+                            <p
+                                data-en="The original code-bracket logo, independent name and visible disclaimer solved a concrete identity problem. These changes survived into the final output, although Version 4 still remained a one-page prototype."
+                                data-zh="原创代码括号标志、独立名称与清晰免责声明解决了具体身份问题。这些变化保留到最终输出，但第四版仍然只是单页原型。"
+                            >
+                                The original code-bracket logo, independent name and visible disclaimer solved a
+                                concrete identity problem. These changes survived into the final output, although
+                                Version 4 still remained a one-page prototype.
+                            </p>
+                        </article>
+                        <article class="audit-item neutral">
+                            <h3
+                                data-en="THIS DIDN’T HELP — Version 5 homepage scope"
+                                data-zh="这并没有帮助——第五版首页范围"
+                            >
+                                THIS DIDN’T HELP — Version 5 homepage scope
+                            </h3>
+                            <p
+                                data-en="Adding Chinese preparation, applications and AI news was useful in principle, but placing everything on the homepage weakened the coding story and still did not document real club life. The final version separates these topics into dedicated pages."
+                                data-zh="加入中文准备、申请和 AI 新闻在方向上有价值，但全部放在首页削弱了编程主线，也仍未记录真实社团生活。最终版本把这些主题拆分为独立页面。"
+                            >
+                                Adding Chinese preparation, applications and AI news was useful in principle, but
+                                placing everything on the homepage weakened the coding story and still did not document
+                                real club life. The final version separates these topics into dedicated pages.
+                            </p>
+                        </article>
+                        <article class="audit-item bad">
+                            <h3 data-en="THIS DIDN’T HELP — the old news popup" data-zh="这并没有帮助——旧新闻弹窗">
+                                THIS DIDN’T HELP — the old news popup
+                            </h3>
+                            <p
+                                data-en="The popup opened but never fetched or displayed the linked article; it only showed a loading message. The final news page uses direct source links."
+                                data-zh="弹窗可以打开，却从未获取或展示链接文章，只显示加载信息。最终新闻页改用原始来源直达链接。"
+                            >
+                                The popup opened but never fetched or displayed the linked article; it only showed a
+                                loading message. The final news page uses direct source links.
+                            </p>
+                        </article>
+                        <article class="audit-item neutral">
+                            <h3 data-en="Montserrat alone was not enough" data-zh="只用 Montserrat 不够">
+                                Montserrat alone was not enough
+                            </h3>
+                            <p
+                                data-en="Montserrat improved Latin typography but did not provide a professional Chinese type system. The final site pairs it with Noto Sans SC."
+                                data-zh="Montserrat 改善了拉丁文字排版，却不能构成专业中文字体系统。最终网站将其与 Noto Sans SC 搭配。"
+                            >
+                                Montserrat improved Latin typography but did not provide a professional Chinese type
+                                system. The final site pairs it with Noto Sans SC.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="section-heading">
+                        <div>
+                            <p class="section-label" data-en="ACTUAL FINAL OUTPUT" data-zh="最终实际输出">
+                                ACTUAL FINAL OUTPUT
+                            </p>
+                            <h2 data-en="What changed in the files." data-zh="文件中真正改变了什么。">
+                                What changed in the files.
+                            </h2>
+                        </div>
+                        <p
+                            data-en="The ZIP root includes FINAL_OUTPUT_CHANGES.txt, DEVELOPMENT_ANALYSIS_V1-V5.txt and COPY-PASTE-SNIPPETS.txt."
+                            data-zh="ZIP 根目录包含 FINAL_OUTPUT_CHANGES.txt、DEVELOPMENT_ANALYSIS_V1-V5.txt 与 COPY-PASTE-SNIPPETS.txt。"
+                        >
+                            The ZIP root includes FINAL_OUTPUT_CHANGES.txt, DEVELOPMENT_ANALYSIS_V1-V5.txt and
+                            COPY-PASTE-SNIPPETS.txt.
+                        </p>
+                    </div>
+                    <div class="cards-3">
+                        <article class="card">
+                            <div class="card-icon">15+</div>
+                            <h3 data-en="Connected pages" data-zh="互联页面">Connected pages</h3>
+                            <p
+                                data-en="The final build replaces the one-page approach with topic pages and individual event galleries."
+                                data-zh="最终版本用主题页面和独立活动相册取代单页方式。"
+                            >
+                                The final build replaces the one-page approach with topic pages and individual event
+                                galleries.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <div class="card-icon">REAL</div>
+                            <h3 data-en="Source-grounded content" data-zh="基于真实资料的内容">
+                                Source-grounded content
+                            </h3>
+                            <p
+                                data-en="Report figures, class topics, challenges, people and event folders replace abstract promotional claims."
+                                data-zh="报告数据、课程主题、挑战、成员与活动文件夹取代抽象宣传。"
+                            >
+                                Report figures, class topics, challenges, people and event folders replace abstract
+                                promotional claims.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <div class="card-icon">A11Y</div>
+                            <h3 data-en="Shared accessible system" data-zh="共享无障碍系统">
+                                Shared accessible system
+                            </h3>
+                            <p
+                                data-en="Navigation, bilingual text, lightboxes, filters, reduced-motion support and optional sound now use shared code."
+                                data-zh="导航、双语文本、图片放大、筛选、减少动画支持和可选声音现在使用共享代码。"
+                            >
+                                Navigation, bilingual text, lightboxes, filters, reduced-motion support and optional
+                                sound now use shared code.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
+                </p>
+            </div>
+        </aside>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html"
+                    ><img alt="" src="assets/img/logo.svg" /><span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        ></span
+                    ></a
+                >
+                <nav>
+                    <a data-en="Annual report" data-zh="年度报告" href="report.html">Annual report</a
+                    ><a data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a data-en="Development log" data-zh="开发记录" href="development.html">Development log</a
+                    ><a data-en="Contact" data-zh="联系" href="contact.html">Contact</a>
+                </nav>
+                <p>© 2026 Pre-U Code Collective</p>
+            </div>
+        </footer>
+        <audio data-ui-audio="" preload="none" src="assets/audio/ui-click.mp3"></audio>
+        <dialog class="lightbox" data-lightbox="">
+            <button aria-label="Close" class="lightbox-close" type="button">×</button><img alt="" />
+            <p></p>
+        </dialog>
+    </body>
+</html>

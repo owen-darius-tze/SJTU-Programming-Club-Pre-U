@@ -1,333 +1,495 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影像 - SJTU Programming Club</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: grid;
-            margin: auto;
-            max-width: 1200px;
-            min-height: 100vh;
-            grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto auto;
-            grid-template-areas:
-                "heading logo"
-                "top-nav top-nav"
-                "catalog catalog"
-                "bottom-nav bottom-nav"
-                "footer footer";
-            gap: 20px;
-            padding: 20px;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* ===== HEADER & LOGO ===== */
-        header {
-            border-radius: 10px;
-            background-color: #AD1730;
-            grid-area: heading;
-            text-align: center;
-            padding: 15px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo {
-            grid-area: logo;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .logo img {
-            max-height: 100px;
-            width: auto;
-            border-radius: 10px;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .top-nav {
-            grid-area: top-nav;
-            background-color: #AD1730;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            gap: 20px;
-        }
-
-        .top-nav a {
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            color: white;
-            border-radius: 25px;
-        }
-
-        .top-nav a:hover {
-            background-color: #002B60;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.4);
-            padding: 5px;
-            border-radius: 30px;
-            display: flex;
-            gap: 4px;
-            z-index: 200;
-        }
-
-        .lang-btn {
-            padding: 8px 18px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active {
-            background: #FFD700;
-            color: #002B60;
-        }
-
-        .lang-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.15);
-        }
-
-        /* ===== CATALOG ===== */
-        .catalog {
-            grid-area: catalog;
-            background-color: #002B60;
-            border-radius: 10px;
-            padding: 30px;
-        }
-
-        .catalog h2 {
-            margin-bottom: 25px;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 10px;
-            text-align: center;
-            color: white;
-        }
-
-        .catalog-item {
-            gap: 2px;
-            border-radius: 10px;
-            background-color: #AD1730;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .catalog-item:hover {
-            background-color: #002B60;
-            transform: translateY(-2px);
-        }
-
-        .catalog-item a {
-            text-decoration: none;
-            color: #FFD700;
-        }
-
-        .catalog-item a:hover {
-            text-decoration: underline;
-        }
-
-        .catalog-item img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .catalog-item h3 {
-            text-align: center;
-            color: white;
-        }
-
-        /* ===== BOTTOM NAVIGATION ===== */
-        .bottom-nav {
-            grid-area: bottom-nav;
-            background-color: #AD1730;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            gap: 20px;
-        }
-
-        .bottom-nav a {
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            color: white;
-            border-radius: 25px;
-        }
-
-        .bottom-nav a:hover {
-            background-color: #002B60;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        footer {
-            grid-area: footer;
-            background-color: #AD1730;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-        <header>
-            <h1>编程社团 - SJTU Programming Club - 学期2025-2026</h1>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <meta content="Student event and life archive." name="description" />
+        <meta content="#10245f" name="theme-color" />
+        <title>Events | Pre-U Code Collective</title>
+        <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link href="assets/css/styles.css" rel="stylesheet" />
+        <script defer="" src="assets/js/site.js"></script>
+    </head>
+    <body>
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+        <header class="site-header" data-site-header="">
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img alt="" height="44" src="assets/img/logo.svg" width="44" />
+                    <span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        ></span
+                    >
+                </a>
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span><span></span><span></span><span></span>
+                </button>
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a class="" data-en="Home" data-zh="首页" href="index.html">Home</a
+                    ><a class="" data-en="About" data-zh="关于" href="about.html">About</a
+                    ><a class="" data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a class="" data-en="Classes" data-zh="课程" href="classes.html">Classes</a
+                    ><a class="" data-en="Projects" data-zh="项目" href="projects.html">Projects</a
+                    ><a class="" data-en="Pre-U Life" data-zh="预科生活" href="preu-life.html">Pre-U Life</a
+                    ><a class="active" data-en="Events" data-zh="活动" href="events.html">Events</a
+                    ><a class="" data-en="AI News" data-zh="AI 新闻" href="news.html">AI News</a
+                    ><a class="" data-en="Prepare" data-zh="准备指南" href="prepare.html">Prepare</a
+                    ><a class="nav-cta" data-en="Contribute" data-zh="参与" href="contact.html">Contribute</a>
+                </nav>
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle="" type="button">
+                        中
+                    </button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle=""
+                        type="button"
+                    >
+                        ♪
+                    </button>
+                </div>
+            </div>
         </header>
-
-        <div class="logo">
-            <a href="index.html" aria-label="Home page">
-                <img src="images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100">
-            </a>
-        </div>
-
-        <nav class="top-nav" aria-label="Main navigation">
-            <a href="documentations.html" data-en="Photography/Video" data-zh="摄影/视频">Photography/Video</a>
-        </nav>
-
-        <div class="language-switcher">
-            <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn active">EN</button>
-            <button onclick="switchLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
-        </div>
-
-        <div class="catalog">
-            <h2 data-en="Events List" data-zh="节目目录">Events List</h2>
-            <div class="catalog-item">
-                <a href="events/lifeinshanghai.html">
-                    <h3 data-en="Life in Shanghai", data-zh="上海生活">Life in Shanghai</h3>
-                </a>
+        <main id="main">
+            <section class="page-hero">
+                <div class="container page-hero-grid">
+                    <div>
+                        <p class="eyebrow" data-en="EVENT ARCHIVE" data-zh="活动档案">EVENT ARCHIVE</p>
+                        <h1
+                            data-en="Student life, culture, competitions and university exploration."
+                            data-zh="记录学生生活、文化、比赛与大学探索。"
+                        >
+                            Student life, culture, competitions and university exploration.
+                        </h1>
+                        <p
+                            data-en="The old documentation page has been replaced by a responsive archive with direct event pages and optimized local images."
+                            data-zh="旧的资料页已被响应式活动档案取代，每项活动都有独立页面和经过优化的本地图片。"
+                        >
+                            The old documentation page has been replaced by a responsive archive with direct event pages
+                            and optimized local images.
+                        </p>
+                    </div>
+                    <div class="page-hero-image">
+                        <img alt="" loading="eager" src="assets/img/events/culture-festival/01.webp" />
+                    </div>
+                </div>
+            </section>
+            <section class="section white">
+                <div class="container">
+                    <div class="filter-row">
+                        <button class="selected" data-en="All" data-filter="all" data-zh="全部">All</button
+                        ><button data-en="Coding" data-filter="coding" data-zh="编程">Coding</button
+                        ><button data-en="Culture" data-filter="culture" data-zh="文化">Culture</button
+                        ><button data-en="Competitions" data-filter="competition" data-zh="比赛">Competitions</button
+                        ><button data-en="University" data-filter="university" data-zh="大学">University</button
+                        ><button data-en="Daily life" data-filter="life" data-zh="日常生活">Daily life</button
+                        ><button data-en="Community" data-filter="community" data-zh="社群">Community</button
+                        ><button data-en="Milestones" data-filter="milestone" data-zh="重要节点">Milestones</button>
+                    </div>
+                    <div class="event-grid">
+                        <article class="event-card reveal" data-category="milestone">
+                            <img
+                                alt="Pre-University Graduation 2026"
+                                loading="lazy"
+                                src="assets/img/events/graduation-2026/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Milestone" data-zh="Milestone">Milestone</span
+                                    ><time datetime="2026-05-07">7 May 2026</time>
+                                </div>
+                                <h3 data-en="Pre-University Graduation 2026" data-zh="2026 预科结业典礼">
+                                    Pre-University Graduation 2026
+                                </h3>
+                                <p
+                                    data-en="The graduation ceremony marked the completion of the one-year academic program and brought students, teachers and friends together for a final celebration."
+                                    data-zh="结业典礼标志着一年制预科课程的完成，学生、教师和朋友共同庆祝这一阶段的结束。"
+                                >
+                                    The graduation ceremony marked the completion of the one-year academic program and
+                                    brought students, teachers and friends together for a final celebration.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/graduation-2026.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="coding">
+                            <img
+                                alt="First Day of Coding"
+                                loading="lazy"
+                                src="assets/img/events/first-day-coding/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Coding" data-zh="Coding">Coding</span
+                                    ><time datetime="2026-04-30">30 Apr 2026</time>
+                                </div>
+                                <h3 data-en="First Day of Coding" data-zh="编程第一天">First Day of Coding</h3>
+                                <p
+                                    data-en="The club’s first documented coding session introduced basic HTML structure and guided students through creating a first web page."
+                                    data-zh="俱乐部第一次有记录的编程课介绍了 HTML 的基本结构，并带领学生创建第一个网页。"
+                                >
+                                    The club’s first documented coding session introduced basic HTML structure and
+                                    guided students through creating a first web page.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/first-day-coding.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="culture">
+                            <img
+                                alt="Minhang Culture Park Field Trip"
+                                loading="lazy"
+                                src="assets/img/events/minhang-culture-park/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Culture" data-zh="Culture">Culture</span
+                                    ><time datetime="2026-04-17">17 Apr 2026</time>
+                                </div>
+                                <h3 data-en="Minhang Culture Park Field Trip" data-zh="闵行文化公园考察">
+                                    Minhang Culture Park Field Trip
+                                </h3>
+                                <p
+                                    data-en="Students visited Minhang Culture Park; some also joined Earth Day activities near Hechuan Road and learned about sustainability."
+                                    data-zh="学生参观闵行文化公园，部分同学还参加了合川路附近的地球日活动，了解可持续发展。"
+                                >
+                                    Students visited Minhang Culture Park; some also joined Earth Day activities near
+                                    Hechuan Road and learned about sustainability.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/minhang-culture-park.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="university">
+                            <img
+                                alt="Zhejiang University Admissions Seminar"
+                                loading="lazy"
+                                src="assets/img/events/zhejiang-university-seminar/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="University" data-zh="University">University</span
+                                    ><time datetime="2026-01-01">2025–2026</time>
+                                </div>
+                                <h3 data-en="Zhejiang University Admissions Seminar" data-zh="浙江大学招生宣讲会">
+                                    Zhejiang University Admissions Seminar
+                                </h3>
+                                <p
+                                    data-en="Admissions teams introduced university history, subject strengths, Chinese- and English-taught pathways, application conditions and campus life, followed by student questions."
+                                    data-zh="招生团队介绍学校历史、学科优势、中英文项目、申请条件与校园生活，并与预科学生进行问答交流。"
+                                >
+                                    Admissions teams introduced university history, subject strengths, Chinese- and
+                                    English-taught pathways, application conditions and campus life, followed by student
+                                    questions.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/zhejiang-university-seminar.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="competition">
+                            <img
+                                alt="Chinese Poem Recital Competition"
+                                loading="lazy"
+                                src="assets/img/events/chinese-recitation/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Competition" data-zh="Competition">Competition</span
+                                    ><time datetime="2025-12-26">26 Dec 2025</time>
+                                </div>
+                                <h3 data-en="Chinese Poem Recital Competition" data-zh="中文朗诵比赛">
+                                    Chinese Poem Recital Competition
+                                </h3>
+                                <p
+                                    data-en="Students presented classical Chinese poetry through recitation, costumes and group performances."
+                                    data-zh="学生通过朗诵、服装和集体表演展示中国古典诗词。"
+                                >
+                                    Students presented classical Chinese poetry through recitation, costumes and group
+                                    performances.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/chinese-recitation.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="community">
+                            <img
+                                alt="Year-End Celebration"
+                                loading="lazy"
+                                src="assets/img/events/year-end-celebration/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Community" data-zh="Community">Community</span
+                                    ><time datetime="2025-12-19">19 Dec 2025</time>
+                                </div>
+                                <h3 data-en="Year-End Celebration" data-zh="年终庆祝活动">Year-End Celebration</h3>
+                                <p
+                                    data-en="A Christmas and year-end event brought together the Lifelong Education College and Pre-University community for performances, awards and celebration."
+                                    data-zh="圣诞与年终活动汇聚终身教育学院和预科社区，包含表演、颁奖和庆祝环节。"
+                                >
+                                    A Christmas and year-end event brought together the Lifelong Education College and
+                                    Pre-University community for performances, awards and celebration.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/year-end-celebration.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="competition">
+                            <img
+                                alt="English Public Speaking Competition"
+                                loading="lazy"
+                                src="assets/img/events/public-speaking/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Competition" data-zh="Competition">Competition</span
+                                    ><time datetime="2025-12-05">5 Dec 2025</time>
+                                </div>
+                                <h3 data-en="English Public Speaking Competition" data-zh="英语演讲比赛">
+                                    English Public Speaking Competition
+                                </h3>
+                                <p
+                                    data-en="Students presented in English on subjects ranging from mental health to artificial intelligence, developing confidence and presentation skills."
+                                    data-zh="学生用英语围绕心理健康、人工智能等主题进行演讲，锻炼表达能力和自信心。"
+                                >
+                                    Students presented in English on subjects ranging from mental health to artificial
+                                    intelligence, developing confidence and presentation skills.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/public-speaking.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="university">
+                            <img
+                                alt="Visit to SJTU Minhang Campus"
+                                loading="lazy"
+                                src="assets/img/events/visit-sjtu-minhang/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="University" data-zh="University">University</span
+                                    ><time datetime="2025-12-03">3 Dec 2025</time>
+                                </div>
+                                <h3 data-en="Visit to SJTU Minhang Campus" data-zh="参观上海交通大学闵行校区">
+                                    Visit to SJTU Minhang Campus
+                                </h3>
+                                <p
+                                    data-en="The campus visit helped Pre-University students explore facilities and learn more about undergraduate study at the university."
+                                    data-zh="此次校园参观让预科学生了解闵行校区设施，并进一步认识本科阶段的学习环境。"
+                                >
+                                    The campus visit helped Pre-University students explore facilities and learn more
+                                    about undergraduate study at the university.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/visit-sjtu-minhang.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="culture">
+                            <img
+                                alt="International Culture Festival"
+                                loading="lazy"
+                                src="assets/img/events/culture-festival/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Culture" data-zh="Culture">Culture</span
+                                    ><time datetime="2025-11-21">21 Nov 2025</time>
+                                </div>
+                                <h3 data-en="International Culture Festival" data-zh="国际文化节">
+                                    International Culture Festival
+                                </h3>
+                                <p
+                                    data-en="International students and faculty shared performances, clothing, food and cultural activities with the wider Pre-University community."
+                                    data-zh="国际学生和教师通过表演、服饰、美食与文化活动，向预科社区展示不同国家与地区的文化。"
+                                >
+                                    International students and faculty shared performances, clothing, food and cultural
+                                    activities with the wider Pre-University community.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/culture-festival.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="culture">
+                            <img
+                                alt="Guangfulin Field Trip"
+                                loading="lazy"
+                                src="assets/img/events/guangfulin-field-trip/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Culture" data-zh="Culture">Culture</span
+                                    ><time datetime="2025-11-19">19 Nov 2025</time>
+                                </div>
+                                <h3 data-en="Guangfulin Field Trip" data-zh="广富林野外考察">Guangfulin Field Trip</h3>
+                                <p
+                                    data-en="Students visited the Guangfulin archaeological and cultural site and explored its long history and significance to Shanghai."
+                                    data-zh="学生参观广富林考古与文化遗址，了解其悠久历史以及对上海城市文化的重要意义。"
+                                >
+                                    Students visited the Guangfulin archaeological and cultural site and explored its
+                                    long history and significance to Shanghai.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/guangfulin-field-trip.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="competition">
+                            <img
+                                alt="English Spelling Bee"
+                                loading="lazy"
+                                src="assets/img/events/spelling-bee/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Competition" data-zh="Competition">Competition</span
+                                    ><time datetime="2025-10-01">Oct 2025</time>
+                                </div>
+                                <h3 data-en="English Spelling Bee" data-zh="英语拼写大赛">English Spelling Bee</h3>
+                                <p
+                                    data-en="International students demonstrated spelling ability and technical English knowledge through several rounds and a final award ceremony."
+                                    data-zh="国际学生通过多轮比赛和颁奖环节展示英语拼写能力与专业词汇知识。"
+                                >
+                                    International students demonstrated spelling ability and technical English knowledge
+                                    through several rounds and a final award ceremony.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/spelling-bee.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                        <article class="event-card reveal" data-category="life">
+                            <img
+                                alt="Life in Shanghai"
+                                loading="lazy"
+                                src="assets/img/events/life-in-shanghai/01.webp"
+                            />
+                            <div>
+                                <div class="event-meta">
+                                    <span data-en="Life" data-zh="Life">Life</span
+                                    ><time datetime="2025-09-01">2025–2026</time>
+                                </div>
+                                <h3 data-en="Life in Shanghai" data-zh="上海生活">Life in Shanghai</h3>
+                                <p
+                                    data-en="A collection of everyday moments inside and outside class: campus life, meals, physical education, city visits and New Year’s Eve."
+                                    data-zh="记录课堂内外的日常时刻，包括校园生活、聚餐、体育课、城市探索和跨年活动。"
+                                >
+                                    A collection of everyday moments inside and outside class: campus life, meals,
+                                    physical education, city visits and New Year’s Eve.
+                                </p>
+                                <a
+                                    class="text-link"
+                                    data-en="Open gallery →"
+                                    data-zh="打开相册 →"
+                                    href="events/life-in-shanghai.html"
+                                    >Open gallery →</a
+                                >
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
+                </p>
             </div>
-            <div class="catalog-item">
-                <a href="events/recitezhongwen.html">
-                    <h3 data-en="Chinese Recitation", data-zh="中文朗诵比赛">Chinese Recitation</h3>
-                </a>
+        </aside>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html"
+                    ><img alt="" src="assets/img/logo.svg" /><span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        ></span
+                    ></a
+                >
+                <nav>
+                    <a data-en="Annual report" data-zh="年度报告" href="report.html">Annual report</a
+                    ><a data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a data-en="Development log" data-zh="开发记录" href="development.html">Development log</a
+                    ><a data-en="Contact" data-zh="联系" href="contact.html">Contact</a>
+                </nav>
+                <p>© 2026 Pre-U Code Collective</p>
             </div>
-            <div class="catalog-item">
-                <a href="events/culturefest.html">
-                    <h3 data-en="Culture Festival", data-zh="国际文化节">Culture Festival</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/culturepark.html">
-                    <h3 data-en="Culture Park Field Trip", data-zh="文化公园考察">Culture Park</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/firstdayofcoding.html">
-                    <h3 data-en="First Day of Coding", data-zh="编程第一天">First Day of Coding</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/graduation-pics.html">
-                    <h3 data-en="Graduation 2026", data-zh="2026届结业典礼">Graduation 2026</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/publicspeak.html">
-                    <h3 data-en="English Public Speaking Competition", data-zh="英语演讲比赛">English Public Speaking Competition</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/spellingbee.html">
-                    <h3 data-en="Spelling Bee Competition", data-zh="拼写比赛">Spelling Bee Competition</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/guangfulin.html">
-                    <h3 data-en="Visit to Guangfulin", data-zh="广富林考察">Visit to Guangfulin</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/visitsjtu.html">
-                    <h3 data-en="Visit to SJTU Minhang", data-zh="参观上海交通大学闵行校区">Visit to SJTU Minhang</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/yearend.html">
-                    <h3 data-en="Year-End Celebration", data-zh="年终庆典">Year-End Celebration</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <a href="events/zheda.html">
-                    <h3 data-en="Zhejiang University Seminar", data-zh="浙大宣讲">Zhejiang University Seminar</h3>
-                </a>
-            </div>
-            <div class="catalog-item">
-                <h3 data-zh="敬请期待",data-en="Coming soon...">Coming soon...</h3>
-            </div>
-        </div>
-
-        <nav class="bottom-nav" aria-label="Secondary navigation">
-            <a href="news.html" data-en="News Articles" data-zh="新闻报告">News Articles</a>
-        </nav>
-
-        <footer data-en="Copyright ©2026 SJTU Pre Uni. All rights reserved." 
-            data-zh="Copyright ©2026 SJTU Pre Uni. 版权所有。">
-            Copyright ©2026 SJTU Pre Uni. All rights reserved.
         </footer>
-
-        <script>
-            // ==================== LANGUAGE SYSTEM ====================
-            let currentLang = 'en';
-
-            function switchLanguage(lang) {
-                currentLang = lang;
-
-                // Update active button
-                document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-                document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-
-                // Translate all elements with data-en / data-zh
-                document.querySelectorAll('[data-en]').forEach(el => {
-                    const text = el.getAttribute(`data-${lang}`);
-                    if (text) el.textContent = text;
-                });
-
-                // Save preference
-                localStorage.setItem('language', lang);
-            }
-            // ==================== INITIALIZATION ====================
-            document.addEventListener('DOMContentLoaded', () => {
-                // Load saved language
-                const savedLang = localStorage.getItem('language') || 'en';
-                switchLanguage(savedLang);
-            });
-        </script>
-</body>
+        <audio data-ui-audio="" preload="none" src="assets/audio/ui-click.mp3"></audio>
+        <dialog class="lightbox" data-lightbox="">
+            <button aria-label="Close" class="lightbox-close" type="button">×</button><img alt="" />
+            <p></p>
+        </dialog>
+    </body>
 </html>

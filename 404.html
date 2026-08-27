@@ -1,80 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | 编程社团</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #002B60;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-        }
-
-        h1 {
-            font-size: 8rem;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #AD1730;
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #002B60;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .chinese-text {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #aaa;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
-        <p>The page you're looking for doesn't exist or has been moved.</p>
-        <p class="chinese-text">您访问的页面不存在或已被移动。</p>
-        <a href="index.html" class="btn">返回首页 - Go Home</a>
-    </div>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <meta content="Page not found." name="description" />
+        <meta content="#10245f" name="theme-color" />
+        <title>Page not found | Pre-U Code Collective</title>
+        <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link href="assets/css/styles.css" rel="stylesheet" />
+        <script defer="" src="assets/js/site.js"></script>
+    </head>
+    <body>
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+        <header class="site-header" data-site-header="">
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img alt="" height="44" src="assets/img/logo.svg" width="44" />
+                    <span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        ></span
+                    >
+                </a>
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span><span></span><span></span><span></span>
+                </button>
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a class="" data-en="Home" data-zh="首页" href="index.html">Home</a
+                    ><a class="" data-en="About" data-zh="关于" href="about.html">About</a
+                    ><a class="" data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a class="" data-en="Classes" data-zh="课程" href="classes.html">Classes</a
+                    ><a class="" data-en="Projects" data-zh="项目" href="projects.html">Projects</a
+                    ><a class="" data-en="Pre-U Life" data-zh="预科生活" href="preu-life.html">Pre-U Life</a
+                    ><a class="" data-en="Events" data-zh="活动" href="events.html">Events</a
+                    ><a class="" data-en="AI News" data-zh="AI 新闻" href="news.html">AI News</a
+                    ><a class="" data-en="Prepare" data-zh="准备指南" href="prepare.html">Prepare</a
+                    ><a class="nav-cta" data-en="Contribute" data-zh="参与" href="contact.html">Contribute</a>
+                </nav>
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle="" type="button">
+                        中
+                    </button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle=""
+                        type="button"
+                    >
+                        ♪
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main id="main">
+            <section class="page-hero" style="min-height: 70vh; display: grid; align-items: center">
+                <div class="container" style="text-align: center">
+                    <p class="eyebrow">ERROR 404</p>
+                    <h1 data-en="This page was not found." data-zh="没有找到这个页面。">This page was not found.</h1>
+                    <p
+                        data-en="The link may be old or the page may have moved into the new multi-page archive."
+                        data-zh="该链接可能已过期，或页面已移动到新的多页档案中。"
+                    >
+                        The link may be old or the page may have moved into the new multi-page archive.
+                    </p>
+                    <div class="actions" style="justify-content: center">
+                        <a class="button button-primary" data-en="Return home" data-zh="返回首页" href="index.html"
+                            >Return home</a
+                        ><a
+                            class="button button-secondary"
+                            data-en="Browse events"
+                            data-zh="浏览活动"
+                            href="events.html"
+                            >Browse events</a
+                        >
+                    </div>
+                </div>
+            </section>
+        </main>
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
+                </p>
+            </div>
+        </aside>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html"
+                    ><img alt="" src="assets/img/logo.svg" /><span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        ></span
+                    ></a
+                >
+                <nav>
+                    <a data-en="Annual report" data-zh="年度报告" href="report.html">Annual report</a
+                    ><a data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a data-en="Development log" data-zh="开发记录" href="development.html">Development log</a
+                    ><a data-en="Contact" data-zh="联系" href="contact.html">Contact</a>
+                </nav>
+                <p>© 2026 Pre-U Code Collective</p>
+            </div>
+        </footer>
+        <audio data-ui-audio="" preload="none" src="assets/audio/ui-click.mp3"></audio>
+        <dialog class="lightbox" data-lightbox="">
+            <button aria-label="Close" class="lightbox-close" type="button">×</button><img alt="" />
+            <p></p>
+        </dialog>
+    </body>
 </html>

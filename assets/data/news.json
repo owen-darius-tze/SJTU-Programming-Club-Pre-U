@@ -1,0 +1,62 @@
+[
+    {
+        "cat": "china-ai",
+        "date": "17 Jul 2026",
+        "iso": "2026-07-17",
+        "icon": "AI",
+        "title_en": "WAIC 2026 brings more than 1,100 companies and 3,000 exhibits to Shanghai",
+        "title_zh": "2026 世界人工智能大会在上海汇聚 1100 多家企业和 3000 多项展品",
+        "summary_en": "The official Shanghai event guide reported more than 300 global product debuts and a major focus on robots, AI agents and applications moving into everyday life.",
+        "summary_zh": "上海官方活动介绍称，大会包含 300 多项全球首发产品，重点展示机器人、智能体以及人工智能走向现实生活的应用。",
+        "source": "International Services Shanghai",
+        "url": "https://english.shanghai.gov.cn/en-ParticipateExplore/20260717/36193160d9d94efb9c0aa5fa4fbed5fd.html"
+    },
+    {
+        "cat": "china-ai",
+        "date": "17 Jul 2026",
+        "iso": "2026-07-17",
+        "icon": "OS",
+        "title_en": "China promotes open-source AI, access and global governance at the Shanghai conference",
+        "title_zh": "中国在上海大会上强调开源人工智能、普惠使用与全球治理",
+        "summary_en": "Reuters reported that China presented open-source AI and international training partnerships as part of a wider strategy on access, safety and governance. The geopolitical framing remains contested.",
+        "summary_zh": "路透社报道，中国把开源人工智能和国际培训合作纳入更广泛的普惠、安全与治理战略；相关地缘政治解读仍存在争议。",
+        "source": "Reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/chinas-xi-promotes-chinas-commitment-ai-access-speech-shanghai-conference-2026-07-17/"
+    },
+    {
+        "cat": "robotics",
+        "date": "20 Jul 2026",
+        "iso": "2026-07-20",
+        "icon": "RB",
+        "title_en": "Shanghai conference photos highlight robotics and increasingly competitive Chinese open models",
+        "title_zh": "上海大会图片展示机器人进展与更具竞争力的中国开源模型",
+        "summary_en": "The Associated Press highlighted hundreds of humanoid robots and the growing presence of Chinese open-source models. Demonstrations do not by themselves prove reliability or mass-market readiness.",
+        "summary_zh": "美联社报道重点呈现数百台人形机器人以及中国开源模型的增长。展会演示本身并不能证明可靠性或大规模商业成熟度。",
+        "source": "Associated Press",
+        "url": "https://apnews.com/article/0f3f6e69f1c1e2b8b077d8d8af7efd52"
+    },
+    {
+        "cat": "sjtu",
+        "date": "24 Jul 2026",
+        "iso": "2026-07-24",
+        "icon": "SJ",
+        "title_en": "SJTU team showcases an AI-assisted adolescent scoliosis assessment system",
+        "title_zh": "上海交通大学团队展示人工智能辅助青少年脊柱侧弯评估系统",
+        "summary_en": "SJTU reported that the VeriSpine system combines wearable sensing and an AI algorithm to support screening and personalized intervention recommendations. The article describes a research achievement, not a general clinical guarantee.",
+        "summary_zh": "上海交通大学介绍 VeriSpine 系统如何结合可穿戴传感与人工智能算法，用于筛查和个性化干预建议。该报道介绍研究成果，并不等同于普遍临床保证。",
+        "source": "SJTU official news",
+        "url": "https://en.sjtu.edu.cn/news-events/news/3363"
+    },
+    {
+        "cat": "sjtu",
+        "date": "2 Apr 2026",
+        "iso": "2026-04-02",
+        "icon": "LC",
+        "title_en": "SJTU launches an AI-enabled low-carbon transformation micro-degree",
+        "title_zh": "上海交通大学推出“人工智能赋能低碳转型”微专业",
+        "summary_en": "The university describes a year-long interdisciplinary program connecting AI with renewable energy, carbon management, circular economy and smart cities through theory, cases and practical projects.",
+        "summary_zh": "学校介绍该一年制跨学科项目将人工智能与可再生能源、碳管理、循环经济和智慧城市相结合，并包含理论、案例和实践项目。",
+        "source": "SJTU official news",
+        "url": "https://en.sjtu.edu.cn/news-events/news/2509"
+    }
+]

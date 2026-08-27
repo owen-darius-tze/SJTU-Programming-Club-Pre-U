@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-# Sitemap: https://your-domain.com/sitemap.xml
-
-# Disallow admin or private areas if applicable
-# Disallow: /admin/
+Sitemap: https://sjtupreucoding.netlify.app/sitemap.xml

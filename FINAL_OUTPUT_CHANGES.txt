@@ -1,0 +1,167 @@
+FINAL WEBSITE OUTPUT CHANGES
+============================
+Updated: 28 July 2026
+
+This file describes changes made in the actual website output, not only changes in the prompt.
+
+VERSION 1 SOURCE → FINAL OUTPUT
+===============================
+PRESERVED FROM THE ORIGINAL WORKING SITE
+- Real committee/member photographs and names, subject to consent review.
+- Existing event pages, event photographs and bilingual labels.
+- English/Chinese switching and saved language preference.
+- Static HTML/CSS/JavaScript deployment suitable for Netlify.
+- The idea of a separate event archive, news area and bilingual 404 page.
+
+REBUILT FROM VERSION 1
+- The monolithic homepage became focused pages for About, People, Classes, Projects, Pre-U Life, Events, AI News, Preparation, Report, Development and Contact.
+- Repeated inline page styles were replaced with one shared responsive stylesheet.
+- Repeated page scripts were replaced with shared JavaScript.
+- Hover-only and generic clickable cards were rebuilt with clearer links, buttons and accessible lightboxes.
+- The inconsistent homepage/event/news/404 visual systems were unified.
+- Fragile relative paths and legacy routes were normalized while old event URLs were preserved.
+
+REMOVED OR RETIRED FROM VERSION 1
+- Official SJTU logo assets from the deployable interface.
+- Official-sounding “SJTU Pre Uni. All rights reserved” copyright wording.
+- Public Instagram handles in default member profiles.
+- The news popup that displayed “Loading content...” without loading the article.
+- External hotlinked news images.
+- Page-specific red/navy/gold layouts that conflicted with one another.
+
+VERSION 2 STRATEGY → FINAL OUTPUT
+=================================
+IMPLEMENTED FROM THE VERSION 2 AUDIENCE PIVOT
+- Reframed the homepage for prospective Pre-University students, especially readers aged 17–18.
+- Added clearer calls to explore classes, projects, Pre-U life and preparation.
+- Added dedicated applicant-oriented Pre-U Life and Preparation pages.
+- Improved content hierarchy and route depth instead of presenting everything as an internal archive.
+- Kept bilingual presentation and plain-language explanations.
+
+WHAT VERSION 2 DID NOT CHANGE AT THE TIME
+- Version 2 was mainly a content and audience plan, not a full coded build.
+- It did not yet fix the old source files, branding, news popup, duplicated styles or one-page limitations.
+- The final output implements those ideas in actual files and balances promotion with report-grounded evidence.
+
+1. BRAND AND LEGAL CLARITY
+- Removed the official SJTU logo assets and the Version 3 “交” mark from the deployable website.
+- Added an original code-bracket logo and a visible independent-student disclaimer on every page.
+- Replaced “Copyright ©2026 SJTU Pre Uni. All rights reserved” with “© 2026 Pre-U Code Collective.”
+- Kept Shanghai Jiao Tong University wording only where it describes educational context or links to official information.
+
+2. INFORMATION ARCHITECTURE
+- Replaced the single long homepage with connected pages: Home, About, People, Classes, Projects, Pre-U Life, Events, AI News, Preparation Guide, Annual Report, Development Log and Contact.
+- Preserved documentations.html as an events-page alias.
+- Preserved old event filenames while also adding cleaner event slugs.
+
+3. REAL CLUB DOCUMENTATION
+- Added the report figures: 3 meetings and 55% average attendance.
+- Preserved the unresolved 22-member versus 18-member discrepancy instead of silently correcting it.
+- Added the documented first coding session dated 30 April 2026.
+- Added report-grounded topics: HTML, CSS, JavaScript, Python discussion, material sharing and website development.
+- Added report-grounded challenges: Friday scheduling, overcomplicated survey collection and competing academic priorities.
+- Added report-grounded 2026 plans: project-based learning, practical AI, direct feedback and flexible participation.
+
+4. EVENT ARCHIVE
+- Rebuilt the event archive using the uploaded RAR folder.
+- Generated individual pages for coding, culture festival, Minhang Culture Park, graduation, Guangfulin, Life in Shanghai, public speaking, Chinese recitation, spelling bee, SJTU Minhang visit, year-end celebration and the Zhejiang University seminar.
+- Extracted the nested Zhejiang University archive and used its photographs and source article.
+- Converted local event photographs to optimized WebP files and added an accessible lightbox.
+
+5. PEOPLE AND PRIVACY
+- Rebuilt the committee and member page from the existing profiles.
+- Included 17 available profile images and clearly marked three profiles whose details were not documented.
+- Removed public Instagram handles from the default interface as an intentional privacy improvement.
+- Added a publication reminder to confirm consent for names, photographs and profile details.
+
+6. NEWS
+- Replaced the old popup reader. The old openArticle() function showed “Loading content...” but never fetched or displayed the source article.
+- Added source-linked AI and Chinese AI cards reviewed on 27 July 2026.
+- Removed external hotlinked news images, which were fragile and could fail or create licensing/privacy problems.
+- Added an explicit warning that static news must be rechecked before publication.
+
+7. PREPARATION AND APPLICATION CTA
+- Moved Chinese learning and application preparation out of the homepage into prepare.html.
+- Added a 12-week Chinese routine and browser-saved action checklist.
+- Linked directly to the official 2026 Pre-University program and admissions pages.
+- Added a clear statement that the independent guide is not an admissions guarantee.
+
+8. DESIGN AND CODE
+- Replaced separate page styles with one shared responsive stylesheet.
+- Uses Montserrat for Latin text and Noto Sans SC for Chinese text.
+- Added bilingual switching with saved preference.
+- Added mobile navigation, filters, image lightbox, saved checklists, reduced-motion support and optional interface sound.
+- Included the uploaded audio as an optional, muted-by-default UI sound.
+- Added Netlify form markup, security headers, robots.txt, sitemap.xml and a web manifest.
+
+HONEST RETROSPECTIVE
+====================
+THIS MADE IT WORSE — Version 1’s member popups became visually elaborate while exposing more personal information and distracting from classes and projects. The final people page is simpler and removes public social handles.
+
+THIS DIDN’T HELP THE OUTPUT YET — Version 2 clarified the audience, but it mostly produced notes. The actual source code, navigation, branding and broken interactions remained unchanged until later versions.
+
+THIS MADE IT WORSE — Version 3’s “交” mark and SJTU-like red branding looked more polished but increased the chance that the student website could be mistaken for an official university property. The final output reverses that decision completely.
+
+THIS DIDN’T FULLY HELP — Version 4 fixed the logo problem but still delivered a one-page prototype with abstract content and little real documentation.
+
+THIS DIDN’T HELP — Version 5 added Chinese preparation, applications and AI news to one homepage. The scope was useful, but the page became longer and the coding identity became less clear. It still did not document real club life. The final output splits those topics into separate pages and grounds them in the report and source folders.
+
+THIS DIDN’T HELP — The old news popup created the appearance of an article reader but did not load article content. It made the experience less trustworthy. The final output uses direct, transparent source links.
+
+Montserrat alone also did not help Chinese readability enough. The final output pairs it with Noto Sans SC.
+
+FILES THAT NEED HUMAN CONFIRMATION BEFORE PUBLICATION
+=====================================================
+- Whether the correct member total is 22 registered / 18 active.
+- Consent for names, portraits and event photographs.
+- Exact dates for coding sessions two and three.
+- Exact date of the Zhejiang University seminar and Chucai Cup image.
+- Current Pre-University admission requirements.
+- Current AI news links and summaries.
+
+
+VERSION 1 + LATEST MERGE — ACTUAL OUTPUT CHANGES
+================================================
+Updated: 28 July 2026
+
+PURPOSE
+-------
+This build adjusts the latest multi-page website back toward the strongest parts of the original Version 1 output without reintroducing the Version 1 maintenance, branding and privacy problems.
+
+PRESERVED FROM VERSION 1 IN THE DEPLOYABLE WEBSITE
+--------------------------------------------------
+- The original Who We Are founding story naming Owen, Anqi and Elson.
+- The original Vision and Mission ideas.
+- A sliding Who We Are / Vision / Mission presentation, rebuilt with accessible buttons, keyboard focus and reduced-motion support.
+- The visible coding identity through HTML, CSS and JavaScript tags.
+- The original member names and all 17 available thumbnail photographs.
+- The original committee roles, origins, intended fields and quotations where they were documented.
+- Interactive member profiles, rebuilt as a native HTML dialog.
+- The bilingual English/Chinese system and saved language preference.
+- All completed event HTML routes and supplied event photographs.
+
+MERGED FROM THE LATEST VERSION
+------------------------------
+- Shared responsive stylesheet and JavaScript instead of separate inline systems.
+- Multi-page structure for Home, About, People, Classes, Projects, Pre-U Life, Events, News, Preparation, Report, Development and Contact.
+- Annual-report data: 3 meetings, 55% average attendance, and the unresolved 22-versus-18 member figures.
+- Report-grounded challenges: scheduling, survey fatigue and academic workload.
+- Report-grounded future plans: project-based learning, flexible participation, direct feedback and practical AI.
+- Latest AI/news structure, event archive, preparation guidance, source inventories and development analysis.
+- Independent code-bracket logo and non-endorsement notice.
+
+REMOVED
+-------
+- Every Instagram link and Instagram URL, including copies inside the retained legacy source folder.
+- Official SJTU logo use in the deployable interface.
+- Official-sounding university copyright claims.
+- The nonfunctional Version 1 article popup.
+
+NEW DATA FILES
+--------------
+- assets/data/people.json: maintainable profile data without Instagram links.
+- assets/js/people-data.js: static-browser copy used by the member dialog.
+
+HONEST TRADE-OFF
+----------------
+Restoring all member thumbnails and detailed quotations makes the site feel more like Version 1 and better reflects the real community. It also increases the amount of personal information in the public build. Removing Instagram links helps, but it does not replace consent. Confirm permission for names, photographs, origins, intended majors and quotations before deployment.
