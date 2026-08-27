@@ -1,25 +1,13 @@
-# macOS
+# OS
 .DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# Windows
 Thumbs.db
 Desktop.ini
-
-# Editor
+# Editors
 .vscode/
 .idea/
 *.swp
-*.swo
-*~
-
-# Archives (no binary archives in repo)
+# Archives and build
 *.rar
 *.zip
-*.tar.gz
-
-# Build output
 dist/
 build/

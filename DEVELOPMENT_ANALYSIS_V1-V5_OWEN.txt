@@ -1,0 +1,253 @@
+DEVELOPMENT ANALYSIS — VERSIONS 1 TO 5
+========================================
+Updated: 28 July 2026
+
+BASIS OF THIS ANALYSIS
+----------------------
+This analysis uses:
+- the original uploaded HTML, CSS, JavaScript and repository files;
+- the Version 2 audience notes from the chat;
+- the generated Version 3, Version 4 and Version 5 outputs;
+- the 2026 club report screenshots;
+- the event, member and media folders in the uploaded RAR archive;
+- the final multi-page output.
+
+Version 1 is supported by actual source files. Version 2 was mainly a planning and audience-refinement stage in the chat, so it should not be described as though it produced a complete coded website.
+
+VERSION 1 — THE ORIGINAL WORKING WEBSITE
+========================================
+
+WHAT EXISTED
+------------
+Version 1 established a real static website rather than only a concept. It included:
+- a large photographic homepage hero;
+- About, Vision and Mission sections;
+- committee and member cards;
+- bilingual English/Chinese text switching saved in localStorage;
+- profile popups;
+- a separate event/documentation catalog;
+- a separate technology-news page;
+- a bilingual 404 page;
+- event subpages and local media assets.
+
+WHAT IMPROVED
+-------------
+Compared with having no website, Version 1 created a usable public record of the club. It proved that students could build, deploy and maintain a bilingual static site. It also preserved real names, roles, countries, events and photographs that later versions could reuse.
+
+The strongest Version 1 ideas that survived were:
+- bilingual data attributes;
+- saved language preference;
+- real member and event content;
+- a static Netlify-friendly architecture;
+- visual storytelling through photographs;
+- interactive cards and popups;
+- an event archive rather than a purely promotional homepage.
+
+WHAT FAILED
+-----------
+1. Branding and authority were unclear.
+   The site used official SJTU logo files, university-style red/navy/gold branding and official-sounding copyright wording. This could make an independent student project appear institutionally owned or endorsed.
+
+2. The homepage was too monolithic.
+   A large amount of CSS, HTML, member data and JavaScript lived inside one file. This made maintenance, debugging and reuse difficult.
+
+3. Page design was inconsistent.
+   The homepage used Fraunces, DM Sans and JetBrains Mono, while event, news and 404 pages used different inline Arial-based styles. The site felt like several unrelated prototypes.
+
+4. Some interaction looked more complete than it was.
+   The news popup opened and displayed “Loading content...” but never fetched or rendered the linked article. This reduced trust.
+
+5. Navigation was shallow.
+   The homepage mainly pointed to the gallery/documentation page. Classes, projects, Pre-U life, preparation and reports were not first-class destinations.
+
+6. Privacy was not treated as a design requirement.
+   Member popups exposed personal Instagram handles, preferred majors, photographs and quotes without a visible consent framework.
+
+7. Maintainability and accessibility were limited.
+   Repeated inline styles, duplicated language scripts, fragile relative paths, external image hotlinks, hover-dependent overlays and non-button clickable cards made the code harder to maintain and less accessible.
+
+HONEST MOMENT — THIS MADE PARTS OF THE SITE WORSE
+-------------------------------------------------
+The elaborate member popup system increased visual complexity and personal-data exposure without improving the main visitor journey. It was impressive as a coding exercise, but it pulled attention away from classes, projects and documented outcomes. The final site keeps the people archive but removes public social handles and makes consent a publication requirement.
+
+WHAT THE FINAL OUTPUT DID WITH VERSION 1
+----------------------------------------
+Preserved:
+- real events, member photographs, bilingual behavior, static deployment and visual evidence.
+
+Rebuilt:
+- navigation, layout, shared CSS/JS, event galleries, member presentation, news behavior and 404 page.
+
+Removed or retired:
+- official logo assets, official-style copyright wording, public Instagram handles, nonfunctional article popup, external hotlinked news images and duplicated page-level design systems.
+
+VERSION 2 — THE AUDIENCE AND CONTENT PIVOT
+==========================================
+
+WHAT CHANGED
+------------
+Version 2 redefined the main audience as students considering or applying to the Shanghai Jiao Tong University Pre-University Program. It proposed:
+- clearer applicant-focused messaging;
+- stronger navigation;
+- more visible calls to action;
+- a better content hierarchy;
+- consistent bilingual presentation;
+- more approachable explanations of the club and student community;
+- less emphasis on the site as an internal archive.
+
+WHAT IMPROVED
+-------------
+Version 2 introduced the most important strategic question: “What does a prospective student need to understand?”
+
+That improved the content direction by prioritizing:
+- who the club is;
+- what students learn;
+- how members collaborate;
+- why the experience matters before university;
+- where a visitor should go next.
+
+These ideas later became:
+- the applicant-facing homepage;
+- the Pre-U Life page;
+- the Preparation Guide;
+- clearer calls to explore classes, projects and official program information;
+- a clearer distinction between student-created guidance and official admissions information.
+
+WHAT FAILED
+-----------
+Version 2 mostly produced strategy notes, not a complete coded build. The underlying files, navigation, branding and page structure were not yet transformed.
+
+HONEST MOMENT — THIS DIDN’T HELP THE ACTUAL OUTPUT YET
+-----------------------------------------------------
+Clarifying the audience was useful, but stopping at copy and planning did not fix broken interaction, duplicated CSS, weak navigation, branding risk or missing documentation. A better prompt did not automatically create a better website.
+
+Version 2 also risked making the site more promotional before it had enough evidence. Telling applicants that the community was active and welcoming was less convincing than showing class records, event galleries, attendance figures, projects and honest challenges.
+
+WHAT THE FINAL OUTPUT DID WITH VERSION 2
+----------------------------------------
+Implemented:
+- applicant-focused homepage language;
+- clear next-step CTAs;
+- dedicated Pre-U Life and Preparation pages;
+- routes for deeper exploration;
+- direct links to official information;
+- plain-language explanations for 17–18-year-old readers.
+
+Corrected:
+- the final site balances applicant information with evidence from the report and source folders, instead of relying on promotional claims alone.
+
+VERSION 3 — MODERN VISUAL REDESIGN
+==================================
+
+WHAT CHANGED
+------------
+Version 3 introduced Montserrat, a more modern card-based layout, responsive navigation, larger headings, stronger calls to action and an SJTU-inspired red visual system. It also used the “交” character as a temporary mark.
+
+WHAT IMPROVED
+-------------
+- stronger hierarchy and spacing;
+- more professional responsive presentation;
+- clearer applicant-facing hero content;
+- reusable buttons, cards and sections;
+- reduced-motion support and better mobile behavior.
+
+WHAT FAILED
+-----------
+The “交” mark and SJTU-like red identity made the independent project look more official. The version also remained primarily a one-page prototype with abstract activity visuals rather than real club evidence.
+
+HONEST MOMENT — THIS MADE IT WORSE
+----------------------------------
+Version 3 looked more polished but moved in the wrong identity direction. Visual polish increased the risk of institutional confusion. The final site reverses that decision.
+
+VERSION 4 — INDEPENDENT STUDENT IDENTITY
+========================================
+
+WHAT CHANGED
+------------
+Version 4 replaced the “交” mark with an original code-bracket logo, introduced the name “Pre-U Code Collective,” and added an independence disclaimer.
+
+WHAT IMPROVED
+-------------
+- clearer separation from official SJTU branding;
+- a reusable SVG logo and favicon;
+- a safer public identity;
+- more consistent wording about educational context and non-endorsement.
+
+WHAT FAILED
+-----------
+The page was still a standalone homepage prototype. The raspberry/coral design was visually friendly, but it was less connected to the actual blue technology style of the annual report and existing event archive. The design identity improved before the information architecture did.
+
+WHAT SURVIVED
+-------------
+The original code-bracket logo, independent name and visible disclaimer became permanent parts of the final output.
+
+VERSION 5 — APPLICANT PREPARATION AND AI CONTENT
+================================================
+
+WHAT CHANGED
+------------
+Version 5 added:
+- Chinese-proficiency preparation;
+- a 12-week study journey;
+- actionable applicant CTAs;
+- AI and Chinese AI news;
+- Noto Sans SC alongside Montserrat;
+- clearer language for 17–18-year-old readers.
+
+WHAT IMPROVED
+-------------
+- the site addressed real prospective-student concerns;
+- Chinese preparation became actionable rather than vague;
+- AI news gained source links and dates;
+- Chinese typography improved;
+- official information was separated from independent guidance.
+
+WHAT FAILED
+-----------
+Putting coding, Chinese preparation, applications, university life and AI news on one homepage weakened the coding narrative and made the page too long. It still did not fully document actual club life.
+
+HONEST MOMENT — THIS DIDN’T HELP
+--------------------------------
+More topics did not automatically create more value. The overloaded homepage made it harder to understand the club’s main purpose. The final output separates these topics into dedicated pages.
+
+FINAL VERSION — WHAT ACTUALLY CHANGED IN THE OUTPUT
+===================================================
+
+1. The site became multi-page.
+   Home, About, People, Classes, Projects, Pre-U Life, Events, AI News, Preparation, Report, Development and Contact now have distinct roles.
+
+2. Real evidence replaced generic claims.
+   The final site uses report figures, class topics, event photos, member assets, scheduling problems, attendance information and future plans.
+
+3. The identity became independent.
+   Official logo files and official-style copyright wording were removed from the deployable site. The code-bracket logo and disclaimer are used consistently.
+
+4. Shared code replaced isolated prototypes.
+   A common stylesheet and JavaScript system now handle navigation, language, filters, lightboxes, checklists, reduced motion and optional sound.
+
+5. News became transparent.
+   The nonfunctional popup was replaced by direct source links. Static news is labeled as content that requires ongoing review.
+
+6. Privacy became explicit.
+   Public Instagram handles were removed, missing information was marked honestly, and publication consent is required for names and photographs.
+
+7. Applicant guidance became a supporting route.
+   Chinese preparation and official program links are available without overwhelming the coding homepage.
+
+8. Legacy routes and evidence were preserved.
+   Existing event filenames and documentations.html remain usable while cleaner routes and optimized galleries were added.
+
+FINAL JUDGMENT
+==============
+Version 1 supplied the most valuable raw material because it contained real code, people, events and media. Version 2 supplied the audience strategy. Version 3 supplied modern layout techniques but introduced a branding mistake. Version 4 solved the identity problem. Version 5 expanded applicant value but overloaded the homepage. The final output succeeds by combining the useful parts while reversing or removing the changes that did not help.
+
+
+FINAL MERGE — RETURNING TO VERSION 1 WITHOUT RETURNING TO ITS PROBLEMS
+======================================================================
+The revised final output deliberately restores the original founding story, Vision and Mission slider, HTML/CSS/JavaScript identity, member names, thumbnails and approved profile details. It does not restore Instagram links, official university branding, duplicated page styles or the nonfunctional news popup.
+
+This is not a visual rollback. Version 1 content now lives inside the latest shared design system and multi-page information architecture.
+
+HONEST LIMITATION
+-----------------
+The restored member details improve authenticity, but they also make privacy review more important. The final site now retains more personal information than the earlier privacy-minimized final build, so consent must be checked before publication.

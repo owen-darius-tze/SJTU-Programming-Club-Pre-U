@@ -1,0 +1,238 @@
+[
+    {
+        "slug": "first-day-coding",
+        "old": "firstdayofcoding.html",
+        "date": "30 Apr 2026",
+        "iso": "2026-04-30",
+        "cat": "coding",
+        "title_en": "First Day of Coding",
+        "title_zh": "编程第一天",
+        "desc_en": "The club’s first documented coding session introduced basic HTML structure and guided students through creating a first web page.",
+        "desc_zh": "俱乐部第一次有记录的编程课介绍了 HTML 的基本结构，并带领学生创建第一个网页。",
+        "labels": ["Club group photo"],
+        "images": ["assets/img/events/first-day-coding/01.webp"]
+    },
+    {
+        "slug": "culture-festival",
+        "old": "culturefest.html",
+        "date": "21 Nov 2025",
+        "iso": "2025-11-21",
+        "cat": "culture",
+        "title_en": "International Culture Festival",
+        "title_zh": "国际文化节",
+        "desc_en": "International students and faculty shared performances, clothing, food and cultural activities with the wider Pre-University community.",
+        "desc_zh": "国际学生和教师通过表演、服饰、美食与文化活动，向预科社区展示不同国家与地区的文化。",
+        "labels": [],
+        "images": [
+            "assets/img/events/culture-festival/01.webp",
+            "assets/img/events/culture-festival/02.webp",
+            "assets/img/events/culture-festival/03.webp",
+            "assets/img/events/culture-festival/04.webp",
+            "assets/img/events/culture-festival/05.webp",
+            "assets/img/events/culture-festival/06.webp",
+            "assets/img/events/culture-festival/07.webp",
+            "assets/img/events/culture-festival/08.webp",
+            "assets/img/events/culture-festival/09.webp",
+            "assets/img/events/culture-festival/10.webp",
+            "assets/img/events/culture-festival/11.webp",
+            "assets/img/events/culture-festival/12.webp",
+            "assets/img/events/culture-festival/13.webp",
+            "assets/img/events/culture-festival/14.webp"
+        ]
+    },
+    {
+        "slug": "minhang-culture-park",
+        "old": "culturepark.html",
+        "date": "17 Apr 2026",
+        "iso": "2026-04-17",
+        "cat": "culture",
+        "title_en": "Minhang Culture Park Field Trip",
+        "title_zh": "闵行文化公园考察",
+        "desc_en": "Students visited Minhang Culture Park; some also joined Earth Day activities near Hechuan Road and learned about sustainability.",
+        "desc_zh": "学生参观闵行文化公园，部分同学还参加了合川路附近的地球日活动，了解可持续发展。",
+        "labels": [],
+        "images": [
+            "assets/img/events/minhang-culture-park/01.webp",
+            "assets/img/events/minhang-culture-park/02.webp",
+            "assets/img/events/minhang-culture-park/03.webp",
+            "assets/img/events/minhang-culture-park/04.webp"
+        ]
+    },
+    {
+        "slug": "graduation-2026",
+        "old": "graduation-pics.html",
+        "date": "7 May 2026",
+        "iso": "2026-05-07",
+        "cat": "milestone",
+        "title_en": "Pre-University Graduation 2026",
+        "title_zh": "2026 预科结业典礼",
+        "desc_en": "The graduation ceremony marked the completion of the one-year academic program and brought students, teachers and friends together for a final celebration.",
+        "desc_zh": "结业典礼标志着一年制预科课程的完成，学生、教师和朋友共同庆祝这一阶段的结束。",
+        "labels": [],
+        "images": [
+            "assets/img/events/graduation-2026/01.webp",
+            "assets/img/events/graduation-2026/02.webp",
+            "assets/img/events/graduation-2026/03.webp",
+            "assets/img/events/graduation-2026/04.webp",
+            "assets/img/events/graduation-2026/05.webp",
+            "assets/img/events/graduation-2026/06.webp",
+            "assets/img/events/graduation-2026/07.webp"
+        ]
+    },
+    {
+        "slug": "guangfulin-field-trip",
+        "old": "guangfulin.html",
+        "date": "19 Nov 2025",
+        "iso": "2025-11-19",
+        "cat": "culture",
+        "title_en": "Guangfulin Field Trip",
+        "title_zh": "广富林野外考察",
+        "desc_en": "Students visited the Guangfulin archaeological and cultural site and explored its long history and significance to Shanghai.",
+        "desc_zh": "学生参观广富林考古与文化遗址，了解其悠久历史以及对上海城市文化的重要意义。",
+        "labels": [],
+        "images": [
+            "assets/img/events/guangfulin-field-trip/01.webp",
+            "assets/img/events/guangfulin-field-trip/02.webp",
+            "assets/img/events/guangfulin-field-trip/03.webp"
+        ]
+    },
+    {
+        "slug": "life-in-shanghai",
+        "old": "lifeinshanghai.html",
+        "date": "2025–2026",
+        "iso": "2025-09-01",
+        "cat": "life",
+        "title_en": "Life in Shanghai",
+        "title_zh": "上海生活",
+        "desc_en": "A collection of everyday moments inside and outside class: campus life, meals, physical education, city visits and New Year’s Eve.",
+        "desc_zh": "记录课堂内外的日常时刻，包括校园生活、聚餐、体育课、城市探索和跨年活动。",
+        "labels": [],
+        "images": [
+            "assets/img/events/life-in-shanghai/01.webp",
+            "assets/img/events/life-in-shanghai/02.webp",
+            "assets/img/events/life-in-shanghai/03.webp",
+            "assets/img/events/life-in-shanghai/04.webp",
+            "assets/img/events/life-in-shanghai/05.webp",
+            "assets/img/events/life-in-shanghai/06.webp",
+            "assets/img/events/life-in-shanghai/07.webp"
+        ]
+    },
+    {
+        "slug": "public-speaking",
+        "old": "publicspeak.html",
+        "date": "5 Dec 2025",
+        "iso": "2025-12-05",
+        "cat": "competition",
+        "title_en": "English Public Speaking Competition",
+        "title_zh": "英语演讲比赛",
+        "desc_en": "Students presented in English on subjects ranging from mental health to artificial intelligence, developing confidence and presentation skills.",
+        "desc_zh": "学生用英语围绕心理健康、人工智能等主题进行演讲，锻炼表达能力和自信心。",
+        "labels": [],
+        "images": [
+            "assets/img/events/public-speaking/01.webp",
+            "assets/img/events/public-speaking/02.webp",
+            "assets/img/events/public-speaking/03.webp"
+        ]
+    },
+    {
+        "slug": "chinese-recitation",
+        "old": "recitezhongwen.html",
+        "date": "26 Dec 2025",
+        "iso": "2025-12-26",
+        "cat": "competition",
+        "title_en": "Chinese Poem Recital Competition",
+        "title_zh": "中文朗诵比赛",
+        "desc_en": "Students presented classical Chinese poetry through recitation, costumes and group performances.",
+        "desc_zh": "学生通过朗诵、服装和集体表演展示中国古典诗词。",
+        "labels": [],
+        "images": [
+            "assets/img/events/chinese-recitation/01.webp",
+            "assets/img/events/chinese-recitation/02.webp",
+            "assets/img/events/chinese-recitation/03.webp",
+            "assets/img/events/chinese-recitation/04.webp"
+        ]
+    },
+    {
+        "slug": "spelling-bee",
+        "old": "spellingbee.html",
+        "date": "Oct 2025",
+        "iso": "2025-10-01",
+        "cat": "competition",
+        "title_en": "English Spelling Bee",
+        "title_zh": "英语拼写大赛",
+        "desc_en": "International students demonstrated spelling ability and technical English knowledge through several rounds and a final award ceremony.",
+        "desc_zh": "国际学生通过多轮比赛和颁奖环节展示英语拼写能力与专业词汇知识。",
+        "labels": [],
+        "images": [
+            "assets/img/events/spelling-bee/01.webp",
+            "assets/img/events/spelling-bee/02.webp",
+            "assets/img/events/spelling-bee/03.webp",
+            "assets/img/events/spelling-bee/04.webp",
+            "assets/img/events/spelling-bee/05.webp",
+            "assets/img/events/spelling-bee/06.webp",
+            "assets/img/events/spelling-bee/07.webp",
+            "assets/img/events/spelling-bee/08.webp"
+        ]
+    },
+    {
+        "slug": "visit-sjtu-minhang",
+        "old": "visitsjtu.html",
+        "date": "3 Dec 2025",
+        "iso": "2025-12-03",
+        "cat": "university",
+        "title_en": "Visit to SJTU Minhang Campus",
+        "title_zh": "参观上海交通大学闵行校区",
+        "desc_en": "The campus visit helped Pre-University students explore facilities and learn more about undergraduate study at the university.",
+        "desc_zh": "此次校园参观让预科学生了解闵行校区设施，并进一步认识本科阶段的学习环境。",
+        "labels": [],
+        "images": [
+            "assets/img/events/visit-sjtu-minhang/01.webp",
+            "assets/img/events/visit-sjtu-minhang/02.webp",
+            "assets/img/events/visit-sjtu-minhang/03.webp",
+            "assets/img/events/visit-sjtu-minhang/04.webp"
+        ]
+    },
+    {
+        "slug": "year-end-celebration",
+        "old": "yearend.html",
+        "date": "19 Dec 2025",
+        "iso": "2025-12-19",
+        "cat": "community",
+        "title_en": "Year-End Celebration",
+        "title_zh": "年终庆祝活动",
+        "desc_en": "A Christmas and year-end event brought together the Lifelong Education College and Pre-University community for performances, awards and celebration.",
+        "desc_zh": "圣诞与年终活动汇聚终身教育学院和预科社区，包含表演、颁奖和庆祝环节。",
+        "labels": [],
+        "images": [
+            "assets/img/events/year-end-celebration/01.webp",
+            "assets/img/events/year-end-celebration/02.webp",
+            "assets/img/events/year-end-celebration/03.webp"
+        ]
+    },
+    {
+        "slug": "zhejiang-university-seminar",
+        "old": "zheda.html",
+        "date": "2025–2026",
+        "iso": "2026-01-01",
+        "cat": "university",
+        "title_en": "Zhejiang University Admissions Seminar",
+        "title_zh": "浙江大学招生宣讲会",
+        "desc_en": "Admissions teams introduced university history, subject strengths, Chinese- and English-taught pathways, application conditions and campus life, followed by student questions.",
+        "desc_zh": "招生团队介绍学校历史、学科优势、中英文项目、申请条件与校园生活，并与预科学生进行问答交流。",
+        "labels": [],
+        "images": [
+            "assets/img/events/zhejiang-university-seminar/01.webp",
+            "assets/img/events/zhejiang-university-seminar/02.webp",
+            "assets/img/events/zhejiang-university-seminar/03.webp",
+            "assets/img/events/zhejiang-university-seminar/04.webp",
+            "assets/img/events/zhejiang-university-seminar/05.webp",
+            "assets/img/events/zhejiang-university-seminar/06.webp",
+            "assets/img/events/zhejiang-university-seminar/07.webp",
+            "assets/img/events/zhejiang-university-seminar/08.webp",
+            "assets/img/events/zhejiang-university-seminar/09.webp",
+            "assets/img/events/zhejiang-university-seminar/10.webp",
+            "assets/img/events/zhejiang-university-seminar/11.webp",
+            "assets/img/events/zhejiang-university-seminar/12.webp"
+        ]
+    }
+]

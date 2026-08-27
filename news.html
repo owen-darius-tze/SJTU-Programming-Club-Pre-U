@@ -1,397 +1,296 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>科技信息 - SJTU Programming Club</title>
-    <style>
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-
-        body {
-            display: grid;
-            margin: auto;
-            max-width: 1200px;
-            min-height: 100vh;
-            grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto 1fr auto;
-            grid-template-areas: 
-                "heading logo" 
-                "top-nav top-nav" 
-                "article article" 
-                "footer footer";
-            gap: 20px;
-            padding: 20px;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.4);
-            padding: 5px;
-            border-radius: 30px;
-            display: flex;
-            gap: 4px;
-            z-index: 200;
-        }
-
-        .lang-btn {
-            padding: 8px 18px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active {
-            background: #FFD700;
-            color: #002B60;
-        }
-
-        .lang-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.15);
-        }
-
-        /* Header & Logo */
-        header { 
-            background-color: #AD1730; 
-            grid-area: heading; 
-            text-align: center; 
-            padding: 15px; 
-            border-radius: 10px; 
-        }
-
-        .logo img { 
-            max-height: 100px; 
-            border-radius: 10px; 
-        }
-
-        /* Navigation */
-        .top-nav { 
-            background-color: #AD1730; 
-            height: 50px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border-radius: 5px; 
-            gap: 20px; 
-        }
-        .top-nav a { 
-            color: white; 
-            text-decoration: none; 
-            font-weight: bold; 
-            padding: 10px 20px; 
-            border-radius: 25px; 
-            transition: all 0.3s; 
-        }
-        .top-nav a:hover { 
-            background-color: #002B60; 
-            transform: translateY(-5px); 
-        }
-
-        /* Article */
-        article { 
-            grid-area: article; 
-            background-color: #002B60; 
-            border-radius: 10px; 
-            padding: 30px; 
-        }
-        article h1 { 
-            color: #FFD700; 
-            border-bottom: 2px solid #FFD700; 
-            padding-bottom: 10px; 
-        }
-        article h2 { 
-            color: #FFD700; 
-            margin: 25px 0 15px; 
-        }
-
-        /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .news-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .news-item:hover { 
-            transform: translateY(-8px); 
-        }
-        .news-item img { 
-            width: 100%; 
-            height: 180px; 
-            object-fit: cover; 
-        }
-        .caption { 
-            padding: 12px; 
-            text-align: center; 
-            color: #FFD700; 
-            font-size: 0.9rem; 
-        }
-
-        footer { 
-            grid-area: footer; 
-            background-color: #AD1730; 
-            padding: 20px; 
-            text-align: center; 
-            border-radius: 10px; 
-        }
-
-        /* Popup */
-        .popup-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); display: none; align-items: center;
-            justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.4s;
-        }
-        .popup-content {
-            background: #002B60; width: 90%; max-width: 900px; max-height: 92vh;
-            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .popup-content.open { transform: scale(1); }
-
-        .popup-header {
-            background: #AD1730; padding: 20px 25px; display: flex;
-            justify-content: space-between; align-items: center; position: relative;
-        }
-        .popup-header h2 { color: #FFD700; margin: 0; font-size: 1.4rem; }
-        
-        .close-btn {
-            background: none; border: none; color: white; font-size: 28px;
-            cursor: pointer; width: 40px; height: 40px; border-radius: 50%;
-        }
-        .close-btn:hover { 
-            background: rgba(255,255,255,0.2); 
-            transform: rotate(90deg); 
-        }
-
-        .progress-bar {
-            position: absolute; bottom: 0; left: 0; height: 4px;
-            background: #FFD700; width: 0%; transition: width 0.1s;
-        }
-
-        .popup-body {
-            padding: 30px; overflow-y: auto; flex: 1; line-height: 1.8;
-        }
-        .popup-body img { 
-            max-width: 100%; 
-            border-radius: 8px; 
-            margin: 15px 0; 
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1 data-en="SJTU Programming Club - 2025-2026" 
-            data-zh="SJTU 编程社团 - 2025-2026 学期">
-            SJTU Programming Club - 2025-2026
-        </h1>
-    </header>
-
-    <div class="logo">
-        <a href="../index.html"><img src="../images/Sjtu-logo-standard-red.png" alt="SJTU logo" height="100"></a>
-    </div>
-
-    <nav class="top-nav">
-        <a href="../documentations.html" data-en="Photography / Video" data-zh="摄影/视频">
-            摄影/视频
-        </a>
-    </nav>
-
-    <div class="language-switcher">
-        <button onclick="switchLanguage('en')" id="btn-en" class="lang-btn active">EN</button>
-        <button onclick="switchLanguage('zh')" id="btn-zh" class="lang-btn">中文</button>
-    </div>
-
-    <article>
-        <h1 data-en="News Articles" data-zh="科技信息">News Articles</h1>
-        <p data-en="News articles related to technological advancements in China, updated every Sunday." 
-        data-zh="关于中国科技发展的新闻，不管全国还是上海交通特定，每周日更新。">
-        News articles related to technological advancements in China, whether it's nationwide and SJTU-specific.
-        </p>
-
-        <h2 data-en="News Section" data-zh="信息目录">News Section</h2>
-
-        <div class="news-grid">
-            <div class="news-item" 
-                data-title-en="Donald Trump and Xi Jinping Meeting" 
-                data-title-zh="特朗普与习近平会晤"
-                data-url="https://www.abc.net.au/news/2026-05-14/donald-trump-xi-jinping-meeting-key-takeaways/106676202">
-                <div class="news-placeholder">
-                    <img src="https://live-production.wcms.abc-cdn.net.au/32967d29b9c8c2f4ab258bc32f180115?impolicy=wcms_crop_resize&cropH=3149&cropW=4724&xPos=138&yPos=0&width=862&height=575" alt="">
-                </div>
-                <div class="caption" 
-                    data-en="Donald Trump and Xi Jinping's meeting in China featured tech titans, Taiwan and flattery" 
-                    data-zh="特朗普与习近平在中国的会晤展示了科技巨头、台湾和奉承">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <meta content="Sourced AI and Chinese AI news for students." name="description" />
+        <meta content="#10245f" name="theme-color" />
+        <title>AI News | Pre-U Code Collective</title>
+        <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link href="assets/css/styles.css" rel="stylesheet" />
+        <script defer="" src="assets/js/site.js"></script>
+    </head>
+    <body>
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+        <header class="site-header" data-site-header="">
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img alt="" height="44" src="assets/img/logo.svg" width="44" />
+                    <span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        ></span
+                    >
+                </a>
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span><span></span><span></span><span></span>
+                </button>
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a class="" data-en="Home" data-zh="首页" href="index.html">Home</a
+                    ><a class="" data-en="About" data-zh="关于" href="about.html">About</a
+                    ><a class="" data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a class="" data-en="Classes" data-zh="课程" href="classes.html">Classes</a
+                    ><a class="" data-en="Projects" data-zh="项目" href="projects.html">Projects</a
+                    ><a class="" data-en="Pre-U Life" data-zh="预科生活" href="preu-life.html">Pre-U Life</a
+                    ><a class="" data-en="Events" data-zh="活动" href="events.html">Events</a
+                    ><a class="active" data-en="AI News" data-zh="AI 新闻" href="news.html">AI News</a
+                    ><a class="" data-en="Prepare" data-zh="准备指南" href="prepare.html">Prepare</a
+                    ><a class="nav-cta" data-en="Contribute" data-zh="参与" href="contact.html">Contribute</a>
+                </nav>
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle="" type="button">
+                        中
+                    </button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle=""
+                        type="button"
+                    >
+                        ♪
+                    </button>
                 </div>
             </div>
-
-            <div class="news-item" 
-                data-title-en="SJTU AI-enabled low carbon program" 
-                data-title-zh="上交大AI驱动的低碳项目"
-                data-url="https://en.sjtu.edu.cn/news-events/news/2509.html">
-                <div class="news-placeholder">
-                    <img src="https://smse.sjtu.edu.cn/storage/global/web/en/article/2026/04/00644b24913d1db9c351e816e0b10a6c.jpg" alt="">
+        </header>
+        <main id="main">
+            <section class="page-hero">
+                <div class="container page-hero-grid">
+                    <div>
+                        <p class="eyebrow" data-en="AI &amp; CHINA AI NEWS" data-zh="人工智能与中国 AI 新闻">
+                            AI &amp; CHINA AI NEWS
+                        </p>
+                        <h1
+                            data-en="Understand the technology shaping study and work."
+                            data-zh="了解正在改变学习与工作的技术。"
+                        >
+                            Understand the technology shaping study and work.
+                        </h1>
+                        <p
+                            data-en="Reviewed on 27 July 2026. Every item links to its original source and separates reported facts from interpretation."
+                            data-zh="最后审核日期：2026 年 7 月 27 日。每条内容均链接原始来源，并区分报道事实与解读。"
+                        >
+                            Reviewed on 27 July 2026. Every item links to its original source and separates reported
+                            facts from interpretation.
+                        </p>
+                    </div>
                 </div>
-                <div class="caption" 
-                    data-en="SJTU Launches 'AI-Enabled Low-Carbon Transformation' Micro-Degree Program" 
-                    data-zh="上交大的AI驱动低碳项目旨在通过智能技术减少排放,推动可持续发展">
+            </section>
+            <section class="section white">
+                <div class="container">
+                    <div
+                        class="warning"
+                        data-en="The old news popup never loaded the linked article—it only opened a box saying “Loading content…”. The final version removes the pretend reader and sends users directly to the source."
+                        data-zh="旧新闻弹窗并没有加载链接文章，只会打开一个写着“Loading content…”的框。最终版本删除了这个无效阅读器，直接把用户带到原始来源。"
+                    >
+                        The old news popup never loaded the linked article—it only opened a box saying “Loading
+                        content…”. The final version removes the pretend reader and sends users directly to the source.
+                    </div>
+                    <div class="filter-row" style="margin-top: 25px">
+                        <button class="selected" data-en="All" data-filter="all" data-zh="全部">All</button
+                        ><button data-en="China AI" data-filter="china-ai" data-zh="中国 AI">China AI</button
+                        ><button data-en="Robotics" data-filter="robotics" data-zh="机器人">Robotics</button
+                        ><button data-en="SJTU research" data-filter="sjtu" data-zh="交大研究">SJTU research</button>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card reveal" data-category="china-ai">
+                            <div class="news-icon">AI</div>
+                            <div class="news-meta">
+                                <span>International Services Shanghai</span
+                                ><time datetime="2026-07-17">17 Jul 2026</time>
+                            </div>
+                            <h3
+                                data-en="WAIC 2026 brings more than 1,100 companies and 3,000 exhibits to Shanghai"
+                                data-zh="2026 世界人工智能大会在上海汇聚 1100 多家企业和 3000 多项展品"
+                            >
+                                WAIC 2026 brings more than 1,100 companies and 3,000 exhibits to Shanghai
+                            </h3>
+                            <p
+                                data-en="The official Shanghai event guide reported more than 300 global product debuts and a major focus on robots, AI agents and applications moving into everyday life."
+                                data-zh="上海官方活动介绍称，大会包含 300 多项全球首发产品，重点展示机器人、智能体以及人工智能走向现实生活的应用。"
+                            >
+                                The official Shanghai event guide reported more than 300 global product debuts and a
+                                major focus on robots, AI agents and applications moving into everyday life.
+                            </p>
+                            <a
+                                data-en="Read original source ↗"
+                                data-zh="阅读原始来源 ↗"
+                                href="https://english.shanghai.gov.cn/en-ParticipateExplore/20260717/36193160d9d94efb9c0aa5fa4fbed5fd.html"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                >Read original source ↗</a
+                            >
+                        </article>
+                        <article class="news-card reveal" data-category="china-ai">
+                            <div class="news-icon">OS</div>
+                            <div class="news-meta">
+                                <span>Reuters</span><time datetime="2026-07-17">17 Jul 2026</time>
+                            </div>
+                            <h3
+                                data-en="China promotes open-source AI, access and global governance at the Shanghai conference"
+                                data-zh="中国在上海大会上强调开源人工智能、普惠使用与全球治理"
+                            >
+                                China promotes open-source AI, access and global governance at the Shanghai conference
+                            </h3>
+                            <p
+                                data-en="Reuters reported that China presented open-source AI and international training partnerships as part of a wider strategy on access, safety and governance. The geopolitical framing remains contested."
+                                data-zh="路透社报道，中国把开源人工智能和国际培训合作纳入更广泛的普惠、安全与治理战略；相关地缘政治解读仍存在争议。"
+                            >
+                                Reuters reported that China presented open-source AI and international training
+                                partnerships as part of a wider strategy on access, safety and governance. The
+                                geopolitical framing remains contested.
+                            </p>
+                            <a
+                                data-en="Read original source ↗"
+                                data-zh="阅读原始来源 ↗"
+                                href="https://www.reuters.com/world/asia-pacific/chinas-xi-promotes-chinas-commitment-ai-access-speech-shanghai-conference-2026-07-17/"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                >Read original source ↗</a
+                            >
+                        </article>
+                        <article class="news-card reveal" data-category="robotics">
+                            <div class="news-icon">RB</div>
+                            <div class="news-meta">
+                                <span>Associated Press</span><time datetime="2026-07-20">20 Jul 2026</time>
+                            </div>
+                            <h3
+                                data-en="Shanghai conference photos highlight robotics and increasingly competitive Chinese open models"
+                                data-zh="上海大会图片展示机器人进展与更具竞争力的中国开源模型"
+                            >
+                                Shanghai conference photos highlight robotics and increasingly competitive Chinese open
+                                models
+                            </h3>
+                            <p
+                                data-en="The Associated Press highlighted hundreds of humanoid robots and the growing presence of Chinese open-source models. Demonstrations do not by themselves prove reliability or mass-market readiness."
+                                data-zh="美联社报道重点呈现数百台人形机器人以及中国开源模型的增长。展会演示本身并不能证明可靠性或大规模商业成熟度。"
+                            >
+                                The Associated Press highlighted hundreds of humanoid robots and the growing presence of
+                                Chinese open-source models. Demonstrations do not by themselves prove reliability or
+                                mass-market readiness.
+                            </p>
+                            <a
+                                data-en="Read original source ↗"
+                                data-zh="阅读原始来源 ↗"
+                                href="https://apnews.com/article/0f3f6e69f1c1e2b8b077d8d8af7efd52"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                >Read original source ↗</a
+                            >
+                        </article>
+                        <article class="news-card reveal" data-category="sjtu">
+                            <div class="news-icon">SJ</div>
+                            <div class="news-meta">
+                                <span>SJTU official news</span><time datetime="2026-07-24">24 Jul 2026</time>
+                            </div>
+                            <h3
+                                data-en="SJTU team showcases an AI-assisted adolescent scoliosis assessment system"
+                                data-zh="上海交通大学团队展示人工智能辅助青少年脊柱侧弯评估系统"
+                            >
+                                SJTU team showcases an AI-assisted adolescent scoliosis assessment system
+                            </h3>
+                            <p
+                                data-en="SJTU reported that the VeriSpine system combines wearable sensing and an AI algorithm to support screening and personalized intervention recommendations. The article describes a research achievement, not a general clinical guarantee."
+                                data-zh="上海交通大学介绍 VeriSpine 系统如何结合可穿戴传感与人工智能算法，用于筛查和个性化干预建议。该报道介绍研究成果，并不等同于普遍临床保证。"
+                            >
+                                SJTU reported that the VeriSpine system combines wearable sensing and an AI algorithm to
+                                support screening and personalized intervention recommendations. The article describes a
+                                research achievement, not a general clinical guarantee.
+                            </p>
+                            <a
+                                data-en="Read original source ↗"
+                                data-zh="阅读原始来源 ↗"
+                                href="https://en.sjtu.edu.cn/news-events/news/3363"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                >Read original source ↗</a
+                            >
+                        </article>
+                        <article class="news-card reveal" data-category="sjtu">
+                            <div class="news-icon">LC</div>
+                            <div class="news-meta">
+                                <span>SJTU official news</span><time datetime="2026-04-02">2 Apr 2026</time>
+                            </div>
+                            <h3
+                                data-en="SJTU launches an AI-enabled low-carbon transformation micro-degree"
+                                data-zh="上海交通大学推出“人工智能赋能低碳转型”微专业"
+                            >
+                                SJTU launches an AI-enabled low-carbon transformation micro-degree
+                            </h3>
+                            <p
+                                data-en="The university describes a year-long interdisciplinary program connecting AI with renewable energy, carbon management, circular economy and smart cities through theory, cases and practical projects."
+                                data-zh="学校介绍该一年制跨学科项目将人工智能与可再生能源、碳管理、循环经济和智慧城市相结合，并包含理论、案例和实践项目。"
+                            >
+                                The university describes a year-long interdisciplinary program connecting AI with
+                                renewable energy, carbon management, circular economy and smart cities through theory,
+                                cases and practical projects.
+                            </p>
+                            <a
+                                data-en="Read original source ↗"
+                                data-zh="阅读原始来源 ↗"
+                                href="https://en.sjtu.edu.cn/news-events/news/2509"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                >Read original source ↗</a
+                            >
+                        </article>
+                    </div>
+                    <div
+                        class="warning"
+                        data-en="Static news becomes outdated. Confirm dates, claims and links before each public release."
+                        data-zh="静态新闻会过时。每次公开发布前都应确认日期、信息和链接。"
+                        style="margin-top: 20px"
+                    >
+                        Static news becomes outdated. Confirm dates, claims and links before each public release.
+                    </div>
                 </div>
+            </section>
+        </main>
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
+                </p>
             </div>
-
-            <div class="news-item" 
-                data-title-en="xi telling musk and other CEOs" 
-                data-title-zh="习近平对马斯克和其他CEO的讲话"
-                data-url="https://www.cnbc.com/2026/05/14/nvidias-jensen-huang-on-china-trip-trump.html">
-                <div class="news-placeholder">
-                    <img src="https://image.cnbcfm.com/api/v1/image/108306865-1778762888280-108306865-1778757372066-gettyimages-2275592313-AFP_B2U978M.jpg?v=1778795370&w=1260&h=709&ffmt=webp&vtcrop=y" alt="">
-                </div>
-                <div class="caption" 
-                    data-en="Xi tells Musk, Tim Cook and other CEOs on Trump's trip: China will 'open wider'" 
-                    data-zh="习近平对特朗普访华的马斯克、蒂姆·库克等CEO表示:中国将“进一步开放”">
-                </div>
+        </aside>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html"
+                    ><img alt="" src="assets/img/logo.svg" /><span
+                        ><strong>Pre-U Code Collective</strong
+                        ><small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        ></span
+                    ></a
+                >
+                <nav>
+                    <a data-en="Annual report" data-zh="年度报告" href="report.html">Annual report</a
+                    ><a data-en="People" data-zh="成员" href="people.html">People</a
+                    ><a data-en="Development log" data-zh="开发记录" href="development.html">Development log</a
+                    ><a data-en="Contact" data-zh="联系" href="contact.html">Contact</a>
+                </nav>
+                <p>© 2026 Pre-U Code Collective</p>
             </div>
-
-            <!-- Add more news items here following the same pattern -->
-        </div>
-    </article>
-
-    <footer data-en="Copyright ©2026 SJTU Pre Uni. All rights reserved." 
-            data-zh="Copyright ©2026 SJTU Pre Uni. 版权所有。">
-        Copyright ©2026 SJTU Pre Uni. All rights reserved.
-    </footer>
-
-    <!-- Popup -->
-    <div class="popup-overlay" id="articlePopup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2 id="popupTitle"></h2>
-                <button class="close-btn" id="closePopup">×</button>
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="popup-body" id="popupBody">
-                <p>Loading article...</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // ==================== LANGUAGE SYSTEM ====================
-        let currentLang = 'en';
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-
-            // Update active button
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-
-            // Translate all elements with data-en / data-zh
-            document.querySelectorAll('[data-en]').forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) el.textContent = text;
-            });
-
-            // Save preference
-            localStorage.setItem('language', lang);
-        }
-
-        // ==================== POPUP SYSTEM ====================
-        function initPopAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.news-grid').forEach(el => {
-                el.classList.add('animate-on-pop');
-                observer.observe(el);
-            });
-        }
-
-        async function openArticle(title, url) {
-            const popup = document.getElementById('articlePopup');
-            const popupTitle = document.getElementById('popupTitle');
-            const popupBody = document.getElementById('popupBody');
-            const progressBar = document.getElementById('progressBar');
-
-            popupTitle.textContent = title;
-            popupBody.innerHTML = `<p><strong>Loading content...</strong></p>`;
-            popup.style.display = 'flex';
-
-            setTimeout(() => {
-                popup.style.opacity = '1';
-                popup.querySelector('.popup-content').classList.add('open');
-            }, 10);
-
-            // Progress bar
-            popupBody.onscroll = () => {
-                const scrollTop = popupBody.scrollTop;
-                const scrollHeight = popupBody.scrollHeight - popupBody.clientHeight;
-                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 100;
-                progressBar.style.width = `${progress}%`;
-            };
-        }
-
-        // ==================== INITIALIZATION ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load saved language
-            const savedLang = localStorage.getItem('language') || 'en';
-            switchLanguage(savedLang);
-
-            // Popup click handlers
-            const popup = document.getElementById('articlePopup');
-            const closeBtn = document.getElementById('closePopup');
-
-            document.querySelectorAll('.news-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const title = currentLang === 'en' 
-                        ? item.dataset.titleEn 
-                        : item.dataset.titleZh;
-                    const url = item.dataset.url || "";
-                    openArticle(title, url);
-                });
-            });
-
-            closeBtn.addEventListener('click', () => {
-                popup.style.opacity = '0';
-                popup.querySelector('.popup-content').classList.remove('open');
-                setTimeout(() => popup.style.display = 'none', 400);
-            });
-
-            popup.addEventListener('click', e => {
-                if (e.target === popup) closeBtn.click();
-            });
-
-            document.addEventListener('keydown', e => {
-                if (e.key === "Escape" && popup.style.display === 'flex') {
-                    closeBtn.click();
-                }
-            });
-
-            initPopAnimations();
-        });
-    </script>
-</body>
+        </footer>
+        <audio data-ui-audio="" preload="none" src="assets/audio/ui-click.mp3"></audio>
+        <dialog class="lightbox" data-lightbox="">
+            <button aria-label="Close" class="lightbox-close" type="button">×</button><img alt="" />
+            <p></p>
+        </dialog>
+    </body>
 </html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+<title id="title">Pre-U Code Collective logo</title>
+<desc id="desc">Original code brackets, a forward slash and a connection point inside a rounded diamond.</desc>
+<defs><linearGradient id="g" x1="12" y1="108" x2="108" y2="12" gradientUnits="userSpaceOnUse"><stop stop-color="#10245f"/><stop offset=".54" stop-color="#3c63d8"/><stop offset="1" stop-color="#00b9e8"/></linearGradient></defs>
+<rect x="14" y="14" width="92" height="92" rx="28" transform="rotate(45 60 60)" fill="url(#g)"/>
+<path d="M47 42 31 60l16 18M73 42l16 18-16 18" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="m68 33-16 54" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+<circle cx="69" cy="73" r="5.5" fill="#fff"/>
+</svg>

@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Club committee and member profiles." />
+        <meta name="theme-color" content="#10245f" />
+        <title>People | Pre-U Code Collective</title>
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        <script defer src="assets/js/people-data.js"></script>
+        <script defer src="assets/js/site.js"></script>
+    </head>
+
+    <body>
+        <!-- Skip Link -->
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+
+        <!-- Header -->
+        <header class="site-header" data-site-header>
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img src="assets/img/logo.svg" alt="Pre-U Code Collective logo" width="50" height="50" />
+                    <span>
+                        <strong>Pre-U Code Collective</strong>
+                        <small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        >
+                    </span>
+                </a>
+
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a href="index.html" data-en="Home" data-zh="首页">Home</a>
+                    <a href="about.html" data-en="About" data-zh="关于">About</a>
+                    <a href="people.html" class="active" data-en="People" data-zh="成员">People</a>
+                    <a href="classes.html" data-en="Classes" data-zh="课程">Classes</a>
+                    <a href="projects.html" data-en="Projects" data-zh="项目">Projects</a>
+                    <a href="preu-life.html" data-en="Pre-U Life" data-zh="预科生活">Pre-U Life</a>
+                    <a href="events.html" data-en="Events" data-zh="活动">Events</a>
+                    <a href="news.html" data-en="AI News" data-zh="AI 新闻">AI News</a>
+                    <a href="prepare.html" data-en="Prepare" data-zh="准备指南">Prepare</a>
+                    <a href="contact.html" class="nav-cta" data-en="Contribute" data-zh="参与">Contribute</a>
+                </nav>
+
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle type="button">中</button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle
+                        type="button"
+                    >
+                        ♪
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main">
+            <!-- Page Hero -->
+            <section class="page-hero">
+                <div class="container page-hero-grid">
+                    <div>
+                        <p
+                            class="eyebrow"
+                            data-en="PEOPLE · ORIGINAL NAMES AND THUMBNAILS"
+                            data-zh="成员 · 保留原有姓名与缩略图"
+                        >
+                            PEOPLE · ORIGINAL NAMES AND THUMBNAILS
+                        </p>
+                        <h1 data-en="Meet the students behind the coding community." data-zh="认识编程社群背后的学生。">
+                            Meet the students behind the coding community.
+                        </h1>
+                        <p
+                            data-en="This page restores the Version 1 member experience inside the latest design: names, roles and thumbnail photographs remain, while personal Instagram links are removed."
+                            data-zh="本页面把第一版的成员体验恢复到最新设计中：保留姓名、职务与缩略图，同时删除个人 Instagram 链接。"
+                        >
+                            This page restores the Version 1 member experience inside the latest design: names, roles
+                            and thumbnail photographs remain, while personal Instagram links are removed.
+                        </p>
+                    </div>
+                    <div class="page-hero-image">
+                        <img src="assets/img/hero-club.webp" alt="Programming club group photograph" loading="eager" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- People Section -->
+            <section class="section white">
+                <div class="container">
+                    <!-- Privacy Warning -->
+                    <div
+                        class="warning"
+                        data-en="Privacy change: Instagram links have been removed. The requested names, thumbnails, origins, study interests and quotations are retained from the supplied Version 1 source, but the club should still confirm consent before public deployment."
+                        data-zh="隐私调整：Instagram 链接已删除。根据要求，姓名、缩略图、来源地、学习方向与个人语录保留自第一版源文件，但公开部署前仍应确认本人同意。"
+                    >
+                        Privacy change: Instagram links have been removed. The requested names, thumbnails, origins,
+                        study interests and quotations are retained from the supplied Version 1 source, but the club
+                        should still confirm consent before public deployment.
+                    </div>
+
+                    <!-- Committee Heading -->
+                    <div class="section-heading people-heading">
+                        <div>
+                            <p class="section-label" data-en="COMMITTEE" data-zh="委员会">COMMITTEE</p>
+                            <h2 data-en="Student leadership." data-zh="学生领导团队。">Student leadership.</h2>
+                        </div>
+                        <p
+                            data-en="Select a thumbnail to read the retained profile without exposing a social-media link."
+                            data-zh="选择缩略图查看保留的成员资料，不再公开社交媒体链接。"
+                        >
+                            Select a thumbnail to read the retained profile without exposing a social-media link.
+                        </p>
+                    </div>
+
+                    <!-- Committee Grid -->
+                    <div class="people-grid committee-grid">
+                        <article class="person-card reveal" id="anqi">
+                            <button
+                                class="person-card-button"
+                                data-person-id="anqi"
+                                type="button"
+                                aria-label="Open profile for Anqi / 安崎"
+                            >
+                                <img src="assets/img/people/anqi.webp" alt="Portrait of Anqi / 安崎" loading="lazy" />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="President" data-zh="主席">President</span>
+                                    <strong>Anqi / 安崎</strong>
+                                    <small
+                                        data-en="Ulaanbaatar, Mongolia · Software Engineering"
+                                        data-zh="蒙古国乌兰巴托 · 软件工程"
+                                        >Ulaanbaatar, Mongolia · Software Engineering</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="owen">
+                            <button
+                                class="person-card-button"
+                                data-person-id="owen"
+                                type="button"
+                                aria-label="Open profile for Owen / 谢和汶"
+                            >
+                                <img src="assets/img/people/owen.webp" alt="Portrait of Owen / 谢和汶" loading="lazy" />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Vice President" data-zh="副主席">Vice President</span>
+                                    <strong>Owen / 谢和汶</strong>
+                                    <small
+                                        data-en="Jakarta, Indonesia · Computer Science"
+                                        data-zh="印度尼西亚雅加达 · 计算机科学"
+                                        >Jakarta, Indonesia · Computer Science</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="kenji">
+                            <button
+                                class="person-card-button"
+                                data-person-id="kenji"
+                                type="button"
+                                aria-label="Open profile for Kenji / 叶建志"
+                            >
+                                <img
+                                    src="assets/img/people/kenji.webp"
+                                    alt="Portrait of Kenji / 叶建志"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Vice President" data-zh="副主席">Vice President</span>
+                                    <strong>Kenji / 叶建志</strong>
+                                    <small
+                                        data-en="Medan, Indonesia · Computer Science"
+                                        data-zh="印度尼西亚棉兰 · 计算机科学"
+                                        >Medan, Indonesia · Computer Science</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="elson">
+                            <button
+                                class="person-card-button"
+                                data-person-id="elson"
+                                type="button"
+                                aria-label="Open profile for Elson / 罗裕弘"
+                            >
+                                <img
+                                    src="assets/img/people/elson.webp"
+                                    alt="Portrait of Elson / 罗裕弘"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Vice President" data-zh="副主席">Vice President</span>
+                                    <strong>Elson / 罗裕弘</strong>
+                                    <small
+                                        data-en="Johor Bahru, Malaysia · Mechanical Engineering"
+                                        data-zh="马来西亚新山 · 机械工程"
+                                        >Johor Bahru, Malaysia · Mechanical Engineering</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+                    </div>
+
+                    <!-- Members Heading -->
+                    <div class="section-heading people-heading">
+                        <div>
+                            <p class="section-label" data-en="MEMBERS" data-zh="成员">MEMBERS</p>
+                            <h2 data-en="The wider club community." data-zh="更广泛的社团成员。">
+                                The wider club community.
+                            </h2>
+                        </div>
+                        <p
+                            data-en="Three archived photographs still lack enough verified written information and remain marked as pending confirmation."
+                            data-zh="三张存档照片仍缺少足够的核实文字资料，因此继续标记为待确认。"
+                        >
+                            Three archived photographs still lack enough verified written information and remain marked
+                            as pending confirmation.
+                        </p>
+                    </div>
+
+                    <!-- Members Grid -->
+                    <div class="people-grid">
+                        <article class="person-card reveal" id="chereen">
+                            <button
+                                class="person-card-button"
+                                data-person-id="chereen"
+                                type="button"
+                                aria-label="Open profile for Chereen / 郑馨薇"
+                            >
+                                <img
+                                    src="assets/img/people/chereen.webp"
+                                    alt="Portrait of Chereen / 郑馨薇"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Chereen / 郑馨薇</strong>
+                                    <small
+                                        data-en="Jakarta, Indonesia · Artificial Intelligence"
+                                        data-zh="印度尼西亚雅加达 · 人工智能"
+                                        >Jakarta, Indonesia · Artificial Intelligence</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="delfina">
+                            <button
+                                class="person-card-button"
+                                data-person-id="delfina"
+                                type="button"
+                                aria-label="Open profile for Delfina / 肖欣怡"
+                            >
+                                <img
+                                    src="assets/img/people/delfina.webp"
+                                    alt="Portrait of Delfina / 肖欣怡"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Delfina / 肖欣怡</strong>
+                                    <small
+                                        data-en="Surabaya, Indonesia · Artificial Intelligence"
+                                        data-zh="印度尼西亚泗水 · 人工智能"
+                                        >Surabaya, Indonesia · Artificial Intelligence</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="justin">
+                            <button
+                                class="person-card-button"
+                                data-person-id="justin"
+                                type="button"
+                                aria-label="Open profile for Justin / 高玮瑄"
+                            >
+                                <img
+                                    src="assets/img/people/justin.webp"
+                                    alt="Portrait of Justin / 高玮瑄"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Justin / 高玮瑄</strong>
+                                    <small
+                                        data-en="Medan, Indonesia · Economics and Management"
+                                        data-zh="印度尼西亚棉兰 · 经济与管理"
+                                        >Medan, Indonesia · Economics and Management</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="jae-lyn">
+                            <button
+                                class="person-card-button"
+                                data-person-id="jae-lyn"
+                                type="button"
+                                aria-label="Open profile for Jae Lyn / 婕凌"
+                            >
+                                <img
+                                    src="assets/img/people/jae-lyn.webp"
+                                    alt="Portrait of Jae Lyn / 婕凌"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Jae Lyn / 婕凌</strong>
+                                    <small
+                                        data-en="Selangor, Malaysia · Biotechnology"
+                                        data-zh="马来西亚雪兰莪 · 生物技术"
+                                        >Selangor, Malaysia · Biotechnology</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="matthew">
+                            <button
+                                class="person-card-button"
+                                data-person-id="matthew"
+                                type="button"
+                                aria-label="Open profile for Matthew / 郭乐信"
+                            >
+                                <img
+                                    src="assets/img/people/matthew.webp"
+                                    alt="Portrait of Matthew / 郭乐信"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Matthew / 郭乐信</strong>
+                                    <small data-en="Jakarta, Indonesia · Automation" data-zh="印度尼西亚雅加达 · 自动化"
+                                        >Jakarta, Indonesia · Automation</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="maygan">
+                            <button
+                                class="person-card-button"
+                                data-person-id="maygan"
+                                type="button"
+                                aria-label="Open profile for Maygan / 吴美彦"
+                            >
+                                <img
+                                    src="assets/img/people/maygan.webp"
+                                    alt="Portrait of Maygan / 吴美彦"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Maygan / 吴美彦</strong>
+                                    <small
+                                        data-en="Surabaya, Indonesia · Computer Science"
+                                        data-zh="印度尼西亚泗水 · 计算机科学"
+                                        >Surabaya, Indonesia · Computer Science</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="ng-ze-qi">
+                            <button
+                                class="person-card-button"
+                                data-person-id="ng-ze-qi"
+                                type="button"
+                                aria-label="Open profile for Ng Ze Qi / 吴子齐"
+                            >
+                                <img
+                                    src="assets/img/people/ng-ze-qi.webp"
+                                    alt="Portrait of Ng Ze Qi / 吴子齐"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Ng Ze Qi / 吴子齐</strong>
+                                    <small
+                                        data-en="Ipoh, Malaysia · Artificial Intelligence"
+                                        data-zh="马来西亚怡保 · 人工智能"
+                                        >Ipoh, Malaysia · Artificial Intelligence</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="ping-pong">
+                            <button
+                                class="person-card-button"
+                                data-person-id="ping-pong"
+                                type="button"
+                                aria-label="Open profile for Ping Pong / 梁琼宇"
+                            >
+                                <img
+                                    src="assets/img/people/ping-pong.webp"
+                                    alt="Portrait of Ping Pong / 梁琼宇"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Ping Pong / 梁琼宇</strong>
+                                    <small
+                                        data-en="Bangkok, Thailand · Computer Science"
+                                        data-zh="泰国曼谷 · 计算机科学"
+                                        >Bangkok, Thailand · Computer Science</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="sek-kar-hao">
+                            <button
+                                class="person-card-button"
+                                data-person-id="sek-kar-hao"
+                                type="button"
+                                aria-label="Open profile for Sek Kar Hao / 石嘉豪"
+                            >
+                                <img
+                                    src="assets/img/people/sek-kar-hao.webp"
+                                    alt="Portrait of Sek Kar Hao / 石嘉豪"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Sek Kar Hao / 石嘉豪</strong>
+                                    <small
+                                        data-en="Kuala Lumpur, Malaysia · Automation"
+                                        data-zh="马来西亚吉隆坡 · 自动化"
+                                        >Kuala Lumpur, Malaysia · Automation</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+
+                        <article class="person-card reveal" id="vincent">
+                            <button
+                                class="person-card-button"
+                                data-person-id="vincent"
+                                type="button"
+                                aria-label="Open profile for Vincent / 刘文锋"
+                            >
+                                <img
+                                    src="assets/img/people/vincent.webp"
+                                    alt="Portrait of Vincent / 刘文锋"
+                                    loading="lazy"
+                                />
+                                <span class="person-card-copy">
+                                    <span class="role" data-en="Member" data-zh="成员">Member</span>
+                                    <strong>Vincent / 刘文锋</strong>
+                                    <small
+                                        data-en="Jakarta, Indonesia · Artificial Intelligence"
+                                        data-zh="印度尼西亚雅加达 · 人工智能"
+                                        >Jakarta, Indonesia · Artificial Intelligence</small
+                                    >
+                                    <em data-en="Open profile" data-zh="打开资料">Open profile</em>
+                                </span>
+                            </button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Profile Dialog -->
+        <dialog class="profile-dialog" aria-labelledby="profile-name" data-profile-dialog>
+            <button class="profile-dialog-close" data-profile-close type="button" aria-label="Close profile">×</button>
+            <div class="profile-dialog-grid">
+                <img src="" alt="" data-profile-image />
+                <div>
+                    <p class="section-label" data-profile-role>Member profile</p>
+                    <h2 id="profile-name" data-profile-name></h2>
+                    <dl class="profile-facts">
+                        <div>
+                            <dt data-en="Origin" data-zh="来源地">Origin</dt>
+                            <dd data-profile-origin></dd>
+                        </div>
+                        <div>
+                            <dt data-en="Study interest" data-zh="学习方向">Study interest</dt>
+                            <dd data-profile-major></dd>
+                        </div>
+                    </dl>
+                    <blockquote data-profile-quote></blockquote>
+                    <p
+                        class="profile-privacy"
+                        data-en="Instagram link removed from the public output."
+                        data-zh="公开输出中已删除 Instagram 链接。"
+                    >
+                        Instagram link removed from the public output.
+                    </p>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Independence Note -->
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
+                </p>
+            </div>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html">
+                    <img src="assets/img/logo.svg" alt="" />
+                    <span>
+                        <strong>Pre-U Code Collective</strong>
+                        <small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        >
+                    </span>
+                </a>
+                <nav>
+                    <a href="report.html" data-en="Annual report" data-zh="年度报告">Annual report</a>
+                    <a href="people.html" data-en="People" data-zh="成员">People</a>
+                    <a href="development.html" data-en="Development log" data-zh="开发记录">Development log</a>
+                    <a href="contact.html" data-en="Contact" data-zh="联系">Contact</a>
+                </nav>
+                <p>© 2026 Pre-U Code Collective</p>
+            </div>
+        </footer>
+
+        <!-- UI Audio & Lightbox -->
+        <audio data-ui-audio preload="none" src="assets/audio/ui-click.mp3"></audio>
+
+        <dialog class="lightbox" data-lightbox>
+            <button class="lightbox-close" type="button" aria-label="Close">×</button>
+            <img src="" alt="" />
+            <p></p>
+        </dialog>
+    </body>
+</html>

@@ -1,1501 +1,440 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>编程社团 | SJTU Programming Club | 2025–2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* ===== CSS VARIABLES ===== */
-        :root {
-            --red: #AD1730;
-            --red-deep: #8B1125;
-            --navy: #002B60;
-            --navy-light: #003D82;
-            --gold: #FFD700;
-            --gold-warm: #FFC107;
-            --cream: #FDF8F0;
-            --cream-dark: #F5EDE0;
-            --ink: #1A1A1A;
-            --ink-light: #4A4A4A;
-            --ink-faint: #8A8A8A;
-            --white: #FFFFFF;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
-            --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
-            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-        }
-
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        img, video, iframe {
-            max-width: 100%;
-        }
-
-        a, button, .nav-link, .event-card, .committee-card, .news-item {
-            cursor: pointer;
-        }
-
-        body {
-            font-family: 'DM Sans', -apple-system, sans-serif;
-            background-color: var(--cream);
-            color: var(--ink);
-            line-height: 1.6;
-            overflow-x: hidden;
-            max-width: 100vw;
-            min-height: 100vh;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* ===== PAGE LAYOUT ===== */
-        .page-wrapper {
-            max-width: 1340px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== FLOATING HEADER ===== */
-        .header-floating {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 40px;
-            background: transparent;
-            transition: background 0.3s ease;
-        }
-
-        .header-floating.scrolled {
-            background: var(--cream);
-        }
-
-        .header-floating .header-logo a {
-            display: block;
-        }
-
-        .header-floating .header-logo img {
-            height: 60px;
-            width: auto;
-            display: block;
-        }
-
-        .header-floating.scrolled .header-logo img {
-            filter: brightness(0) saturate(100%);
-        }
-
-        .nav-floating {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-floating .nav-list {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-floating .nav-link {
-            text-decoration: none;
-            color: rgba(255,255,255,0.9);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-floating .nav-link:hover {
-            color: var(--white);
-        }
-
-        .header-floating.scrolled .nav-floating .nav-link {
-            color: var(--navy);
-        }
-
-        .header-floating.scrolled .nav-floating .nav-link:hover {
-            color: var(--red);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            border-radius: 0;
-            overflow: hidden;
-            color: var(--white);
-        }
-
-        .hero-background {
-            position: absolute;
-            inset: 0;
-            background-image: url('images/20250113_112126_766.png');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(0, 43, 96, 0.85) 0%,
-                rgba(0, 43, 96, 0.3) 50%,
-                rgba(0, 43, 96, 0.5) 100%
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 900px;
-            padding: 40px;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900;
-            line-height: 0.95;
-            margin-bottom: 24px;
-            text-shadow: 0 4px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero-description {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 10px 24px;
-            background: var(--gold);
-            color: var(--ink);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            animation: float 2s ease-in-out infinite;
-        }
-
-        .hero-scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-section {
-            padding: 60px 24px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--cream);
-        }
-        
-        .about-section .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        
-        .about-section .section-title {
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            color: var(--navy);
-        }
-        
-        .about-text {
-            color: var(--ink);
-        }
-        
-        .about-text h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-        
-        .about-text p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-            color: var(--ink-light);
-        }
-
-        /* ===== VISION SECTION ===== */
-        .vision-section {
-            padding: 40px 24px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--cream);
-        }
-
-        .vision-section .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .vision-section .section-title {
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            color: var(--navy);
-        }
-
-        .vision-text {
-            color: var(--ink);
-        }
-
-        .vision-text h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-
-        .vision-text p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-            color: var(--ink-light);
-        }
-
-        /* ===== MISSION SECTION ===== */
-        .mission-section {
-            padding: 40px 24px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--cream);
-        }
-
-        .mission-section .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .mission-section .section-title {
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            color: var(--navy);
-        }
-
-        .mission-text {
-            color: var(--ink);
-        }
-
-        .mission-text h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-
-        .mission-text p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-            color: var(--ink-light);
-        }
-
-        /* ===== SECTION HEADER ===== */
-        .section-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--ink);
-            gap: 8px;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.02em;
-        }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--ink-faint);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* ===== COMMITTEE SECTION ===== */
-        .committee-section {
-            padding: 40px 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .committee-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .committee-card {
-            position: relative;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            width: 200px;
-            height: 140px;
-            flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        .placeholder-img, .committee-card .placeholder-img {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .committee-card .committee-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 43, 96, 0.95) 0%, rgba(0, 43, 96, 0.3) 50%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 16px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .committee-card:hover .committee-overlay {
-            opacity: 1;
-        }
-
-        .committee-card .committee-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 4px;
-            transform: translateY(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .committee-card .committee-role {
-            font-size: 11px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-family: 'JetBrains Mono', monospace;
-            transform: translateY(10px);
-            transition: transform 0.3s ease 0.05s;
-        }
-
-        .committee-card:hover .committee-name,
-        .committee-card:hover .committee-role {
-            transform: translateY(0);
-        }
-
-        /* ===== STUDENTS SECTION ===== */
-        .students-section {
-            padding: 40px 0;
-        }
-
-        .students-section .section-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--ink);
-            gap: 8px;
-        }
-
-        .students-section .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.02em;
-        }
-
-        .students-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .student-card {
-            position: relative;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            width: 140px;
-            height: 140px;
-            flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1;
-        }
-
-        .student-card:hover {
-            z-index: 10;
-        }
-
-        .student-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .student-card:hover .student-image {
-            transform: scale(1.1);
-            transition: transform 0.5s ease;
-        }
-
-        .student-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 43, 96, 0.95) 0%, rgba(0, 43, 96, 0.3) 50%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 16px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .student-card:hover .student-overlay {
-            opacity: 1;
-        }
-
-        .student-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 2px;
-            transform: translateY(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .student-name-en {
-            font-size: 12px;
-            color: var(--gold);
-            margin-bottom: 6px;
-            transform: translateY(10px);
-            transition: transform 0.3s ease 0.05s;
-        }
-
-        .student-origin, .committee-origin {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.85);
-            transform: translateY(10px);
-            transition: transform 0.3s ease 0.1s;
-        }
-
-        .student-origin, .committee-origin svg {
-            width: 12px;
-            height: 12px;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .student-card:hover .student-name,
-        .student-card:hover .student-name-en,
-        .student-card:hover .student-origin .committee-origin{
-            transform: translateY(0);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--navy);
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-            padding: 40px 48px;
-            color: var(--white);
-            margin: 0 -24px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--gold);
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-links h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
-            color: rgba(255,255,255,0.5);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .footer-bottom .mono {
-            color: var(--gold);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 968px) {
-            .hero-section {
-                min-height: auto;
-                padding: 36px 32px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-list {
-                gap: 6px;
-            }
-
-            .nav-link {
-                padding: 8px 14px;
-                font-size: 0.85rem;
-            }
-
-            .committee-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer {
-                padding: 32px 24px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
-
-            .students-grid {
-                gap: 8px;
-            }
-            .student-card {
-                width: 100px;
-                height: 100px;
-            }
-            .student-name {
-                font-size: 14px;
-            }
-            .student-name-en {
-                font-size: 10px;
-            }
-            .student-origin,.committee-origin {
-                display: none;
-            }
-            .placeholder-img {
-                font-size: 24px;
-            }
-        }
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.06; }
-            50% { opacity: 0.12; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes slide-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-section {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
-        }
-
-        .committee-section {
-            animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .animate-on-scroll,
-            .hero-section {
-                opacity: 1;
-                transform: none;
-                animation: none;
-            }
-        }
-
-        /* ===== POPUP - Improved Text Display ===== */
-        .popup-overlay {
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.88); 
-            display: none; 
-            align-items: center;
-            justify-content: center; 
-            z-index: 1000; 
-            opacity: 0; 
-            transition: opacity 0.4s ease;
-        }
-
-        .popup-content {
-            background: #002B60; 
-            width: 92%; 
-            max-width: 860px; 
-            max-height: 100vh;
-            border-radius: 16px; 
-            overflow: hidden; 
-            box-shadow: 0 25px 80px rgba(0,0,0,0.7);
-            transform: scale(0.94); 
-            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        }
-
-        .popup-content.open { 
-            transform: scale(1); 
-        }
-
-        .popup-header {
-            background: #AD1730; 
-            padding: 24px 30px; 
-            display: flex;
-            justify-content: space-between; 
-            align-items: center; 
-            position: relative;
-        }
-
-        .popup-header h2 { 
-            color: #FFD700; 
-            margin: 0; 
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .close-btn {
-            background: none; 
-            border: none; 
-            color: white; 
-            font-size: 34px;
-            width: 48px; 
-            height: 48px; 
-            cursor: pointer;
-            border-radius: 50%;
-            line-height: 1;
-        }
-
-        .close-btn:hover { 
-            background: rgba(255,255,255,0.25); 
-            transform: rotate(90deg); 
-        }
-
-        .progress-bar {
-            position: absolute; 
-            bottom: 0; left: 0; 
-            height: 5px;
-            background: linear-gradient(to right, #FFD700, #ffeb3b);
-            width: 0%; 
-            transition: width 0.1s linear;
-        }
-
-        /* =============== MAIN POPUP BODY - TEXT FIX =============== */
-        .popup-body {
-            padding: 35px 40px;
-            overflow-y: auto;
-            max-height: calc(92vh - 85px);
-            color: #f0f0f0;
-            line-height: 1.85;
-            font-size: 1.05rem;
-        }
-
-        .popup-body img {
-            max-width: 100%;
-            border-radius: 14px;
-            margin: 10px 0 32px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            display: block;
-        }
-
-        .popup-body p {
-            margin-bottom: 18px;
-        }
-
-        .popup-body a {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .popup-body a:hover {
-            text-decoration: underline;
-            color: #ffeb3b;
-        }
-
-        /* Make quotes look nice */
-        .popup-body p[style*="italic"],
-        .popup-body p[style*="font-style:italic"] {
-            font-size: 1.08rem;
-            color: #e0e0e0;
-            border-left: 5px solid #FFD700;
-            padding-left: 20px;
-            margin: 28px 0;
-            font-style: italic;
-        }
-
-        /* Origin and Instagram lines */
-        .popup-body p[style*="color:#FFD700"] {
-            font-weight: 500;
-            margin: 10px 0;
-        }
-    </style>
-</head>
-<body>
-    <!-- FLOATING HEADER -->
-    <header class="header-floating">
-        <div class="header-logo">
-            <a href="index.html">
-                <img src="images/LogoWhite@2x.png" alt="SJTU logo">
-            </a>
-        </div>
-        <nav class="nav-floating">
-            <ul class="nav-list">
-                <li><a href="documentations.html" class="nav-link"><span>Explore Us / 探索预科</span></a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION (full width, from top) -->
-    <section class="hero-section">
-        <div class="hero-background"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">SJTU Pre-University</div>
-            <h2 class="hero-title">Welcome to<br>编程社团</h2>
-            <p class="hero-description">
-                Programming Club. 
-                Cultivating excellence in coding, creativity, and collaboration for the 2025 - 2026 academic year.
-            </p>
-            
-        </div>
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <div class="hero-scroll-line"></div>
-        </div>
-    </section>
-
-        <!-- MAIN CONTENT -->
-        <main class="content-grid">
-            <!-- ABOUT US -->
-            <section class="about-section">
-                <div class="section-header">
-                    <h2 class="section-title">关于我们</h2>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Student-created coding, Pre-University life and preparation platform." />
+        <meta name="theme-color" content="#10245f" />
+        <title>Home | Pre-U Code Collective</title>
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        <script defer src="assets/js/site.js"></script>
+    </head>
+
+    <body>
+        <!-- Skip Link -->
+        <a class="skip-link" data-en="Skip to content" data-zh="跳到主要内容" href="#main">Skip to content</a>
+
+        <!-- Header -->
+        <header class="site-header" data-site-header>
+            <div class="container nav-row">
+                <a aria-label="Pre-U Code Collective home" class="brand" href="index.html">
+                    <img src="assets/img/logo.svg" alt="Pre-U Code Collective logo" width="50" height="50" />
+                    <span>
+                        <strong>Pre-U Code Collective</strong>
+                        <small data-en="Student programming club" data-zh="学生编程社团"
+                            >Student programming club</small
+                        >
+                    </span>
+                </a>
+
+                <button aria-controls="main-nav" aria-expanded="false" class="nav-toggle" type="button">
+                    <span class="sr-only">Menu</span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav aria-label="Primary navigation" class="main-nav" id="main-nav">
+                    <a href="index.html" class="active" data-en="Home" data-zh="首页">Home</a>
+                    <a href="about.html" data-en="About" data-zh="关于">About</a>
+                    <a href="people.html" data-en="People" data-zh="成员">People</a>
+                    <a href="classes.html" data-en="Classes" data-zh="课程">Classes</a>
+                    <a href="projects.html" data-en="Projects" data-zh="项目">Projects</a>
+                    <a href="preu-life.html" data-en="Pre-U Life" data-zh="预科生活">Pre-U Life</a>
+                    <a href="events.html" data-en="Events" data-zh="活动">Events</a>
+                    <a href="news.html" data-en="AI News" data-zh="AI 新闻">AI News</a>
+                    <a href="prepare.html" data-en="Prepare" data-zh="准备指南">Prepare</a>
+                    <a href="contact.html" class="nav-cta" data-en="Contribute" data-zh="参与">Contribute</a>
+                </nav>
+
+                <div class="utility-controls">
+                    <button aria-label="Switch language" class="icon-button" data-lang-toggle type="button">中</button>
+                    <button
+                        aria-label="Enable interface sound"
+                        aria-pressed="false"
+                        class="icon-button"
+                        data-sound-toggle
+                        type="button"
+                    >
+                        ♪
+                    </button>
                 </div>
-                <div class="about-text">
-                    <h3>Who We Are</h3>
-                    <p>We, three passionate students from three different countries — Owen, Anqi, and Elson — envisioned more than just a club.</p>
-                    <p>We dreamed of a dynamic space where every coding enthusiast, from curious beginners to aspiring developers, could connect, collaborate, and grow together. </p>
-                    <p>This vision sparked the founding of the SJTU Pre-U Programming Club, transforming a simple idea into a thriving community that celebrates shared knowledge and creativity.</p>
-                </div>
-            </section>
-            <section class="vision-section">
-                <div class="section-header">
-                    <h2 class="section-title">我们的愿景</h2>
-                </div>
-                <div class="vision-text">
-                    <h3>Our Vision</h3>
-                    <p>To create the most unforgettable, interactive, and wonderful collaborative experience! We aim to be the heart of tech innovation on the Qibao campus, a community that leaves a lasting mark on every member's Pre-U journey. 
-                        Our vision is to build a legacy of projects, friendships, and skills that extend far beyond the classroom.</p>
-                </div>
-            </section>
-            <section class="mission-section">
-                <div class="section-header">
-                    <h2 class="section-title">我们的使命</h2>
-                </div>
-                <div class="mission-text">
-                    <h3>Our Mission</h3>
-                    <p>Through cooperation, creativity, and hands-on building, we craft engaging projects, tackle real-world problems, and share our passion for technology with the world. 
-                    We empower every member to contribute, learn, and lead, fostering an inclusive environment where great ideas are born and brought to life.</p>
-                </div>
+            </div>
+        </header>
 
-            <!-- COMMITTEE -->
-            <section class="committee-section">
-                <div class="section-header">
-                    <h3 class="section-title">我们的委员</h3>
-                    <span class="section-label">Committee</span>
-                </div>
-                <div class="committee-grid">
+        <!-- Main Content -->
+        <main id="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-copy reveal">
+                        <p
+                            class="eyebrow"
+                            data-en="2025–2026 STUDENT CODING COMMUNITY"
+                            data-zh="2025–2026 学生编程社团"
+                        >
+                            2025–2026 STUDENT CODING COMMUNITY
+                        </p>
+                        <h1
+                            data-en="Learn to code. Document the journey. Grow before university."
+                            data-zh="学习编程，记录成长，为大学做好准备。"
+                        >
+                            Learn to code. Document the journey. Grow before university.
+                        </h1>
+                        <p
+                            data-en="The final website keeps the people, photographs, vision, mission and coding identity from the original site, then connects them to the latest multi-page documentation, Pre-University life, Chinese preparation and AI reporting."
+                            data-zh="最终网站保留原网站中的成员、照片、愿景、使命与编程特色，并将它们整合到最新的多页面记录、预科生活、中文准备与人工智能资讯中。"
+                        >
+                            The final website keeps the people, photographs, vision, mission and coding identity from
+                            the original site, then connects them to the latest multi-page documentation, Pre-University
+                            life, Chinese preparation and AI reporting.
+                        </p>
+                        <div class="actions">
+                            <a
+                                class="button button-primary"
+                                data-en="Explore HTML, CSS &amp; JS"
+                                data-zh="探索 HTML、CSS 与 JS"
+                                href="classes.html"
+                                >Explore HTML, CSS &amp; JS</a
+                            >
+                            <a
+                                class="button button-secondary"
+                                data-en="Meet our members"
+                                data-zh="认识社团成员"
+                                href="people.html"
+                                >Meet our members</a
+                            >
+                        </div>
+                        <div class="stats-row">
+                            <div class="stat">
+                                <strong>22</strong>
+                                <span data-en="members recorded" data-zh="报告记录成员">members recorded</span>
+                            </div>
+                            <div class="stat">
+                                <strong>18</strong>
+                                <span data-en="active-member figure" data-zh="活跃成员数字">active-member figure</span>
+                            </div>
+                            <div class="stat">
+                                <strong>3</strong>
+                                <span data-en="meetings held" data-zh="已举行会议">meetings held</span>
+                            </div>
+                            <div class="stat">
+                                <strong>55%</strong>
+                                <span data-en="average attendance" data-zh="平均出勤率">average attendance</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <article class="committee-card" data-title="AnQI">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <img src="../images/students/committeeprofilepic/2.jpg" alt="AnQI">
+                    <div class="hero-visual reveal">
+                        <div class="hero-photo">
+                            <img src="assets/img/hero-club.webp" alt="Programming club students in a classroom" />
                         </div>
-                        <div class="committee-overlay">
-                            <p class="committee-name">AnQI / 安崎</p>
-                            <p class="committee-role">President</p>
-                            <div class="committee-origin">Mongolia</div>
+                        <div class="hero-chip chip-a">
+                            <strong>&lt;/&gt; HTML · CSS · JS</strong>
+                            <span data-en="Original coding focus retained" data-zh="保留原有编程重点"
+                                >Original coding focus retained</span
+                            >
                         </div>
-                    </article>
-
-                    <article class="committee-card" data-title="Owen">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <img src="../images/students/committeeprofilepic/1.jpg" alt="Owen">
+                        <div class="hero-chip chip-b">
+                            <strong>中文 + AI</strong>
+                            <span data-en="Latest student preparation routes" data-zh="最新学生准备内容"
+                                >Latest student preparation routes</span
+                            >
                         </div>
-                        <div class="committee-overlay">
-                            <p class="committee-name">Owen / 谢和汶</p>
-                            <p class="committee-role">Vice President</p>
-                            <div class="committee-origin">Indonesia</div>
-                        </div>
-                    </article>
-
-                    <article class="committee-card" data-title="Kenji">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <img src="../images/students/memberprofilepic/kenji.jpg" alt="Kenji">
-                        </div>
-                        <div class="committee-overlay">
-                            <p class="committee-name">Kenji / 叶建志</p>
-                            <p class="committee-role">Vice President</p>
-                            <div class="committee-origin">Indonesia</div>
-                        </div>
-                    </article>
-
-                    <article class="committee-card" data-title="Elson">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <img src="../images/students/committeeprofilepic/Elson_profile.png" alt="Elson">
-                        </div>
-                        <div class="committee-overlay">
-                            <p class="committee-name">Elson / 罗裕弘</p>
-                            <p class="committee-role">Vice President</p>
-                            <div class="committee-origin">Malaysia</div>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </section>
 
-            <!-- STUDENTS SECTION -->
-            <section class="students-section">
-                <div class="section-header">
-                    <h3 class="section-title">班级成员</h3>
-                    
+            <!-- Tech Ribbon -->
+            <section aria-label="Core learning topics" class="tech-ribbon">
+                <div class="container tech-ribbon-track">
+                    <span>&lt;HTML&gt;</span>
+                    <i>+</i>
+                    <span>{CSS}</span>
+                    <i>+</i>
+                    <span>JavaScript()</span>
+                    <i>+</i>
+                    <span>Python</span>
+                    <i>+</i>
+                    <span>AI</span>
+                    <i>+</i>
+                    <span>中文</span>
                 </div>
-                <div class="students-grid">
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                            <img src="../images/students/memberprofilepic/chereen.jpg" alt="Chereen">
+            </section>
+
+            <!-- Founder Intro -->
+            <section class="section white">
+                <div class="container split founder-intro">
+                    <div>
+                        <p
+                            class="section-label"
+                            data-en="WHO WE ARE · FROM VERSION 1"
+                            data-zh="关于我们 · 保留自第一版"
+                        >
+                            WHO WE ARE · FROM VERSION 1
+                        </p>
+                        <h2
+                            data-en="Three students imagined more than just a club."
+                            data-zh="三名学生希望创造的不只是一个社团。"
+                        >
+                            Three students imagined more than just a club.
+                        </h2>
+                    </div>
+                    <div class="body-copy">
+                        <p
+                            data-en="Owen, Anqi and Elson—three students from three different countries—imagined a place where curious beginners and aspiring developers could connect, collaborate and grow together."
+                            data-zh="Owen、安崎与 Elson 来自三个不同国家。他们希望建立一个让初学者和有志开发者能够连接、合作并共同成长的空间。"
+                        >
+                            Owen, Anqi and Elson—three students from three different countries—imagined a place where
+                            curious beginners and aspiring developers could connect, collaborate and grow together.
+                        </p>
+                        <p
+                            data-en="The latest version does not replace that story. It documents it more clearly through dedicated pages for people, classes, projects, events, Pre-U life, reports and preparation."
+                            data-zh="最新版本并没有取代这段故事，而是通过成员、课程、项目、活动、预科生活、报告与准备指南等独立页面，更清晰地记录它。"
+                        >
+                            The latest version does not replace that story. It documents it more clearly through
+                            dedicated pages for people, classes, projects, events, Pre-U life, reports and preparation.
+                        </p>
+                        <a
+                            class="text-link"
+                            data-en="Open the vision and mission slider →"
+                            data-zh="查看愿景与使命滑动展示 →"
+                            href="about.html"
+                            >Open the vision and mission slider →</a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Committee Preview -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-heading">
+                        <div>
+                            <p class="section-label" data-en="COMMITTEE" data-zh="委员会">COMMITTEE</p>
+                            <h2
+                                data-en="The original names and thumbnails remain."
+                                data-zh="保留原有姓名与成员缩略图。"
+                            >
+                                The original names and thumbnails remain.
+                            </h2>
                         </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">郑馨薇</h4>
-                            <p class="student-name-en">Chereen</p>
-                            <div class="student-origin">Indonesia</div>
+                        <p
+                            data-en="Personal Instagram links were removed. Approved names, roles, origins, study interests and quotations remain available through the member profiles."
+                            data-zh="个人 Instagram 链接已删除。经确认的姓名、职务、来源地、学习方向与个人语录仍保留在成员资料中。"
+                        >
+                            Personal Instagram links were removed. Approved names, roles, origins, study interests and
+                            quotations remain available through the member profiles.
+                        </p>
+                    </div>
+
+                    <div class="committee-preview">
+                        <a class="committee-preview-card reveal" href="people.html#anqi">
+                            <img src="assets/img/people/anqi.webp" alt="Anqi / 安崎" />
+                            <span>
+                                <strong>Anqi / 安崎</strong>
+                                <small data-en="President" data-zh="主席">President</small>
+                            </span>
+                        </a>
+                        <a class="committee-preview-card reveal" href="people.html#owen">
+                            <img src="assets/img/people/owen.webp" alt="Owen / 谢和汶" />
+                            <span>
+                                <strong>Owen / 谢和汶</strong>
+                                <small data-en="Vice President" data-zh="副主席">Vice President</small>
+                            </span>
+                        </a>
+                        <a class="committee-preview-card reveal" href="people.html#kenji">
+                            <img src="assets/img/people/kenji.webp" alt="Kenji / 叶建志" />
+                            <span>
+                                <strong>Kenji / 叶建志</strong>
+                                <small data-en="Vice President" data-zh="副主席">Vice President</small>
+                            </span>
+                        </a>
+                        <a class="committee-preview-card reveal" href="people.html#elson">
+                            <img src="assets/img/people/elson.webp" alt="Elson / 罗裕弘" />
+                            <span>
+                                <strong>Elson / 罗裕弘</strong>
+                                <small data-en="Vice President" data-zh="副主席">Vice President</small>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="actions">
+                        <a
+                            class="button button-secondary"
+                            data-en="View all member profiles"
+                            data-zh="查看全部成员资料"
+                            href="people.html"
+                            >View all member profiles</a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Documentation -->
+            <section class="section white">
+                <div class="container">
+                    <div class="section-heading">
+                        <div>
+                            <p class="section-label" data-en="LATEST DOCUMENTATION" data-zh="最新记录">
+                                LATEST DOCUMENTATION
+                            </p>
+                            <h2
+                                data-en="The original identity now has deeper evidence."
+                                data-zh="原有社团特色现在拥有更深入的证据。"
+                            >
+                                The original identity now has deeper evidence.
+                            </h2>
                         </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
-                            <img src="../images/students/memberprofilepic/delfina.jpg" alt="Delfina">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">肖欣怡</h4>
-                            <p class="student-name-en">Delfina</p>
-                            <div class="student-origin">Indonesia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-                            <img src="../images/students/memberprofilepic/justin.jpg" alt="Justin">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">高玮瑄</h4>
-                            <p class="student-name-en">Justin</p>
-                            <div class="student-origin">Indonesia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-                            <img src="../images/students/memberprofilepic/jae lynn.jpg" alt="Jae Lyn">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">婕凌</h4>
-                            <p class="student-name-en">Jae Lyn</p>
-                            <div class="student-origin">Malaysia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <img src="../images/students/memberprofilepic/matthew.jpg" alt="Matthew">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">郭乐信</h4>
-                            <p class="student-name-en">Matthew</p>
-                            <div class="student-origin">Indonesia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <img src="../images/students/memberprofilepic/maygan.jpg" alt="Maygan">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">吴美彦</h4>
-                            <p class="student-name-en">Maygan</p>
-                            <div class="student-origin">Indonesia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <img src="../images/students/memberprofilepic/wu ziqi.jpg" alt="Ze Qi">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">吴子齐</h4>
-                            <p class="student-name-en">Ng Ze Qi</p>
-                            <div class="student-origin">Malaysia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-                            <img src="../images/students/memberprofilepic/ping_pong.jpg" alt="Ping Pong">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">梁琼宇</h4>
-                            <p class="student-name-en">Ping Pong</p>
-                            <div class="student-origin">Thailand</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
-                            <img src="../images/students/memberprofilepic/sekhao.jpg" alt="Sek Hao">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">石嘉豪</h4>
-                            <p class="student-name-en">Sek Kar Hao</p>
-                            <div class="student-origin">Malaysia</div>
-                        </div>
-                    </article>
-                    <article class="student-card">
-                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-                            <img src="../images/students/memberprofilepic/vincent.jpg" alt="Vincent">
-                        </div>
-                        <div class="student-overlay">
-                            <h4 class="student-name">刘文锋</h4>
-                            <p class="student-name-en">Vincent</p>
-                            <div class="student-origin">Indonesia</div>
-                        </div>
-                    </article>
+                        <p
+                            data-en="The site retains the original coding community while using the annual report and recent folders to explain what happened, what failed and what comes next."
+                            data-zh="网站保留原有编程社群，同时使用年度报告和最新文件说明实际发生了什么、哪些地方失败，以及下一步计划。"
+                        >
+                            The site retains the original coding community while using the annual report and recent
+                            folders to explain what happened, what failed and what comes next.
+                        </p>
+                    </div>
+
+                    <div class="cards-3">
+                        <article class="card reveal">
+                            <div class="card-icon">&lt;/&gt;</div>
+                            <h3 data-en="Classes and code" data-zh="课程与代码">Classes and code</h3>
+                            <p
+                                data-en="HTML structure, CSS design, JavaScript interaction, Python discussion, material sharing and website development."
+                                data-zh="HTML 结构、CSS 设计、JavaScript 交互、Python 讨论、资料分享与网站开发。"
+                            >
+                                HTML structure, CSS design, JavaScript interaction, Python discussion, material sharing
+                                and website development.
+                            </p>
+                            <div class="tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </article>
+
+                        <article class="card reveal">
+                            <div class="card-icon">学</div>
+                            <h3 data-en="Pre-U life" data-zh="预科生活">Pre-U life</h3>
+                            <p
+                                data-en="Chinese study, academic workload, Friday scheduling, attendance, cultural activities and university preparation."
+                                data-zh="中文学习、学业负担、周五时间安排、出勤、文化活动与大学准备。"
+                            >
+                                Chinese study, academic workload, Friday scheduling, attendance, cultural activities and
+                                university preparation.
+                            </p>
+                        </article>
+
+                        <article class="card reveal">
+                            <div class="card-icon">↗</div>
+                            <h3 data-en="Honest development" data-zh="诚实开发记录">Honest development</h3>
+                            <p
+                                data-en="The final output records branding mistakes, nonfunctional interactions, overloaded pages and the decisions used to correct them."
+                                data-zh="最终输出记录品牌错误、无效交互、页面内容过载，以及用于纠正这些问题的决策。"
+                            >
+                                The final output records branding mistakes, nonfunctional interactions, overloaded pages
+                                and the decisions used to correct them.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore Band -->
+            <section class="section">
+                <div class="container band reveal">
+                    <div>
+                        <p
+                            class="section-label"
+                            data-en="EXPLORE THE COMPLETE RECORD"
+                            data-zh="探索完整记录"
+                            style="color: #7ee7ff"
+                        >
+                            EXPLORE THE COMPLETE RECORD
+                        </p>
+                        <h2
+                            data-en="Keep the original community. Add the missing depth."
+                            data-zh="保留原有社群，并补充过去缺少的深度。"
+                        >
+                            Keep the original community. Add the missing depth.
+                        </h2>
+                        <p
+                            data-en="Move from the homepage into real classes, projects, student life, event galleries, the annual report and development notes."
+                            data-zh="从首页进入真实课程、项目、学生生活、活动图库、年度报告与开发记录。"
+                        >
+                            Move from the homepage into real classes, projects, student life, event galleries, the
+                            annual report and development notes.
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <a class="button button-light" data-en="Explore events" data-zh="探索活动" href="events.html"
+                            >Explore events</a
+                        >
+                        <a
+                            class="button button-outline"
+                            data-en="Read the development log"
+                            data-zh="阅读开发记录"
+                            href="development.html"
+                            >Read the development log</a
+                        >
+                    </div>
                 </div>
             </section>
         </main>
-    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>编程社团</h3>
-                <p>
-                    Shanghai Jiao Tong University Pre-University Program Programming Club.<br>
-                    Academic Year 2025/2026.
+        <!-- Independence Note -->
+        <aside class="independence-note">
+            <div class="container">
+                <strong data-en="Independent student initiative" data-zh="独立学生项目"
+                    >Independent student initiative</strong
+                >
+                <p
+                    data-en="This student-created website is not an official website, department, publication or endorsed organization of Shanghai Jiao Tong University. The university name is used only to describe the educational context."
+                    data-zh="本网站由学生独立创建，并非上海交通大学官方网站、部门、出版物或经认可的组织。学校名称仅用于说明教育背景。"
+                >
+                    This student-created website is not an official website, department, publication or endorsed
+                    organization of Shanghai Jiao Tong University. The university name is used only to describe the
+                    educational context.
                 </p>
             </div>
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <ul>
-                    
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="documentations.html">Gallery</a></li>
-                    
-                </ul>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-grid">
+                <a class="brand" href="index.html">
+                    <img src="assets/img/logo.svg" alt="Pre-U Code Collective logo" />
+                    <span>
+                        <strong>Pre-U Code Collective</strong>
+                        <small data-en="Learn · Build · Belong" data-zh="学习 · 创造 · 连接"
+                            >Learn · Build · Belong</small
+                        >
+                    </span>
+                </a>
+                <nav>
+                    <a href="report.html" data-en="Annual report" data-zh="年度报告">Annual report</a>
+                    <a href="people.html" data-en="People" data-zh="成员">People</a>
+                    <a href="development.html" data-en="Development log" data-zh="开发记录">Development log</a>
+                    <a href="contact.html" data-en="Contact" data-zh="联系">Contact</a>
+                </nav>
+                <p>&copy; 2026 Pre-U Code Collective</p>
             </div>
-            <div class="footer-links">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://www.sjtu.edu.cn" target="_blank">SJTU Official</a></li>
-                    <li><a href="documentations.html">Event Archive</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>Copyright ©2026 SJTU Pre Uni. All rights reserved.</span>
-            <span class="mono">编程社团</span>
-        </div>
-    </footer>
+        </footer>
 
-    <!-- Popup -->
-    <div class="popup-overlay" id="articlePopup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2 id="popupTitle"></h2>
-                <button class="close-btn" id="closePopup">×</button>
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="popup-body" id="popupBody">
-                <p>Loading article...</p>
-            </div>
-        </div>
-    </div>
-    <script>
-        // ====================== ANIMATION FUNCTIONS ======================
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+        <!-- UI Audio & Lightbox -->
+        <audio data-ui-audio preload="none" src="assets/audio/ui-click.mp3"></audio>
 
-            document.querySelectorAll('.committee-section, .students-section').forEach(el => {
-                el.classList.add('animate-on-scroll');
-                observer.observe(el);
-            });
-        }
-
-        function initParallax() {
-            const hero = document.querySelector('.hero-section');
-            if (!hero) return;
-
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const heroHeight = window.innerHeight;
-
-                if (scrolled < heroHeight * 2) {
-                    const bg = hero.querySelector('.hero-background');
-                    const overlay = hero.querySelector('.hero-overlay');
-                    const content = hero.querySelector('.hero-content');
-                    const scrollIndicator = hero.querySelector('.hero-scroll');
-
-                    if (bg) bg.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 + scrolled * 0.0003})`;
-                    if (overlay) overlay.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    if (content) content.style.transform = `translateY(${scrolled * 0.15}px)`;
-                    if (content) content.style.opacity = Math.max(0, 1 - scrolled / heroHeight);
-                    if (scrollIndicator) scrollIndicator.style.opacity = Math.max(0, 1 - scrolled / (heroHeight * 0.5));
-                }
-            }, { passive: true });
-        }
-
-        function initFloatingHeader() {
-            const header = document.querySelector('.header-floating');
-            const hero = document.querySelector('.hero-section');
-            if (!header || !hero) return;
-
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight * 0.6);
-            }, { passive: true });
-        }
-        
-        // ====================== POPUP SYSTEM ======================
-        function openPhotoPopup(title, imagePath) {
-            const popup = document.getElementById('articlePopup');
-            const popupTitle = document.getElementById('popupTitle');
-            const popupBody = document.getElementById('popupBody');
-            const progressBar = document.getElementById('progressBar');
-
-            if (!popup || !popupBody) return;
-                progressBar.style.width = '0%';
-                popupTitle.textContent = title || 'Member Profile';
-                popupBody.innerHTML = `<p>Loading profile...</p>`;
-                let memberInfo = '';
-
-            const upperTitle = title.toUpperCase().trim();
-
-            switch(upperTitle) {
-                case 'ANQI':
-                case 'AN QI':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Ulaanbaatar, Mongolia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Software Engineering, SJTU</p>
-                        <p><a href="https://www.instagram.com/azykka" target="_blank" style="color:#FFD700;">Instagram: @azykka</a></p>
-
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “为了享受生活，你只要做一个事情：幸福”
-                        </p>
-                    `;
-                    break;
-
-                case 'OWEN':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
-                        <p><a href="https://www.instagram.com/official_owen3ddev" target="_blank" style="color:#FFD700;">Instagram: @official_owen3ddev</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “Don't let other's opinions hold you back from reaching out something extraordinary”
-                        </p>
-                    `;
-                    break;
-
-                case 'KENJI':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Medan, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
-                        <p><a href="https://www.instagram.com/kenzfaustino" target="_blank" style="color:#FFD700;">Instagram: @kenzfaustino</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “Well, if you think it’s impossible, you’re already halfway there”
-                        </p>
-                    `;
-                    break;
-
-                case 'ELSON':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Johor Bahru, Malaysia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Mechanical Engineering, SJTU</p>
-                        <p><a href="https://www.instagram.com/elsonyh07" target="_blank" style="color:#FFD700;">Instagram: @elson_loh</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “If you wanna walk the talk, do it now”
-                        </p>
-                    `;
-                    break;
-                
-                case 'CHEREEN':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
-                        <p><a href="https://www.instagram.com/chereen._" target="_blank" style="color:#FFD700;">Instagram: @chereen._</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “Step out of your comfort zone to explore newer possibilities”
-                        </p>
-                    `;
-                    break;
-
-                case 'DELFINA':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Surabaya, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
-                        <p><a href="https://www.instagram.com/delfinamannuela" target="_blank" style="color:#FFD700;">Instagram: @delfinamannuela</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “中文可以说难，其实难不难就看你如何面对才判断”
-                        </p>
-                    `;
-                    break;
-
-                case 'JUSTIN':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Medan, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Antai Economics and Management College, SJTU</p>
-                        <p><a href="https://www.instagram.com/justinconnr13" target="_blank" style="color:#FFD700;">Instagram: @justinconnr13</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “你做的事情只是你想要做，不是别人期望的”
-                        </p>
-                    `;
-                    break;
-
-                case 'JAE LYN':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Selangor, Malaysia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Biotechnology, SJTU</p>
-                        <p><a href="https://www.instagram.com/jlynn18507" target="_blank" style="color:#FFD700;">Instagram: @jlynn18507</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “Just give it a chance and let the fear you have fall away”
-                        </p>
-                    `;
-                    break;
-
-                case 'MATTHEW':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Automation, SJTU</p>
-                        <p><a href="https://www.instagram.com/matthew_kawira_ril" target="_blank" style="color:#FFD700;">Instagram: @matthew_kawira_ril</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “失败并非终点，而是通往成功的关键，经验更是无价之宝”
-                        </p>
-                    `;
-                    break;
-                case 'MAYGAN':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Surabaya, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
-                        <p><a href="https://www.instagram.com/maygan_go" target="_blank" style="color:#FFD700;">Instagram: @maygan_go</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “Dreams work when you do”
-                        </p>
-                    `;
-                    break;
-                case 'NG ZE QI':
-                case 'NGZEQI':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Ipoh, Malaysia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
-                        <p><a href="https://www.instagram.com/zeqi_eva" target="_blank" style="color:#FFD700;">Instagram: @zeqi_eva</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “哪怕面对什么困难，什么危机，有至少一个人会帮你坚持”
-                        </p>
-                    `;
-                    break;
-                case 'PING PONG':
-                case 'PINGPONG':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Bangkok, Thailand</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Computer Science, SJTU</p>
-                        <p><a href="https://www.instagram.com/piing._pong" target="_blank" style="color:#FFD700;">Instagram: @piing._pong</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “hello everyone sabai dee mai”
-                        </p>
-                    `;
-                    break;
-                case 'SEK KAR HAO':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Kuala Lumpur, Malaysia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Automation, SJTU</p>
-                        <p><a href="https://www.instagram.com/hao._.735" target="_blank" style="color:#FFD700;">Instagram: @hao._.735</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “People say nothing is impossible , but I do nothing everyday”
-                        </p>
-                    `;
-                    break;
-
-                case 'VINCENT':
-                    memberInfo = `
-                        <p style="color:#FFD700; margin:12px 0 8px;">Origin: Jakarta, Indonesia</p>
-                        <p style="color:#FFD700; margin:12px 0 8px;">Preferred Major + University: Artificial Intelligence, SJTU</p>
-                        <p><a href="https://www.instagram.com/liuvincentcolin" target="_blank" style="color:#FFD700;">Instagram: @liuvincentcolin</a></p>
-                        <p style="margin-top:20px; font-style:italic; color:#ddd;">
-                            “数学家玩的是一个他自己发明规则的游戏，而物理学家玩的是规则由自然提供的游戏。但是随着时间的推移，变得越来越明显的是，数学家觉得有趣的规则与自然所选择的规则是相同的。~ 保罗·狄拉克”
-                        </p>
-                    `;
-                    break;
-
-                default:
-                    memberInfo = `<p style="color:#ccc;">${title} — Student Member</p>`;
-            }
-
-            popupBody.innerHTML = `
-                <div style="text-align: center;">
-                    <img src="${imagePath}" alt="${title}" 
-                        style="max-width: 100%; max-height: 72vh; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
-                    ${memberInfo}
-                </div>
-            `;
-
-            popup.style.display = 'flex';
-            setTimeout(() => {
-                popup.style.opacity = '1';
-                popup.querySelector('.popup-content').classList.add('open');
-            }, 10);
-
-            const updateProgress = () => {
-                const scrollTop = popupBody.scrollTop;
-                const scrollHeight = popupBody.scrollHeight - popupBody.clientHeight;
-                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 100;
-                progressBar.style.width = `${progress}%`;
-            };
-
-            popupBody.onscroll = updateProgress;
-            updateProgress();
-        }
-
-        function closePopup() {
-            const popup = document.getElementById('articlePopup');
-            if (!popup) return;
-
-            popup.style.opacity = '0';
-            const content = popup.querySelector('.popup-content');
-            if (content) content.classList.remove('open');
-
-            setTimeout(() => {
-                popup.style.display = 'none';
-                const body = document.getElementById('popupBody');
-                if (body) body.onscroll = null;
-            }, 400);
-        }
-
-        // ====================== INITIALIZATION ======================
-        document.addEventListener('DOMContentLoaded', function() {
-            initScrollAnimations();
-            initParallax();
-            initFloatingHeader();
-
-            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
-                card.classList.add('hover-lift');
-            });
-
-            // Click handler for committee & student cards
-            document.querySelectorAll('.committee-card, .student-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    let title = this.getAttribute('data-title');
-                    
-                    if (!title) {
-                        const nameEl = this.querySelector('.committee-name, .student-name-en');
-                        title = nameEl ? nameEl.textContent.trim() : 'Member';
-                    }
-
-                    const img = this.querySelector('img');
-                    const imagePath = img ? img.src : '';
-
-                    if (imagePath) {
-                        openPhotoPopup(title, imagePath);
-                    }
-                });
-            });
-
-            // Close popup handlers
-            const closeBtn = document.getElementById('closePopup');
-            const popupOverlay = document.getElementById('articlePopup');
-
-            if (closeBtn) closeBtn.addEventListener('click', closePopup);
-            if (popupOverlay) {
-                popupOverlay.addEventListener('click', (e) => {
-                    if (e.target === popupOverlay) closePopup();
-                });
-            }
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === "Escape") closePopup();
-            });
-        });
-    </script>
-</body>
+        <dialog class="lightbox" data-lightbox>
+            <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+            <img src="" alt="" />
+            <p></p>
+        </dialog>
+    </body>
 </html>
